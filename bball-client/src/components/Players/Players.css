@@ -1,0 +1,14 @@
+.index .list {
+  display: flex;
+  justify-content: left;
+}
+
+.index .list h2 {
+  margin: 15px;
+  color: green;
+  cursor: pointer;
+}
+
+.index .list h2.active {
+  color: red;
+}
