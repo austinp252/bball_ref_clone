@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './Players.css';
 
-
+import {Link} from 'react-router-dom';
 
 function Players() {
 
@@ -10,7 +10,7 @@ function Players() {
 
   useEffect(() => {
     //console.log('test');
-    fetch(`/test/:${index}`)
+    fetch(`/players/:${index}`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [index]);
@@ -47,44 +47,46 @@ function Players() {
             <h2 value='Y' className={index === 'Y' ? 'active' : ''} onClick={() => setIndex('Y')}>Y</h2>
             <h2 value='Z' className={index === 'Z' ? 'active' : ''} onClick={() => setIndex('Z')}>Z</h2>
           </div>
+          <p>Active players are listed in bold</p>
+          <p>* indicates member of the Hall of Fame</p>
       </div>
       <div className="data">
-        {
-        data.map((player) => {
-          return(
-            <h1>{player.full_name}</h1>
-          )
-        })
-      }
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Pos</th>
+              <th>Ht</th>
+              <th>Wt</th>
+              <th>Birth Date</th>
+              <th>Colleges</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              data.map((player) => {
+                return(
+                  <tr>
+                    <td className={player.is_active ? 'active' : ''}>
+                      <Link className='link' to={`/players/${index}/${player.id}`}>{player.full_name}</Link>
+                    </td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                  </tr>
+                )
+              })
+            }
+          </tbody>
+        </table>
       </div>
   </div>;
 }
 
 export default Players;
-
-/*
-- Should eventually include hover feature
-<h2>D</h2>
-            <h2>E</h2>
-            <h2>F</h2>
-            <h2>G</h2>
-            <h2>H</h2>
-            <h2>I</h2>
-            <h2>J</h2>
-            <h2>K</h2>
-            <h2>L</h2>
-            <h2>M</h2>
-            <h2>N</h2>
-            <h2>O</h2>
-            <h2>P</h2>
-            <h2>Q</h2>
-            <h2>R</h2>
-            <h2>S</h2>
-            <h2>T</h2>
-            <h2>U</h2>
-            <h2>V</h2>
-            <h2>W</h2>
-            <h2>X</h2>
-            <h2>Y</h2>
-            <h2>Z</h2>
-*/

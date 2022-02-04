@@ -33,6 +33,9 @@ function Navbar() {
               <h2>
                   <Link className='link' to={'/leaders'}>Leaders</Link>
               </h2>
+              <h2>
+                  <Link className='link' to={'/scores'}>Scores</Link>
+              </h2>
           </div>
       </div>
   )

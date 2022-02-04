@@ -12,3 +12,25 @@
 .index .list h2.active {
   color: red;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding: 3px 5px;
+}
+
+td.active {
+  font-weight: bold;
+}
+
+th {
+  color: red;
+}
+
+table,
+th,
+td {
+  border: 1px solid #000;
+}

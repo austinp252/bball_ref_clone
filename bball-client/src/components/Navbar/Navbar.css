@@ -4,7 +4,7 @@
 .search {
   position: relative;
   margin: 0;
-  background-color: aquamarine;
+  background-color: rgb(240, 240, 240);
   height: 100px;
 }
 
@@ -30,7 +30,7 @@
   flex-direction: row;
   align-items: left;
   height: 100px;
-  background-color: rgb(172, 255, 197);
+  background-color: rgb(150, 80, 0);
 }
 
 .menu h2 {

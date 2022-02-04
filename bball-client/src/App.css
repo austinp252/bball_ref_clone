@@ -1,5 +1,14 @@
 .App {
-  text-align: center;
+  background-color: rgb(145, 145, 145);
+}
+
+.App .container {
+  margin: 0 40px;
+  background-color: rgb(240, 240, 240);
+}
+
+.App .content {
+  padding: 20px;
 }
 
 .App-logo {
