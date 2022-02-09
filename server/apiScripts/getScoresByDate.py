@@ -2,8 +2,8 @@ import sys
 import json
 
 from nba_api.stats.endpoints import scoreboardv2
-#date = sys.argv[1]
-date = "2022-02-02"
+date = sys.argv[1]
+#date = "2022-02-02"
 scoreData = scoreboardv2.ScoreboardV2(game_date=date)
 rawData = scoreData.line_score.get_dict()
 
