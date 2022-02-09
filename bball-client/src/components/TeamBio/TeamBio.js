@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './TeamBio.css';
 
+import TeamBasicInfo from '../TeamBasicInfo/TeamBasicInfo';
+
 import {Link, useParams} from 'react-router-dom';
 
 function TeamBio() {
@@ -8,7 +10,7 @@ function TeamBio() {
   const params = useParams();
 
   useEffect(() => {
-      fetch(`/teams/${params.id}`)
+      fetch(`/teams/${params.id}/stats`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
@@ -20,12 +22,42 @@ function TeamBio() {
     )
   } else {
     console.log('rendering');
+    console.log(data)
     return(
       <div className="content">
         <div className="common">
-          <h1>{data.data[0][2]} {data.data[0][3]}</h1>
-          <p>Location: {data.data[0][2]}</p>
-          <p>Seasons:</p>
+          <TeamBasicInfo/>
+        </div>
+        <div className="dataShow">
+          <h1>Last {data.stats.data.length} NBA Seasons</h1>
+          <table>
+            <thead>
+              <th>Season</th>
+              <th>Lg</th>
+              <th>Team</th>
+              <th>W</th>
+              <th>L</th>
+              <th>W/L%</th>
+              <th>Finish</th>
+            </thead>
+            <tbody>
+              {
+                data.stats.data.slice(0).reverse().map((season) => {
+                  return(
+                    <tr>
+                      <td><Link to={`/teams/${params.id}/${season[3]}`}>{season[3]}</Link></td>
+                      <td>NBA</td>
+                      <td>{season[1]} {season[2]}</td>
+                      <td>{season[5]}</td>
+                      <td>{season[6]}</td>
+                      <td>{season[7]}</td>
+                      <td>{season[8] != '0' ? season[8] : 'N/A'}</td>
+                    </tr>
+                  )
+                })
+              }
+            </tbody>
+          </table>
         </div>
       </div>
     )

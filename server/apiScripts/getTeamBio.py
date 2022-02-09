@@ -1,9 +1,7 @@
 import sys
 import json
 
-from nba_api.stats.endpoints import teaminfocommon
-leagueID = '00'
+from nba_api.stats.endpoints import teamestimatedmetrics
 teamID = sys.argv[1]
-teamdata = teaminfocommon.TeamInfoCommon(
-    league_id=leagueID, team_id=teamID).team_info_common.get_json()
-print(teamdata)
+teamData = teamestimatedmetrics.TeamEstimatedMetrics().team_estimated_metrics.get_dict()
+print(teamData)

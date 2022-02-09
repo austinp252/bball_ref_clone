@@ -1,84 +1,140 @@
 import React, {useState, useEffect} from 'react';
 import './PlayerBio.css';
 
+import PlayerBasicInfo from '../PlayerBasicInfo/PlayerBasicInfo';
+
 import {Link, useParams} from 'react-router-dom';
 
 function PlayerBio() {
   const [data, setData] = useState(null);
+  const [showData, setShowData] = useState('Regular Season')
   const params = useParams();
 
-  //console.log(`/players/:${params.letter}/:${params.id}`);
   useEffect(() => {
-    fetch(`/players/${params.letter}/${params.id}`)
+    console.log("fetching player career stats")
+    fetch(`/players/${params.letter}/${params.id}/stats`)
     .then((res) => res.json())
     .then((data) => setData(data));
-  }, []);
+}, []);
 
-    // setPlayerInfo(data.playerInfo)
-    // console.log(data.playerInfo.data[0][3]);
-    // console.log(playerInfo);
-  if(!data) {
-    console.log('loading');
-    return(
-      <p>Loading...</p>
-    )
-  } else {
-    //setPlayerInfo(data.playerInfo);
-    console.log('rendering');
-    console.log(data.playerInfo.data[0][3]);
+    if(!data) {
+      return(
+        <div className="content">Loading...</div>
+      )
+    } else {
+    //console.log(data)
+    console.log('rendering data');
+    //console.log(data.playerInfo.data[0][3]);
       return(
         <div className="content">
-          <div className="common">
-            <h1>{data.playerInfo.data[0][3]}</h1>
-            <p>Position: {data.playerInfo.data[0][15]}</p>
-            <p>Height: {data.playerInfo.data[0][11]}</p>
-            <p>Weight: {data.playerInfo.data[0][12]} lbs</p>
-            <p>Born: {data.playerInfo.data[0][7]} in {data.playerInfo.data[0][9]}</p>
-            <p>College: {data.playerInfo.data[0][8]}</p>
-            <p>NBA Draft: {data.playerInfo.data[0][29]} (Round: {data.playerInfo.data[0][30]} / Pick: {data.playerInfo.data[0][31]})</p>
-            <p>League Experience: {data.playerInfo.data[0][13]} year(s)</p>
+          <PlayerBasicInfo/>
+          <div className="data-selectors">
+            <button onClick={() => setShowData('Regular Season')}>Regular Season</button>
+            <button onClick={() => setShowData('Playoffs')}>Playoffs</button>
           </div>
-          <div className="career">
-            <table>
-              <thead>
-                <tr>
-                  <th>Summary</th>
+          <div className="dataShow">
+            <div className="regular-season show">
+              <table>
+                <thead>
+                  <th>Season</th>
+                  <th>Age</th>
+                  <th>Tm</th>
+                  <th>Lg</th>
                   <th>GP</th>
-                  <th>MIN</th>
-                  <th>PTS</th>
+                  <th>GS</th>
+                  <th>MP</th>
+                  <th>FGM</th>
+                  <th>FGA</th>
+                  <th>FG%</th>
+                  <th>3PM</th>
+                  <th>3PA</th>
+                  <th>3P%</th>
+                  <th>FT</th>
+                  <th>FTA</th>
+                  <th>FT%</th>
+                  <th>OREB</th>
+                  <th>DREB</th>
                   <th>REB</th>
                   <th>AST</th>
                   <th>STL</th>
                   <th>BLK</th>
-                  <th>FGA</th>
-                  <th>FG%</th>
-                  <th>FG3A</th>
-                  <th>FG3%</th>
-                  <th>FT%</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Career</td>
-                  <td>{data.careerStats.data[0][3]}</td>
-                  <td>{data.careerStats.data[0][5]}</td>
-                  <td>{data.careerStats.data[0][23]}</td>
-                  <td>{data.careerStats.data[0][17]}</td>
-                  <td>{data.careerStats.data[0][18]}</td>
-                  <td>{data.careerStats.data[0][19]}</td>
-                  <td>{data.careerStats.data[0][20]}</td>
-                  <td>{data.careerStats.data[0][7]}</td>
-                  <td>{data.careerStats.data[0][8]}</td>
-                  <td>{data.careerStats.data[0][10]}</td>
-                  <td>{data.careerStats.data[0][11]}</td>
-                  <td>{data.careerStats.data[0][14]}</td>
-                </tr>
-              </tbody>
-            </table>
+                  <th>TOV</th>
+                  <th>PF</th>
+                  <th>PTS</th> 
+                </thead>
+                <tbody>
+                  {
+                    showData == 'Regular Season' ?
+                    data.resultSets[0].rowSet.slice(0).reverse().map((season) => {
+                      return(
+                        <tr>
+                          <td><Link to={`/players/${params.letter}/${params.id}/gamelog/${season[1]}`}>{season[1]}</Link></td>
+                          <td>{season[5]}</td>
+                          <td>{season[4]}</td>
+                          <td>NBA</td>
+                          <td>{season[6]}</td>
+                          <td>{season[7]}</td>
+                          <td>{season[8]}</td>
+                          <td>{season[9]}</td>
+                          <td>{season[10]}</td>
+                          <td>{season[11]}</td>
+                          <td>{season[12]}</td>
+                          <td>{season[13]}</td>
+                          <td>{season[14]}</td>
+                          <td>{season[15]}</td>
+                          <td>{season[16]}</td>
+                          <td>{season[17]}</td>
+                          <td>{season[18]}</td>
+                          <td>{season[19]}</td>
+                          <td>{season[20]}</td>
+                          <td>{season[21]}</td>
+                          <td>{season[22]}</td>
+                          <td>{season[23]}</td>
+                          <td>{season[24]}</td>
+                          <td>{season[25]}</td>
+                          <td>{season[26]}</td>
+                        </tr>
+                      )
+                    }) :
+                    data.resultSets[2].rowSet.map((season) => {
+                      return(
+                        <tr>
+                          <td><Link to={`/players/${params.letter}/${params.id}/gamelog/${season[1]}`}>{season[1]}</Link></td>
+                          <td>{season[5]}</td>
+                          <td>{season[4]}</td>
+                          <td>NBA</td>
+                          <td>{season[6]}</td>
+                          <td>{season[7]}</td>
+                          <td>{season[8]}</td>
+                          <td>{season[9]}</td>
+                          <td>{season[10]}</td>
+                          <td>{season[11]}</td>
+                          <td>{season[12]}</td>
+                          <td>{season[13]}</td>
+                          <td>{season[14]}</td>
+                          <td>{season[15]}</td>
+                          <td>{season[16]}</td>
+                          <td>{season[17]}</td>
+                          <td>{season[18]}</td>
+                          <td>{season[19]}</td>
+                          <td>{season[20]}</td>
+                          <td>{season[21]}</td>
+                          <td>{season[22]}</td>
+                          <td>{season[23]}</td>
+                          <td>{season[24]}</td>
+                          <td>{season[25]}</td>
+                          <td>{season[26]}</td>
+                        </tr>
+                      )
+                    })
+                  }
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       )
-  }
+    }
 }
 
 export default PlayerBio;
@@ -94,3 +150,105 @@ export default PlayerBio;
 - Career Length: do math above
 
 */
+
+{/* <div className="career">
+            <table>
+              <thead>
+                <tr>
+                  <th>Season</th>
+                  <th>Age</th>
+                  <th>Tm</th>
+                  <th>Lg</th>
+                  <th>GP</th>
+                  <th>GS</th>
+                  <th>MP</th>
+                  <th>FGM</th>
+                  <th>FGA</th>
+                  <th>FG%</th>
+                  <th>3PM</th>
+                  <th>3PA</th>
+                  <th>3P%</th>
+                  <th>FT</th>
+                  <th>FTA</th>
+                  <th>FT%</th>
+                  <th>OREB</th>
+                  <th>DREB</th>
+                  <th>REB</th>
+                  <th>AST</th>
+                  <th>STL</th>
+                  <th>BLK</th>
+                  <th>TOV</th>
+                  <th>PF</th>
+                  <th>PTS</th>          
+                </tr>
+              </thead>
+              <tbody>
+                  {
+                    data.careerStats.resultSets[0].rowSet.map((season) => {
+                      return(
+                        <tr>
+                          <td><Link to={`/players/${params.letter}/${params.id}/${season[1]}`}>{season[1]}</Link></td>
+                          <td>{season[5]}</td>
+                          <td>{season[4]}</td>
+                          <td>NBA</td>
+                          <td>{season[6]}</td>
+                          <td>{season[7]}</td>
+                          <td>{season[8]}</td>
+                          <td>{season[9]}</td>
+                          <td>{season[10]}</td>
+                          <td>{season[11]}</td>
+                          <td>{season[12]}</td>
+                          <td>{season[13]}</td>
+                          <td>{season[14]}</td>
+                          <td>{season[15]}</td>
+                          <td>{season[16]}</td>
+                          <td>{season[17]}</td>
+                          <td>{season[18]}</td>
+                          <td>{season[19]}</td>
+                          <td>{season[20]}</td>
+                          <td>{season[21]}</td>
+                          <td>{season[22]}</td>
+                          <td>{season[23]}</td>
+                          <td>{season[24]}</td>
+                          <td>{season[25]}</td>
+                          <td>{season[26]}</td>
+                        </tr>
+                      )
+                    })
+                  }
+                  {
+                      data.careerStats.resultSets[1].rowSet.map((season) => {
+                        return(
+                          <tr>
+                            <td>Career</td>
+                            <td></td>
+                            <td></td>
+                            <td>NBA</td>
+                            <td>{season[3]}</td>
+                            <td>{season[4]}</td>
+                            <td>{season[5]}</td>
+                            <td>{season[6]}</td>
+                            <td>{season[7]}</td>
+                            <td>{season[8]}</td>
+                            <td>{season[9]}</td>
+                            <td>{season[10]}</td>
+                            <td>{season[11]}</td>
+                            <td>{season[12]}</td>
+                            <td>{season[13]}</td>
+                            <td>{season[14]}</td>
+                            <td>{season[15]}</td>
+                            <td>{season[16]}</td>
+                            <td>{season[17]}</td>
+                            <td>{season[18]}</td>
+                            <td>{season[19]}</td>
+                            <td>{season[20]}</td>
+                            <td>{season[21]}</td>
+                            <td>{season[22]}</td>
+                            <td>{season[23]}</td>
+                          </tr>
+                        )
+                      })
+                  }
+              </tbody>
+            </table>
+          </div> */}
