@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import './TeamBasicInfo.css';
+import './FranchiseBasicInfo.css';
 
 import {Link, useParams} from 'react-router-dom';
 
-function TeamBasicInfo() {
+function FranchiseBasicInfo() {
   const [data, setData] = useState(null);
   const params = useParams();
 
@@ -55,7 +55,7 @@ function TeamBasicInfo() {
   }
 }
 
-export default TeamBasicInfo;
+export default FranchiseBasicInfo;
 
 /*
 - Team Name - h1

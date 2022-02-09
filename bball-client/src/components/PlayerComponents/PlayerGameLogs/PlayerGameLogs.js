@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './PlayerGameLogs.css';
 
-import Dropdown from '../widgets/Dropdown/Dropdown';
+import Dropdown from '../../widgets/Dropdown/Dropdown';
 
 import PlayerBasicInfo from '../PlayerBasicInfo/PlayerBasicInfo';
 
