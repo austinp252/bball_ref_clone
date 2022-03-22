@@ -251,7 +251,7 @@ app.get('/scores/boxscore/:gameid', (req, res) => {
 //testing
 app.get('/test', (req, res) => {
   var dataToSend;
-  const python = spawn('python', ['server/apiScripts/getTeamBio.py', '1610612737']);
+  const python = spawn('python', ['server/apiScripts/test.py']);
   python.stdout.on('data', (data) => {
     console.log('Pipe data from python script ...');
     dataToSend = data.toString();
