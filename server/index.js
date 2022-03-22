@@ -1,7 +1,7 @@
 const express = require("express");
 const {spawn} = require("child_process");
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
