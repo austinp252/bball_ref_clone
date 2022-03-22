@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import './TeamBio.css';
+import './FranchiseBio.css';
 
-import TeamBasicInfo from '../TeamBasicInfo/TeamBasicInfo';
+import FranchiseBasicInfo from '../FranchiseBasicInfo/FranchiseBasicInfo';
 
 import {Link, useParams} from 'react-router-dom';
 
-function TeamBio() {
+function FranchiseBio() {
   const [data, setData] = useState(null);
   const params = useParams();
 
@@ -26,7 +26,7 @@ function TeamBio() {
     return(
       <div className="content">
         <div className="common">
-          <TeamBasicInfo/>
+          <FranchiseBasicInfo/>
         </div>
         <div className="dataShow">
           <h1>Last {data.stats.data.length} NBA Seasons</h1>
@@ -64,7 +64,7 @@ function TeamBio() {
   }
 }
 
-export default TeamBio;
+export default FranchiseBio;
 
 /*
 - Team Name - h1

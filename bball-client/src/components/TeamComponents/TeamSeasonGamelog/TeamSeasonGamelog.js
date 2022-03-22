@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import './TeamSeasonGames.css';
+import './TeamSeasonGamelog.css';
 
 import Dropdown from '../../widgets/Dropdown/Dropdown';
-import TeamSeasonBasicInfo from '../../TeamSeasonBasicInfo/TeamSeasonBasicInfo';
+import TeamSeasonBasicInfo from '../TeamSeasonBasicInfo/TeamSeasonBasicInfo';
 
 import {Link, useParams} from 'react-router-dom';
 
-function TeamSeasonGames() {
+function TeamSeasonGamelog() {
     const [data, setData] = useState(null);
     const params = useParams();
 
@@ -77,4 +77,4 @@ function TeamSeasonGames() {
     }
 }
 
-export default TeamSeasonGames;
+export default TeamSeasonGamelog;

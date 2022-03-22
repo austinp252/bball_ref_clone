@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import './TeamSeason.css';
+import './TeamSeasonRoster.css';
 
 import TeamSeasonBasicInfo from '../TeamSeasonBasicInfo/TeamSeasonBasicInfo';
 
 import {Link, useParams} from 'react-router-dom';
 
-function TeamSeason() {
+function TeamSeasonRoster() {
     const [data, setData] = useState(null);
     const params = useParams();
 
@@ -138,4 +138,4 @@ function TeamSeason() {
     }
 }
 
-export default TeamSeason;
+export default TeamSeasonRoster;

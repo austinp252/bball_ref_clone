@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import './Teams.css';
+import './TeamsIndex.css';
 
 import {Link} from 'react-router-dom';
 
-function Teams() {
+function TeamsIndex() {
 
     const [data, setData] = useState([]);
     var activeID = -1;
@@ -76,4 +76,4 @@ function Teams() {
     )
 }
 
-export default Teams;
+export default TeamsIndex;
