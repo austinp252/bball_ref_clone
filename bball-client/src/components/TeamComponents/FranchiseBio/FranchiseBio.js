@@ -10,7 +10,7 @@ function FranchiseBio() {
   const params = useParams();
 
   useEffect(() => {
-      fetch(`/teams/${params.id}/stats`)
+      fetch(`/api/teams/${params.id}/stats`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

@@ -8,7 +8,7 @@ function FranchiseBasicInfo() {
   const params = useParams();
 
   useEffect(() => {
-      fetch(`/teams/${params.id}/basic`)
+      fetch(`/api/teams/${params.id}/basic`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

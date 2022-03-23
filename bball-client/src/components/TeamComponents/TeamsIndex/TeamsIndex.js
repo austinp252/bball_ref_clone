@@ -9,7 +9,7 @@ function TeamsIndex() {
     var activeID = -1;
 
     useEffect(() => {
-        fetch('/teams')
+        fetch('/api/teams')
         .then((res) => res.json())
         .then((data) => setData(data));
     }, []);

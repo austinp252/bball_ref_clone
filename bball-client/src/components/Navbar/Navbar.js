@@ -23,7 +23,7 @@ function Navbar() {
                 <div className="searchbar">
                     <form action="" id="getPlayers" onSubmit={handleSubmit}>
                         <input type="text" placeholder="Enter Person, Team, Section, etc" onChange={handleChange}/>
-                        <Link to={`/search/${term ? term : 'xxx'}/0`}><button type="submit">Submit</button></Link>
+                        <Link to={`/api/search/${term ? term : 'xxx'}/0`}><button type="submit">Submit</button></Link>
                    </form>
                 </div>
             </div>

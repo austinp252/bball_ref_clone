@@ -12,7 +12,7 @@ function PlayerStatsSeason() {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`/players/${params.letter}/${params.id}/gamelog/${params.season}`)
+    fetch(`/api/players/${params.letter}/${params.id}/gamelog/${params.season}`)
     .then((res) => res.json())
     .then((data) => setData(data));
 }, []);

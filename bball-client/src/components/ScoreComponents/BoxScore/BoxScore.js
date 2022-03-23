@@ -8,7 +8,7 @@ function BoxScore() {
     const params = useParams();
     
     useEffect(() => {
-        fetch(`/scores/boxscore/${params.gameid}`)
+        fetch(`/api/scores/boxscore/${params.gameid}`)
         .then((res) => res.json())
         .then((data) => setData(data));
     }, []);

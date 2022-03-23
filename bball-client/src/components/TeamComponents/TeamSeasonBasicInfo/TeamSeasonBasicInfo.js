@@ -9,7 +9,7 @@ function TeamSeasonBasicInfo(props) {
   const text = props.textName;
 
   useEffect(() => {
-      fetch(`/teams/${params.id}/${params.season}/basic`)
+      fetch(`/api/teams/${params.id}/${params.season}/basic`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
