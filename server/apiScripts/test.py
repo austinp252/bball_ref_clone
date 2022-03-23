@@ -1,4 +1,4 @@
 import json
 import sys
 
-print("test message")
+print("{msg: test message}")
