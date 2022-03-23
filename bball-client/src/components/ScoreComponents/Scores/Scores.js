@@ -24,7 +24,7 @@ function Scores() {
     }
 
     useEffect(() => {
-        fetch(`/scores/${date}`)
+        fetch(`/api/scores/${date}`)
         .then((res) => res.json())
         .then((data) => setData(data));
     }, [date]);

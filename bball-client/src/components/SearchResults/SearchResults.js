@@ -13,7 +13,7 @@ function SearchResults() {
     useEffect(() => {
         console.log('rendering');
         console.log(params);
-        fetch(`/search/${params.term}/${params.page}`)
+        fetch(`/api/search/${params.term}/${params.page}`)
         .then((res) => res.json())
         .then((data) => setData(data));
     }, [params]);

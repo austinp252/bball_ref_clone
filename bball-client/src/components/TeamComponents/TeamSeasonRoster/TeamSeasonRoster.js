@@ -10,7 +10,7 @@ function TeamSeasonRoster() {
     const params = useParams();
 
     useEffect(() => {
-        fetch(`/teams/${params.id}/${params.season}/stats`)
+        fetch(`/api/teams/${params.id}/${params.season}/stats`)
         .then((res) => res.json())
         .then((data) => setData(data));
     }, []);

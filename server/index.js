@@ -1,7 +1,7 @@
 const express = require("express");
 const {spawn} = require("child_process");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
@@ -9,7 +9,7 @@ app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
   });
 
-app.get('/search/:term/:page', (req, res) => {
+app.get('/api/search/:term/:page', (req, res) => {
   var dataToSend;
   // spawn new child process to call the python script
   const python = spawn('python', ['server/apiScripts/getSearchResults.py', req.params.term, req.params.page]);
@@ -30,7 +30,7 @@ app.get('/search/:term/:page', (req, res) => {
 });
 
 //get list of all players with last names starting with given letter
-app.get('/players/:letter', (req, res) => {
+app.get('/api/players/:letter', (req, res) => {
     var dataToSend;
     // spawn new child process to call the python script
     const python = spawn('python', ['server/apiScripts/getPlayersByLastInitial.py', req.params.letter]);
@@ -51,7 +51,7 @@ app.get('/players/:letter', (req, res) => {
 });
 
 //get info for specific player by id
-app.get('/players/:letter/:id', (req, res) => {
+app.get('/api/players/:letter/:id', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getPlayerBasicInfo.py', req.params.id]);
   python.stdout.on('data', (data) => {
@@ -67,7 +67,7 @@ app.get('/players/:letter/:id', (req, res) => {
   })
 });
 
-app.get('/players/:letter/:id/stats', (req, res) => {
+app.get('/api/players/:letter/:id/stats', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getPlayerCareerStats.py', req.params.id]);
   python.stdout.on('data', (data) => {
@@ -83,7 +83,7 @@ app.get('/players/:letter/:id/stats', (req, res) => {
   })
 });
 
-app.get('/players/:letter/:id/gamelog/:season', (req, res) => {
+app.get('/api/players/:letter/:id/gamelog/:season', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getPlayerGamesBySeason.py', req.params.id, req.params.season]);
   python.stdout.on('data', (data) => {
@@ -100,7 +100,7 @@ app.get('/players/:letter/:id/gamelog/:season', (req, res) => {
 })
 
 //get basic info for all franchises (currently active)
-app.get('/teams', (req, res) => {
+app.get('/api/teams', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getFranchises.py']);
   python.stdout.on('data', (data) => {
@@ -116,7 +116,7 @@ app.get('/teams', (req, res) => {
 });
 
 //get info for specific team by id
-app.get('/teams/:id', (req, res) => {
+app.get('/api/teams/:id', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getTeamStats.py', req.params.id]);
   python.stdout.on('data', (data) => {
@@ -132,7 +132,7 @@ app.get('/teams/:id', (req, res) => {
   })
 });
 
-app.get('/teams/:id/basic', (req, res) => {
+app.get('/api/teams/:id/basic', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getTeamBasicInfo.py', req.params.id]);
   python.stdout.on('data', (data) => {
@@ -148,7 +148,7 @@ app.get('/teams/:id/basic', (req, res) => {
   })
 });
 
-app.get('/teams/:id/stats', (req, res) => {
+app.get('/api/teams/:id/stats', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getTeamSeasonBasicInfo.py', req.params.id]);
   python.stdout.on('data', (data) => {
@@ -164,7 +164,7 @@ app.get('/teams/:id/stats', (req, res) => {
   })
 });
 
-app.get('/teams/:id/:season/basic', (req, res) => {
+app.get('/api/teams/:id/:season/basic', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getTeamSeasonBasicInfo.py', req.params.id, req.params.season]);
   python.stdout.on('data', (data) => {
@@ -180,7 +180,7 @@ app.get('/teams/:id/:season/basic', (req, res) => {
   })
 });
 
-app.get('/teams/:id/:season/stats', (req, res) => {
+app.get('/api/teams/:id/:season/stats', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getPlayerStatsBySeason.py', req.params.id, req.params.season]);
   python.stdout.on('data', (data) => {
@@ -198,7 +198,7 @@ app.get('/teams/:id/:season/stats', (req, res) => {
 
 //rename to /players?
 
-app.get('/teams/:id/:season/games', (req, res) => {
+app.get('/api/teams/:id/:season/games', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getTeamGamesBySeason.py', req.params.id, req.params.season]);
   python.stdout.on('data', (data) => {
@@ -216,7 +216,7 @@ app.get('/teams/:id/:season/games', (req, res) => {
 
 
 
-app.get('/scores/:date', (req, res) => {
+app.get('/api/scores/:date', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getScoresByDate.py', req.params.date]);
   python.stdout.on('data', (data) => {
@@ -232,7 +232,7 @@ app.get('/scores/:date', (req, res) => {
   })
 })
 
-app.get('/scores/boxscore/:gameid', (req, res) => {
+app.get('/api/scores/boxscore/:gameid', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getBoxScore.py', req.params.gameid]);
   python.stdout.on('data', (data) => {
@@ -249,7 +249,7 @@ app.get('/scores/boxscore/:gameid', (req, res) => {
 })
 
 //testing
-app.get('/test', (req, res) => {
+app.get('/api/test', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/test.py']);
   python.stdout.on('data', (data) => {

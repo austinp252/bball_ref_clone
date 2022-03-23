@@ -12,7 +12,7 @@ function TeamSeasonGamelog() {
 
     useEffect(() => {
         console.log('attempting to fetch')
-        fetch(`/teams/${params.id}/${params.season}/games`)
+        fetch(`/api/teams/${params.id}/${params.season}/games`)
         .then((res) => res.json())
         .then((data) => setData(data));
     }, []);

@@ -10,7 +10,7 @@ function PlayerBio() {
   //console.log(`/players/:${params.letter}/:${params.id}`);
   useEffect(() => {
     console.log("fetching player bio info")
-    fetch(`/players/${params.letter}/${params.id}`)
+    fetch(`/api/players/${params.letter}/${params.id}`)
     .then((res) => res.json())
     .then((data) => setData(data));
   }, []);
