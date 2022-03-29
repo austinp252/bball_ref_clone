@@ -20,6 +20,7 @@ function BoxScore() {
             <div className="content">Loading...</div>
         )
     } else {
+        window.scrollTo(0, 0);
         console.log(data.data[0]);
         return(
             <div className="content">
