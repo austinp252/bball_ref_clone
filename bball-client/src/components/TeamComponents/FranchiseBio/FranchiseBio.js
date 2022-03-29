@@ -10,10 +10,10 @@ function FranchiseBio() {
   const params = useParams();
 
   useEffect(() => {
-      fetch(`/api/teams/${params.id}/stats`)
+      fetch(`/teams/${params.id}/stats`)
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, []);
+  }, [params.id]);
 
   if(!data) {
     console.log('loading');
@@ -21,6 +21,7 @@ function FranchiseBio() {
       <p>Loading...</p>
     )
   } else {
+    window.scrollTo(0,0);
     console.log('rendering');
     console.log(data)
     return(

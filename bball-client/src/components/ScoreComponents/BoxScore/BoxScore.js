@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import './BoxScore.css';
 
 import {Link, useParams} from 'react-router-dom';
@@ -8,7 +8,7 @@ function BoxScore() {
     const params = useParams();
     
     useEffect(() => {
-        fetch(`/api/scores/boxscore/${params.gameid}`)
+        fetch(`/scores/boxscore/${params.gameid}`)
         .then((res) => res.json())
         .then((data) => setData(data));
     }, []);
@@ -122,59 +122,59 @@ function BoxScore() {
                                         <tbody>
                                             {
                                                 team[0].map((player, index) => {
-                                                    
-                                                    // if(index == 5) {
-                                                    //     return(
-                                                    //         <tr>
-                                                    //             <th>Reserves</th>
-                                                    //             <th>MP</th>
-                                                    //             <th>FG</th>
-                                                    //             <th>FGA</th>
-                                                    //             <th>FG%</th>
-                                                    //             <th>3P</th>
-                                                    //             <th>3PA</th>
-                                                    //             <th>3P%</th>
-                                                    //             <th>FT</th>
-                                                    //             <th>FTA</th>
-                                                    //             <th>FT%</th>
-                                                    //             <th>OREB</th>
-                                                    //             <th>DREB</th>
-                                                    //             <th>REB</th>
-                                                    //             <th>AST</th>
-                                                    //             <th>STL</th>
-                                                    //             <th>BLK</th>
-                                                    //             <th>TOV</th>
-                                                    //             <th>PF</th>
-                                                    //             <th>PTS</th>
-                                                    //             <th>+/-</th>
-                                                    //         </tr>
-                                                    //     )
-                                                    // }
                                                     return(
-                                                        
-                                                        <tr>
-                                                            <td><Link to={`/players/${player[5].split(' ')[1][0]}/${player[4]}`}>{player[5]}</Link></td>
-                                                            <td>{player[9]}</td>
-                                                            <td>{player[10]}</td>
-                                                            <td>{player[11]}</td>
-                                                            <td>{player[12]}</td>
-                                                            <td>{player[13]}</td>
-                                                            <td>{player[14]}</td>
-                                                            <td>{player[15]}</td>
-                                                            <td>{player[16]}</td>
-                                                            <td>{player[17]}</td>
-                                                            <td>{player[18]}</td>
-                                                            <td>{player[19]}</td>
-                                                            <td>{player[20]}</td>
-                                                            <td>{player[21]}</td>
-                                                            <td>{player[22]}</td>
-                                                            <td>{player[23]}</td>
-                                                            <td>{player[24]}</td>
-                                                            <td>{player[25]}</td>
-                                                            <td>{player[26]}</td>
-                                                            <td>{player[27]}</td>
-                                                            <td>{player[28]}</td> 
-                                                        </tr>
+                                                        <Fragment>
+                                                            <tr>
+                                                                <td><Link to={`/players/${player[5].split(' ')[1][0]}/${player[4]}`}>{player[5]}</Link></td>
+                                                                <td>{player[9]}</td>
+                                                                <td>{player[10]}</td>
+                                                                <td>{player[11]}</td>
+                                                                <td>{player[12]}</td>
+                                                                <td>{player[13]}</td>
+                                                                <td>{player[14]}</td>
+                                                                <td>{player[15]}</td>
+                                                                <td>{player[16]}</td>
+                                                                <td>{player[17]}</td>
+                                                                <td>{player[18]}</td>
+                                                                <td>{player[19]}</td>
+                                                                <td>{player[20]}</td>
+                                                                <td>{player[21]}</td>
+                                                                <td>{player[22]}</td>
+                                                                <td>{player[23]}</td>
+                                                                <td>{player[24]}</td>
+                                                                <td>{player[25]}</td>
+                                                                <td>{player[26]}</td>
+                                                                <td>{player[27]}</td>
+                                                                <td>{player[28]}</td> 
+                                                            </tr>
+                                                            {
+                                                                index==4 &&
+                                                                <tr>
+                                                                    <th>Reserves</th>
+                                                                    <th>MP</th>
+                                                                    <th>FG</th>
+                                                                    <th>FGA</th>
+                                                                    <th>FG%</th>
+                                                                    <th>3P</th>
+                                                                    <th>3PA</th>
+                                                                    <th>3P%</th>
+                                                                    <th>FT</th>
+                                                                    <th>FTA</th>
+                                                                    <th>FT%</th>
+                                                                    <th>OREB</th>
+                                                                    <th>DREB</th>
+                                                                    <th>REB</th>
+                                                                    <th>AST</th>
+                                                                    <th>STL</th>
+                                                                    <th>BLK</th>
+                                                                    <th>TOV</th>
+                                                                    <th>PF</th>
+                                                                    <th>PTS</th>
+                                                                    <th>+/-</th>
+                                                                </tr>
+
+                                                            }
+                                                        </Fragment>
                                                     )
                                                 })
                                             }
@@ -204,41 +204,40 @@ function BoxScore() {
                                         <tbody>
                                             {
                                                 team[1].map((player, index) => {
-                                                    // if(index == 5) {
-                                                    //     return(
-                                                    //         <tr>
-                                                    //             <th>Reserves</th>
-                                                    //             <th>MP</th>
-                                                    //             <th>TS%</th>
-                                                    //             <th>eFG%</th>
-                                                    //             <th>Pace</th>
-                                                    //             <th>OREB%</th>
-                                                    //             <th>DREB%</th>
-                                                    //             <th>REB%</th>
-                                                    //             <th>AST%</th>
-                                                    //             <th>USG%</th>
-                                                    //             <th>ORTG</th>
-                                                    //             <th>DRTG</th>
-                                                    //             <th>RTG</th>
-                                                    //         </tr>
-                                                    //     )
-                                                    // } else {
                                                         return(
-                                                            <tr>
-                                                                <td><Link to={`/players/${player[5].split(' ')[1][0]}/${player[4]}`}>{player[5]}</Link></td>
-                                                                <td>{player[9]}</td>
-                                                                <td>{player[23]}</td>
-                                                                <td>{player[22]}</td>
-                                                                <td>{player[27]}</td>
-                                                                <td>{player[18]}</td>
-                                                                <td>{player[19]}</td>
-                                                                <td>{player[20]}</td>
-                                                                <td>{player[15]}</td>
-                                                                <td>{player[24]}</td>
-                                                                <td>{player[10]}</td>
-                                                                <td>{player[12]}</td>
-                                                                <td>{player[14]}</td>
-                                                            </tr>
+                                                            <Fragment>
+                                                                <tr>
+                                                                    <td><Link to={`/players/${player[5].split(' ')[1][0]}/${player[4]}`}>{player[5]}</Link></td>
+                                                                    <td>{player[9]}</td>
+                                                                    <td>{player[23]}</td>
+                                                                    <td>{player[22]}</td>
+                                                                    <td>{player[27]}</td>
+                                                                    <td>{player[18]}</td>
+                                                                    <td>{player[19]}</td>
+                                                                    <td>{player[20]}</td>
+                                                                    <td>{player[15]}</td>
+                                                                    <td>{player[24]}</td>
+                                                                    <td>{player[10]}</td>
+                                                                    <td>{player[12]}</td>
+                                                                    <td>{player[14]}</td>
+                                                                </tr>
+                                                                {index==4 &&
+                                                                <tr>
+                                                                    <th>Reserves</th>
+                                                                    <th>MP</th>
+                                                                    <th>TS%</th>
+                                                                    <th>eFG%</th>
+                                                                    <th>Pace</th>
+                                                                    <th>OREB%</th>
+                                                                    <th>DREB%</th>
+                                                                    <th>REB%</th>
+                                                                    <th>AST%</th>
+                                                                    <th>USG%</th>
+                                                                    <th>ORTG</th>
+                                                                    <th>DRTG</th>
+                                                                    <th>RTG</th>
+                                                                </tr>}
+                                                            </Fragment>
                                                         )
                                                 })
                                             }

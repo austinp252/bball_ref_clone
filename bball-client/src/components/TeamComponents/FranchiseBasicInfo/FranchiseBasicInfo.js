@@ -8,10 +8,10 @@ function FranchiseBasicInfo() {
   const params = useParams();
 
   useEffect(() => {
-      fetch(`/api/teams/${params.id}/basic`)
+      fetch(`/teams/${params.id}/basic`)
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, []);
+  }, [params.id]);
 
   if(!data) {
     console.log('loading');
@@ -23,25 +23,28 @@ function FranchiseBasicInfo() {
     //console.log(data)
     return(
       <div className="content">
+        <h1>{data[0][2]} {data[0][3]}</h1>
         <div className="info">
-            <h1>{data[0][2]} {data[0][3]}</h1>
+          <img className='team' src={`https://cdn.nba.com/logos/nba/${params.id}/primary/L/logo.svg`} alt="" />
+          <div className="basic-info">
             <p>Location: {data[0][2]}</p>
-            <p>Team Names:  
-                {
-                    data.map((team, index) => {
-                        if(index > 0) {
-                            const leader = (index == 1 ? ' ' : ', ')
-                            return(
-                                leader + team[2] + ' ' + team[3]
-                            )
-                        }
-                    })
-                }
-            </p>
-            <p>Seasons: {data[0][6]}; {data[0][4]}-{parseInt(data[0][4])+1} to {data[0][5]}-{parseInt(data[0][5])+1}</p>
-            <p>Record: {data[0][8]}-{data[0][9]}, {data[0][10]} W/L%</p>
-            <p>Playoff Appearances: {data[0][11]}</p>
-            <p>Championships: {data[0][14]}</p>
+              <p>Team Names:  
+                  {
+                      data.map((team, index) => {
+                          if(index > 0) {
+                              const leader = (index == 1 ? ' ' : ', ')
+                              return(
+                                  leader + team[2] + ' ' + team[3]
+                              )
+                          }
+                      })
+                  }
+              </p>
+              <p>Seasons: {data[0][6]}; {data[0][4]}-{parseInt(data[0][4])+1} to {data[0][5]}-{parseInt(data[0][5])+1}</p>
+              <p>Record: {data[0][8]}-{data[0][9]}, {data[0][10]} W/L%</p>
+              <p>Playoff Appearances: {data[0][11]}</p>
+              <p>Championships: {data[0][14]}</p>
+          </div>
         </div>
         <div className="selectors">
               <Link to={`/teams/${params.id}`}><button>Franchise Overview</button></Link>

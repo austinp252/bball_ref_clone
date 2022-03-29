@@ -1,17 +1,20 @@
-import json
 import sys
+import json
 
-from nba_api.stats.endpoints import leaguedashplayerstats
+from nba_api.stats.static import players
+from nba_api.stats.endpoints import commonplayerinfo
+letter = sys.argv[1]
+regex = '^[' + letter.lower() + letter.upper() + ']'
+playersList = players.find_players_by_last_name(regex)
+# first letter last name
+# ('^[aA]') where the letter is replaced by the specified letter
+# print(playersList)
+# print(json.dumps(playersList))
+# sys.stdout.flush()
+playersData = []
+for player in playersList:
+    playerData = commonplayerinfo.CommonPlayerInfo(
+        player_id=player["id"]).common_player_info.get_dict()["data"][0]
+    playersData.append(playerData)
 
-data = leaguedashplayerstats.LeagueDashPlayerStats(
-).league_dash_player_stats.get_dict()
-
-playerData = []
-initial = 'A'
-for player in data["data"]:
-    if(player[1].split()[1][0] == initial):
-        print(player[1])
-        playerData.append(player)
-
-
-print(data["data"][0])
+print(playersData)

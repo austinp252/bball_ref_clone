@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import './TeamSeasonGamelog.css';
 
 import Dropdown from '../../widgets/Dropdown/Dropdown';
@@ -12,7 +12,7 @@ function TeamSeasonGamelog() {
 
     useEffect(() => {
         console.log('attempting to fetch')
-        fetch(`/api/teams/${params.id}/${params.season}/games`)
+        fetch(`/teams/${params.id}/${params.season}/games`)
         .then((res) => res.json())
         .then((data) => setData(data));
     }, []);
@@ -52,20 +52,38 @@ function TeamSeasonGamelog() {
                                 data.data.slice(0).reverse().map((game, index) => {
                                     const teams = game[3].split(' ');
                                     return(
-                                        <tr>
-                                            <td>{index+1}</td>
-                                            <td><Link to={`/scores/${game[1]}/boxscore`}>{game[2]}</Link></td>
-                                            <td><Link to={`/scores/${game[1]}/boxscore`}>Box-Score</Link></td>
-                                            <td>{teams[0]}</td>
-                                            <td>{teams[1] == '@' ? '@' : ''}</td>
-                                            <td><Link to={`/teams/`}>{teams[2]}</Link></td>
-                                            <td>{game[4]}</td>
-                                            <td>{game[26]}</td>
-                                            <td></td>
-                                            <td>{game[5]}</td>
-                                            <td>{game[6]}</td>
-                                            <td>{game[7]}</td>
-                                        </tr>
+                                        <Fragment>
+                                            <tr>
+                                                <td>{index+1}</td>
+                                                <td><Link to={`/scores/${game[1]}/boxscore`}>{game[2]}</Link></td>
+                                                <td><Link to={`/scores/${game[1]}/boxscore`}>Box-Score</Link></td>
+                                                <td>{teams[0]}</td>
+                                                <td>{teams[1] == '@' ? '@' : ''}</td>
+                                                <td><Link to={`/teams/`}>{teams[2]}</Link></td>
+                                                <td>{game[4]}</td>
+                                                <td>{game[26]}</td>
+                                                <td></td>
+                                                <td>{game[5]}</td>
+                                                <td>{game[6]}</td>
+                                                <td>{game[7]}</td>
+                                            </tr>
+                                            {(index+1)%20==0 &&
+                                            <tr>
+                                                <th>G</th>
+                                                <th>Date</th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th>Opp</th>
+                                                <th>RES</th>
+                                                <th>Tm</th>
+                                                <th>Opp</th>
+                                                <th>W</th>
+                                                <th>L</th>
+                                                <th>W/L%</th>
+                                            </tr>
+                                            }
+                                        </Fragment>
                                     )
                                 })
                             }

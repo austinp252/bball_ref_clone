@@ -9,7 +9,7 @@ function Home() {
 
   useEffect(() => {
     //console.log('test');
-    fetch(`/api`)
+    fetch(`/`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);

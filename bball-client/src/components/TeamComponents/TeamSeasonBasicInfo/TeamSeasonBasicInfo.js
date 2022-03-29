@@ -9,7 +9,7 @@ function TeamSeasonBasicInfo(props) {
   const text = props.textName;
 
   useEffect(() => {
-      fetch(`/api/teams/${params.id}/${params.season}/basic`)
+      fetch(`/teams/${params.id}/${params.season}/basic`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
@@ -24,8 +24,9 @@ function TeamSeasonBasicInfo(props) {
     //console.log(params)
     return(
       <div className="content">
-        <div className="info">
+        <div className="basic-info">
             <h1>{data.yearData[3]} {data.yearData[1]} {data.yearData[2]} {text}</h1>
+            <img className='team' src={`https://cdn.nba.com/logos/nba/${params.id}/primary/L/logo.svg`} alt="" />
             <div className="selectors season">
               <button>Previous Season</button>
               <button>Next Season</button>

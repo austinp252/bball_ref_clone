@@ -34,3 +34,13 @@ th,
 td {
   border: 1px solid #000;
 }
+
+.info {
+  display: flex;
+}
+
+img {
+  width: 25%;
+  height: auto;
+  padding: 25px;
+}

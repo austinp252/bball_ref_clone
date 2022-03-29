@@ -12,7 +12,7 @@ function PlayerStatsSeason() {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`/api/players/${params.letter}/${params.id}/gamelog/${params.season}`)
+    fetch(`/players/${params.letter}/${params.id}/gamelog/${params.season}`)
     .then((res) => res.json())
     .then((data) => setData(data));
 }, []);
@@ -63,7 +63,7 @@ function PlayerStatsSeason() {
                         </thead>
                         <tbody>
                         {
-                            data.regular.data.slice(0).reverse().map((game, index) => {;
+                            data.regular.data.slice(0).reverse().map((game, index) => {
                                 // if(index % 20 == 0) {
                                 //     return(
                                         // <tr>

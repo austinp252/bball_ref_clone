@@ -12,7 +12,7 @@ function PlayerBio() {
 
   useEffect(() => {
     console.log("fetching player career stats")
-    fetch(`/api/players/${params.letter}/${params.id}/stats`)
+    fetch(`/players/${params.letter}/${params.id}/stats`)
     .then((res) => res.json())
     .then((data) => setData(data));
 }, []);
@@ -96,7 +96,7 @@ function PlayerBio() {
                         </tr>
                       )
                     }) :
-                    data.resultSets[2].rowSet.map((season) => {
+                    data.resultSets[2].rowSet.slice(0).reverse().map((season) => {
                       return(
                         <tr>
                           <td><Link to={`/players/${params.letter}/${params.id}/gamelog/${season[1]}`}>{season[1]}</Link></td>

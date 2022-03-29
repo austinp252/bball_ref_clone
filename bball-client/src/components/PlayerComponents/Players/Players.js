@@ -10,7 +10,7 @@ function Players() {
 
   useEffect(() => {
     //console.log('test');
-    fetch(`/api/players/:${index}`)
+    fetch(`players/:${index}`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [index]);

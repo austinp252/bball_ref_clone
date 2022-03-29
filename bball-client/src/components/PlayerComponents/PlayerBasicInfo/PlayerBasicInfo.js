@@ -10,7 +10,7 @@ function PlayerBio() {
   //console.log(`/players/:${params.letter}/:${params.id}`);
   useEffect(() => {
     console.log("fetching player bio info")
-    fetch(`/api/players/${params.letter}/${params.id}`)
+    fetch(`/players/${params.letter}/${params.id}`)
     .then((res) => res.json())
     .then((data) => setData(data));
   }, []);
@@ -26,8 +26,10 @@ function PlayerBio() {
     //console.log(data);
       return(
         <div className="content">
+          <h1>{data.data[0][3]}</h1>
           <div className="info">
-            <h1>{data.data[0][3]}</h1>
+            <img src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${params.id}.png`} alt="" />
+            <div className="basic-info">
             <p>Position: {data.data[0][15]}</p>
             <p>Height: {data.data[0][11]}</p>
             <p>Weight: {data.data[0][12]} lbs</p>
@@ -35,6 +37,7 @@ function PlayerBio() {
             <p>College: {data.data[0][8]}</p>
             <p>NBA Draft: {data.data[0][29]} (Round: {data.data[0][30]} / Pick: {data.data[0][31]})</p>
             <p>League Experience: {data.data[0][13]} year(s)</p>
+            </div>
           </div>
             <div className="selectors">
               <Link to={`/players/${params.letter}/${params.id}`}><button>Overview</button></Link>

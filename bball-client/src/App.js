@@ -17,19 +17,14 @@ import Leaders from './components/LeaderComponents/Leaders/Leaders';
 import Scores from './components/ScoreComponents/Scores/Scores';
 import BoxScore from './components/ScoreComponents/BoxScore/BoxScore';
 import Navbar from './components/Navbar/Navbar'; //would specifying .js remove overlapping css?
+import Footer from './components/Footer/Footer';
 //import navbar
 
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, useHistory} from 'react-router-dom';
 
 function App() {
 
   const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   fetch("/test")
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data));
-  // }, []);
 
   return (
     <div className="App">
@@ -53,6 +48,7 @@ function App() {
                 <Route exact path='/scores/:gameid/boxscore' element = {<BoxScore/>}/>
               </Routes>
             </div>
+            <Footer/>
           </BrowserRouter>
       </div>
     </div>
