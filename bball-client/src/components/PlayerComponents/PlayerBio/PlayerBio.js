@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './PlayerBio.css';
+import teamRouter from '../../widgets/Helpers/teamRouter';
 
 import PlayerBasicInfo from '../PlayerBasicInfo/PlayerBasicInfo';
 
@@ -24,6 +25,7 @@ function PlayerBio() {
     } else {
     //console.log(data)
     console.log('rendering data');
+    window.scrollTo(0,0);
     //console.log(data.playerInfo.data[0][3]);
       return(
         <div className="content">
@@ -70,7 +72,7 @@ function PlayerBio() {
                         <tr>
                           <td><Link to={`/players/${params.letter}/${params.id}/gamelog/${season[1]}`}>{season[1]}</Link></td>
                           <td>{season[5]}</td>
-                          <td>{season[4]}</td>
+                          <td><Link to={`/teams/${teamRouter(season[4])}/${season[1]}`}>{season[4]}</Link></td>
                           <td>NBA</td>
                           <td>{season[6]}</td>
                           <td>{season[7]}</td>

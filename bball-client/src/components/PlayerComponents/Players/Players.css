@@ -1,0 +1,15 @@
+.letter-index .letter-selections {
+  display: flex;
+  justify-content: left;
+  font-size: 24px;
+}
+
+.letter-index .letter-selections h2 {
+  margin-right: 20px;
+  color: #34d;
+  cursor: pointer;
+}
+
+.letter-index .letter-selections h2.active {
+  color: #000;
+}

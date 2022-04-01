@@ -22,14 +22,18 @@ function FranchiseBasicInfo() {
     console.log('rendering');
     //console.log(data)
     return(
-      <div className="content">
-        <h1>{data[0][2]} {data[0][3]}</h1>
-        <div className="info">
-          <img className='team' src={`https://cdn.nba.com/logos/nba/${params.id}/primary/L/logo.svg`} alt="" />
-          <div className="basic-info">
-            <p>Location: {data[0][2]}</p>
-              <p>Team Names:  
-                  {
+      <div>
+        <div className="bio-content">
+          <img className='team-img' src={`https://cdn.nba.com/logos/nba/${params.id}/primary/L/logo.svg`} alt="" />
+          <div className="bio-info">
+            <h1>{data[0][2]} {data[0][3]}</h1>
+            <span className="info-container">
+              <p className="info-header">Location:</p>
+              <p className="info-content">{data[0][2]}</p>
+            </span>
+            <span className="info-container">
+              <p className="info-header">Team Names:</p>
+              <p className="info-content">{
                       data.map((team, index) => {
                           if(index > 0) {
                               const leader = (index == 1 ? ' ' : ', ')
@@ -38,15 +42,27 @@ function FranchiseBasicInfo() {
                               )
                           }
                       })
-                  }
-              </p>
-              <p>Seasons: {data[0][6]}; {data[0][4]}-{parseInt(data[0][4])+1} to {data[0][5]}-{parseInt(data[0][5])+1}</p>
-              <p>Record: {data[0][8]}-{data[0][9]}, {data[0][10]} W/L%</p>
-              <p>Playoff Appearances: {data[0][11]}</p>
-              <p>Championships: {data[0][14]}</p>
+                  }</p>
+            </span>
+            <span className="info-container">
+              <p className="info-header">Seasons:</p>
+              <p className="info-content">{data[0][6]}; {data[0][4]}-{parseInt(data[0][4])+1} to {data[0][5]}-{parseInt(data[0][5])+1}</p>
+            </span>
+            <span className="info-container">
+              <p className="info-header">Record:</p>
+              <p className="info-content">{data[0][8]}-{data[0][9]}, {data[0][10]} W/L%</p>
+            </span>
+            <span className="info-container">
+              <p className="info-header">Playoff Appearances:</p>
+              <p className="info-content">{data[0][11]}</p>
+            </span>
+            <span className="info-container">
+              <p className="info-header">Championships:</p>
+              <p className="info-content">{data[0][14]}</p>
+            </span>
           </div>
         </div>
-        <div className="selectors">
+          <div className="info-selectors">
               <Link to={`/teams/${params.id}`}><button>Franchise Overview</button></Link>
               <button>Year-By-Year Stats</button>
               <button>Leaders</button>

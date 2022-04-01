@@ -15,11 +15,11 @@ function Players() {
       .then((data) => setData(data));
   }, [index]);
 
-  return <div>
+  return( <div>
       <h1>NBA Player Directory</h1>
-      <div className="index">
+      <div className="letter-index">
           <h2>Index of Letters</h2>
-          <div className="list">
+          <div className="letter-selections">
             <h2 value='A' className={index === 'A' ? 'active' : ''} onClick={() => setIndex('A')}>A</h2>
             <h2 value='B' className={index === 'B' ? 'active' : ''} onClick={() => setIndex('B')}>B</h2>
             <h2 value='C' className={index === 'C' ? 'active' : ''} onClick={() => setIndex('C')}>C</h2>
@@ -50,7 +50,7 @@ function Players() {
           <p>Active players are listed in bold</p>
           <p>* indicates member of the Hall of Fame</p>
       </div>
-      <div className="data">
+      <div className="date-table">
         <table>
           <thead>
             <tr>
@@ -86,7 +86,7 @@ function Players() {
           </tbody>
         </table>
       </div>
-  </div>;
+  </div>);
 }
 
 export default Players;

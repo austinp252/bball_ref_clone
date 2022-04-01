@@ -1,0 +1,25 @@
+.boxscore-overview-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxscore-overview-teams {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+}
+
+.boxscore-overview-teams .team {
+  text-align: center;
+}
+
+.boxscore-summary-container {
+  display: flex;
+  flex-direction: row;
+}
+
+td.status {
+  text-align: center;
+}
