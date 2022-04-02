@@ -11,7 +11,7 @@ function SortableTable(props) {
     const params = useParams();
     
     useEffect(() => {
-        console.log(data);
+        console.log('SC ' + sortCategory + ' SM ' + sortMethod);
         setData(sortTable(data, sortCategory, sortMethod));
     },[sortCategory, sortMethod]);
 
@@ -22,13 +22,14 @@ function SortableTable(props) {
                 <tr>
                     {
                         props.headers.map((header, index) => {
-                            if(header.type == 'number') {
+                            if(header.type === 'number' || header.type === 'string') {
                                 return(
-                                    <th onClick={()=>{
-                                        if(sortCategory == index) {
+                                    <th className='sortable' onClick={()=>{
+                                        if(sortCategory === index) {
                                             setSortMethod(!sortMethod);
                                         } else {
                                             setSortCategory(index);
+                                            setSortMethod(true);
                                         }
                                     }}>
                                         {header.header}

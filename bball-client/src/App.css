@@ -34,6 +34,10 @@ td {
   font-size: 18px;
 }
 
+th.sortable {
+  cursor: pointer;
+}
+
 .info {
   display: flex;
 }

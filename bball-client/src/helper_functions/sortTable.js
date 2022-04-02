@@ -1,4 +1,5 @@
 export default function sortTable(data, sortCategory, leastToGreatest) {
+    var temp;
     for(var i = 0; i < data.length; i++){
     
         // Last i elements are already in place  
@@ -10,12 +11,12 @@ export default function sortTable(data, sortCategory, leastToGreatest) {
                 if(data[j][sortCategory].dataContent > data[j+1][sortCategory].dataContent){
                 
                     // If the condition is true then swap them
-                    var temp = data[j]
+                    temp = data[j]
                     data[j] = data[j + 1]
                     data[j+1] = temp
                     }
             } else if(data[j][sortCategory].dataContent < data[j+1][sortCategory].dataContent){
-                var temp = data[j]
+                temp = data[j]
                 data[j] = data[j + 1]
                 data[j+1] = temp
             }
