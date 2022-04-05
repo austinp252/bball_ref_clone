@@ -23,7 +23,7 @@ function Players() {
       </div>
     )
   } else {
-    const headers = [{'header':'Name', 'type':'string'}, {'header':'From', 'type':'empty'}, {'header':'To', 'type':'empty'}, {'header':'Pos', 'type':'empty'}, {'header':'Ht', 'type':'empty'}, {'header':'Wt', 'type':'empty'}, {'header':'Birth Date', 'type':'empty'}, {'header':'College', 'type':'empty'}]
+    const headers = [{'header':'Name', 'type':'name'}, {'header':'From', 'type':'empty'}, {'header':'To', 'type':'empty'}, {'header':'Pos', 'type':'empty'}, {'header':'Ht', 'type':'empty'}, {'header':'Wt', 'type':'empty'}, {'header':'Birth Date', 'type':'empty'}, {'header':'College', 'type':'empty'}]
     const tableData = []
     data.forEach((player) => {
       const dataItem = [];

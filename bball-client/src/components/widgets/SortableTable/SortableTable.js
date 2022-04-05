@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef, Fragment} from 'react';
 import {Link, useParams} from 'react-router-dom';
 
 import sortTable from '../../../helper_functions/sortTable';
+import sortTableLastname from '../../../helper_functions/sortTableLastname';
 
 function SortableTable(props) {
 
@@ -37,6 +38,21 @@ function SortableTable(props) {
                                             setSortCategory(index);
                                             setSortMethod(true);
                                             setTableData(sortTable(data, index, true));
+                                        }
+                                    }}>
+                                        {header.header}
+                                    </th>
+                                )
+                            } else if(header.type === 'name') {
+                                return(
+                                    <th className='sortable' onClick={()=>{
+                                        if(sortCategory === index) {
+                                            setSortMethod(!sortMethod);
+                                            setTableData(sortTableLastname(data, sortCategory, !sortMethod));
+                                        } else {
+                                            setSortCategory(index);
+                                            setSortMethod(true);
+                                            setTableData(sortTableLastname(data, index, true));
                                         }
                                     }}>
                                         {header.header}

@@ -27,10 +27,10 @@ function PlayerStatsSeason() {
     )
 } else {
     window.scrollTo(0,0);
-    const headers = [{'header':'#', 'type':'number'}, {'header':'Date', 'type':'empty'}, {'header':'Tm', 'type':'string'}, {'header':'Opp', 'type':'string'}, {'header':'Result', 'type':'string'}, {'header':'MP', 'type':'number'}, {'header':'FG', 'type':'number'}, {'header':'FGA', 'type':'number'}, {'header':'FG%', 'type':'number'}, {'header':'3P', 'type':'number'}, {'header':'3PA', 'type':'number'}, {'header':'3P%', 'type':'number'}, {'header':'FT', 'type':'number'}, {'header':'FTA', 'type':'number'}, {'header':'FT%', 'type':'number'}, {'header':'OREB', 'type':'number'}, {'header':'DREB', 'type':'number'}, {'header':'REB', 'type':'number'}, {'header':'AST', 'type':'number'}, {'header':'STL', 'type':'number'}, {'header':'BLK', 'type':'number'}, {'header':'TOV', 'type':'number'}, {'header':'PF', 'type':'number'}, {'header':'PTS', 'type':'number'}, {'header':'+/-', 'type':'number'}]
+    const headers = [{'header':'#', 'type':'number'}, {'header':'Date', 'type':'string'}, {'header':'Tm', 'type':'string'}, {'header':'Opp', 'type':'string'}, {'header':'Result', 'type':'string'}, {'header':'MP', 'type':'number'}, {'header':'FG', 'type':'number'}, {'header':'FGA', 'type':'number'}, {'header':'FG%', 'type':'number'}, {'header':'3P', 'type':'number'}, {'header':'3PA', 'type':'number'}, {'header':'3P%', 'type':'number'}, {'header':'FT', 'type':'number'}, {'header':'FTA', 'type':'number'}, {'header':'FT%', 'type':'number'}, {'header':'OREB', 'type':'number'}, {'header':'DREB', 'type':'number'}, {'header':'REB', 'type':'number'}, {'header':'AST', 'type':'number'}, {'header':'STL', 'type':'number'}, {'header':'BLK', 'type':'number'}, {'header':'TOV', 'type':'number'}, {'header':'PF', 'type':'number'}, {'header':'PTS', 'type':'number'}, {'header':'+/-', 'type':'number'}]
     const tableData1 = []
     const tableData2 = []
-    data.regular.data.forEach((game, index) => {
+    data.regular.data.slice(0).reverse().forEach((game, index) => {
         const dataItem = [];
         dataItem.push({'dataContent': index+1, 'link': null});
         dataItem.push({'dataContent': game[8].split('T')[0], 'link': `/scores/${game[7]}/boxscore`});
