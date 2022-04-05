@@ -34,6 +34,7 @@ function Players() {
       dataItem.push({'dataContent': 'N/A', 'link':null});
       dataItem.push({'dataContent': 'N/A', 'link':null});
       dataItem.push({'dataContent': 'N/A', 'link':null});
+      dataItem.push({'dataContent': 'N/A', 'link':null});
       tableData.push(dataItem);
     })
     return( 
@@ -73,7 +74,9 @@ function Players() {
               <p>* indicates member of the Hall of Fame</p>
           </div>
           <div className="date-table">
-            <SortableTable headers={headers} tableData={tableData}/>
+            {
+              <SortableTable headers={headers} tableData={tableData}/>
+            }
           </div>
       </div>
       );

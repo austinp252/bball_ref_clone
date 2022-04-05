@@ -6,14 +6,19 @@ import sortTable from '../../../helper_functions/sortTable';
 function SortableTable(props) {
 
     const [data, setData] = useState(props.tableData);
+    const [tableData, setTableData] = useState(data);
     const [sortCategory, setSortCategory] = useState(0);
     const [sortMethod, setSortMethod] = useState(true);
     const params = useParams();
     
     useEffect(() => {
+        setData(props.tableData);
+        setTableData(props.tableData);
         console.log('SC ' + sortCategory + ' SM ' + sortMethod);
-        setData(sortTable(data, sortCategory, sortMethod));
-    },[sortCategory, sortMethod]);
+        //setTableData(sortTable(data, sortCategory, sortMethod));
+        console.log('table data set');
+
+    },[props.tableData]);
 
   return (
     <Fragment>
@@ -27,9 +32,11 @@ function SortableTable(props) {
                                     <th className='sortable' onClick={()=>{
                                         if(sortCategory === index) {
                                             setSortMethod(!sortMethod);
+                                            setTableData(sortTable(data, sortCategory, !sortMethod));
                                         } else {
                                             setSortCategory(index);
                                             setSortMethod(true);
+                                            setTableData(sortTable(data, index, true));
                                         }
                                     }}>
                                         {header.header}
@@ -48,7 +55,7 @@ function SortableTable(props) {
             </thead>
             <tbody>
                 {
-                    data.map((dataRow) => {
+                    tableData.map((dataRow) => {
                         return(
                             <tr>
                                 {
