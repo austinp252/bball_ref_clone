@@ -7,7 +7,7 @@ export default function sortTable(data, sortCategory, leastToGreatest) {
             
             // Checking if the item at present iteration 
             // is greater than the next iteration
-            if(leastToGreatest) {
+            if(!leastToGreatest) {
                 if(data[j][sortCategory].dataContent > data[j+1][sortCategory].dataContent){
                 
                     // If the condition is true then swap them

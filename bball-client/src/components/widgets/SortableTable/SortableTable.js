@@ -7,22 +7,31 @@ import sortTableLastname from '../../../helper_functions/sortTableLastname';
 function SortableTable(props) {
 
     const [data, setData] = useState(props.tableData);
+    const [subHeadDiv, setSubHeadDiv] = useState(999);
     const [tableData, setTableData] = useState(data);
-    const [sortCategory, setSortCategory] = useState(0);
+    const [sortCategory, setSortCategory] = useState(-1);
     const [sortMethod, setSortMethod] = useState(true);
     const params = useParams();
+    const downArrow = (
+        <Fragment>
+            &#x21e9;
+        </Fragment>
+    )
+    const upArrow = (
+        <Fragment>
+            &#x21e7;
+        </Fragment>
+    )
     
     useEffect(() => {
+        if(props.subHeadDiv) {
+            setSubHeadDiv(props.subHeadDiv);
+        }
         setData(props.tableData);
         setTableData(props.tableData);
-        console.log('SC ' + sortCategory + ' SM ' + sortMethod);
-        //setTableData(sortTable(data, sortCategory, sortMethod));
-        console.log('table data set');
-
     },[props.tableData]);
 
   return (
-    <Fragment>
         <table>
             <thead>
                 <tr>
@@ -30,10 +39,15 @@ function SortableTable(props) {
                         props.headers.map((header, index) => {
                             if(header.type === 'number' || header.type === 'string') {
                                 return(
-                                    <th className='sortable' onClick={()=>{
+                                    <th className={sortCategory==index ? 'sortable active' : 'sortable'} onClick={()=>{
                                         if(sortCategory === index) {
-                                            setSortMethod(!sortMethod);
-                                            setTableData(sortTable(data, sortCategory, !sortMethod));
+                                            if(!sortMethod) {
+                                                setSortCategory(-1);
+                                                setTableData(data);
+                                            } else {
+                                                setSortMethod(!sortMethod);
+                                                setTableData(sortTable(data, sortCategory, !sortMethod));
+                                            }
                                         } else {
                                             setSortCategory(index);
                                             setSortMethod(true);
@@ -41,14 +55,21 @@ function SortableTable(props) {
                                         }
                                     }}>
                                         {header.header}
+                                        {sortCategory==index ? <br/> : ''}
+                                        {sortCategory==index ? (sortMethod ? downArrow : upArrow) : ''}
                                     </th>
                                 )
                             } else if(header.type === 'name') {
                                 return(
-                                    <th className='sortable' onClick={()=>{
+                                    <th className={sortCategory==index ? 'sortable active' : 'sortable'} onClick={()=>{
                                         if(sortCategory === index) {
-                                            setSortMethod(!sortMethod);
-                                            setTableData(sortTableLastname(data, sortCategory, !sortMethod));
+                                            if(!sortMethod) {
+                                                setSortCategory(-1);
+                                                setTableData(data);
+                                            } else {
+                                                setSortMethod(!sortMethod);
+                                                setTableData(sortTableLastname(data, sortCategory, !sortMethod));
+                                            }
                                         } else {
                                             setSortCategory(index);
                                             setSortMethod(true);
@@ -56,24 +77,11 @@ function SortableTable(props) {
                                         }
                                     }}>
                                         {header.header}
+                                        {sortCategory==index ? <br/> : ''}
+                                        {sortCategory==index ? (sortMethod ? downArrow : upArrow) : ''}
                                     </th>
                                 )
-                            } else if(header.type === 'date') {
-                                return(
-                                    <th className='sortable' onClick={()=>{
-                                        if(sortCategory === (index-1)) {
-                                            setSortMethod(!sortMethod);
-                                            setTableData(sortTable(data, sortCategory, !sortMethod));
-                                        } else {
-                                            setSortCategory(index-1);
-                                            setSortMethod(true);
-                                            setTableData(sortTable(data, (index-1), true));
-                                        }
-                                    }}>
-                                        {header.header}
-                                    </th>
-                                )
-                            }else {
+                            } else {
                                 return(
                                     <th>
                                         {header.header}
@@ -86,33 +94,47 @@ function SortableTable(props) {
             </thead>
             <tbody>
                 {
-                    tableData.map((dataRow) => {
+                    tableData.map((dataRow, index) => {
                         return(
-                            <tr>
-                                {
-                                    dataRow.map((dataItem) => {
-                                        if(!dataItem.link) {
-                                            return(
-                                                <td>
-                                                    {dataItem.dataContent}
-                                                </td>
-                                            )
-                                        } else {
-                                            return(
-                                                <td>
-                                                    <Link to={dataItem.link}>{dataItem.dataContent}</Link>
-                                                </td>
-                                            )
+                            <Fragment>
+                                <tr>
+                                    {
+                                        dataRow.map((dataItem, colIndex) => {
+                                            if(!dataItem.link) {
+                                                return(
+                                                    <td className={sortCategory==colIndex ? 'active': ''}>
+                                                        {dataItem.dataContent}
+                                                    </td>
+                                                )
+                                            } else {
+                                                return(
+                                                    <td className={sortCategory==colIndex ? 'active': ''}>
+                                                        <Link to={dataItem.link}>{dataItem.dataContent}</Link>
+                                                    </td>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </tr>
+                                {(index+1)%subHeadDiv==0 &&
+                                    <tr>
+                                        {
+                                            props.headers.map((header) => {
+                                                return(
+                                                    <th>
+                                                        {header.header}
+                                                    </th>
+                                                )
+                                            })
                                         }
-                                    })
+                                    </tr>
                                 }
-                            </tr>
+                            </Fragment>
                         )
                     })
                 }
             </tbody>
         </table>
-    </Fragment>
   )
 }
 

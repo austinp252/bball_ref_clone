@@ -94,7 +94,7 @@ function PlayerStatsSeason() {
             <div className="dataShow">
                 <div className="regular-season">
                     <h2>{params.season} Regular Season</h2>
-                    <SortableTable headers={headers} tableData={tableData1}/>
+                    <SortableTable headers={headers} tableData={tableData1} subHeadDiv={20}/>
                 </div>
                 <div className="post-season">
                     <h2>{params.season} Post Season</h2>
