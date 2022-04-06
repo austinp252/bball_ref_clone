@@ -58,7 +58,22 @@ function SortableTable(props) {
                                         {header.header}
                                     </th>
                                 )
-                            } else {
+                            } else if(header.type === 'date') {
+                                return(
+                                    <th className='sortable' onClick={()=>{
+                                        if(sortCategory === (index-1)) {
+                                            setSortMethod(!sortMethod);
+                                            setTableData(sortTable(data, sortCategory, !sortMethod));
+                                        } else {
+                                            setSortCategory(index-1);
+                                            setSortMethod(true);
+                                            setTableData(sortTable(data, (index-1), true));
+                                        }
+                                    }}>
+                                        {header.header}
+                                    </th>
+                                )
+                            }else {
                                 return(
                                     <th>
                                         {header.header}

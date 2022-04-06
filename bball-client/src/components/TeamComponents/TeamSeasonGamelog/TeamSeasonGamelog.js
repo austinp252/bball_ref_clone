@@ -24,7 +24,7 @@ function TeamSeasonGamelog() {
             <div className="content">Loading...</div>
         )
     } else {
-        const headers = [{'header':'G', 'type':'number'}, {'header':'Date', 'type':'empty'}, {'header':'', 'type':'empty'}, {'header':'Tm', 'type':'string'}, {'header':'', 'type':'string'}, {'header':'Opp', 'type':'string'}, {'header':'Res', 'type':'string'}, {'header':'Tm', 'type':'number'}, {'header':'Opp', 'type':'empty'}, {'header':'W', 'type':'number'}, {'header':'L', 'type':'number'}, {'header':'W/L%', 'type':'number'}];
+        const headers = [{'header':'G', 'type':'number'}, {'header':'Date', 'type':'date'}, {'header':'', 'type':'empty'}, {'header':'Tm', 'type':'string'}, {'header':'', 'type':'string'}, {'header':'Opp', 'type':'string'}, {'header':'Res', 'type':'string'}, {'header':'Tm', 'type':'number'}, {'header':'Opp', 'type':'empty'}, {'header':'W', 'type':'number'}, {'header':'L', 'type':'number'}, {'header':'W/L%', 'type':'number'}];
         const tableData = []
         data.data.slice(0).reverse().forEach((game, index) => {
             const dataItem = [];
