@@ -59,7 +59,7 @@ function PlayerStatsSeason() {
         dataItem.push({'dataContent': game[32], 'link': null});
         tableData1.push(dataItem);
       });
-      data.playoffs.data.forEach((game, index) => {
+      data.playoffs.data.slice(0).reverse().forEach((game, index) => {
         const dataItem = [];
         dataItem.push({'dataContent': index+1, 'link': null});
         dataItem.push({'dataContent': game[8].split('T')[0], 'link': `/scores/${game[7]}/boxscore`});
