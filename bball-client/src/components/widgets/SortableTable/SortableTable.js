@@ -3,6 +3,7 @@ import {Link, useParams} from 'react-router-dom';
 
 import sortTable from '../../../helper_functions/sortTable';
 import sortTableLastname from '../../../helper_functions/sortTableLastname';
+import sortTableDate from '../../../helper_functions/sortTableDate';
 
 function SortableTable(props) {
 
@@ -74,6 +75,28 @@ function SortableTable(props) {
                                             setSortCategory(index);
                                             setSortMethod(true);
                                             setTableData(sortTableLastname(data, index, true));
+                                        }
+                                    }}>
+                                        {header.header}
+                                        {sortCategory==index ? <br/> : ''}
+                                        {sortCategory==index ? (sortMethod ? downArrow : upArrow) : ''}
+                                    </th>
+                                )
+                            } else if(header.type === 'date') {
+                                return(
+                                    <th className={sortCategory==index ? 'sortable active' : 'sortable'} onClick={()=>{
+                                        if(sortCategory === index) {
+                                            if(!sortMethod) {
+                                                setSortCategory(-1);
+                                                setTableData(data);
+                                            } else {
+                                                setSortMethod(!sortMethod);
+                                                setTableData(sortTableDate(data, sortCategory, !sortMethod));
+                                            }
+                                        } else {
+                                            setSortCategory(index);
+                                            setSortMethod(true);
+                                            setTableData(sortTableDate(data, index, true));
                                         }
                                     }}>
                                         {header.header}
