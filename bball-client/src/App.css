@@ -36,6 +36,7 @@ td {
 
 th.sortable {
   cursor: pointer;
+  user-select: none;
 }
 
 th.sortable.active {
