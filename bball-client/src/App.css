@@ -36,6 +36,17 @@ td {
 
 th.sortable {
   cursor: pointer;
+  user-select: none;
+}
+
+th.sortable.active {
+  cursor: pointer;
+  background-color: #ffa;
+}
+
+td.active {
+  cursor: pointer;
+  background-color: #ffa;
 }
 
 .info {

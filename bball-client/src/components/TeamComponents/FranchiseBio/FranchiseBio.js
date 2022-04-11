@@ -3,6 +3,8 @@ import './FranchiseBio.css';
 
 import FranchiseBasicInfo from '../FranchiseBasicInfo/FranchiseBasicInfo';
 
+import SortableTable from '../../widgets/SortableTable/SortableTable';
+
 import {Link, useParams} from 'react-router-dom';
 
 function FranchiseBio() {
@@ -21,9 +23,21 @@ function FranchiseBio() {
       <p>Loading...</p>
     )
   } else {
-    window.scrollTo(0,0);
+    //window.scrollTo(0,0);
     console.log('rendering');
-    console.log(data)
+    const headers = [{'header':'Season', 'type':'string'}, {'header':'Lg', 'type':'empty'}, {'header':'Team', 'type':'string'}, {'header':'W', 'type':'number'}, {'header':'L', 'type':'number'}, {'header':'W/L%', 'type':'number'}, {'header':'Finish', 'type':'string'}]
+    const tableData = []
+    data.stats.data.slice(0).reverse().forEach((season, index) => {
+      const dataItem = [];
+      dataItem.push({'dataContent': season[3], 'link': `/teams/${params.id}/${season[3]}`});
+      dataItem.push({'dataContent': 'NBA', 'link': null});
+      dataItem.push({'dataContent': season[1] + ' ' + season[2], 'link': null});
+      dataItem.push({'dataContent': season[5], 'link': null});
+      dataItem.push({'dataContent': season[6], 'link': null});
+      dataItem.push({'dataContent': season[7], 'link': null});
+      dataItem.push({'dataContent': season[8] != '0' ? season[8] : 'N/A', 'link': null});
+      tableData.push(dataItem);
+    })
     return(
       <div className="content">
         <div className="common">
@@ -31,34 +45,7 @@ function FranchiseBio() {
         </div>
         <div className="dataShow">
           <h1>Last {data.stats.data.length} NBA Seasons</h1>
-          <table>
-            <thead>
-              <th>Season</th>
-              <th>Lg</th>
-              <th>Team</th>
-              <th>W</th>
-              <th>L</th>
-              <th>W/L%</th>
-              <th>Finish</th>
-            </thead>
-            <tbody>
-              {
-                data.stats.data.slice(0).reverse().map((season) => {
-                  return(
-                    <tr>
-                      <td><Link to={`/teams/${params.id}/${season[3]}`}>{season[3]}</Link></td>
-                      <td>NBA</td>
-                      <td>{season[1]} {season[2]}</td>
-                      <td>{season[5]}</td>
-                      <td>{season[6]}</td>
-                      <td>{season[7]}</td>
-                      <td>{season[8] != '0' ? season[8] : 'N/A'}</td>
-                    </tr>
-                  )
-                })
-              }
-            </tbody>
-          </table>
+          <SortableTable headers={headers} tableData={tableData}/>
         </div>
       </div>
     )

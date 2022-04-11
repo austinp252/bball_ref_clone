@@ -3,6 +3,8 @@ import './TeamSeasonRoster.css';
 
 import TeamSeasonBasicInfo from '../TeamSeasonBasicInfo/TeamSeasonBasicInfo';
 
+import SortableTable from '../../widgets/SortableTable/SortableTable';
+
 import {Link, useParams} from 'react-router-dom';
 
 function TeamSeasonRoster() {
@@ -21,8 +23,50 @@ function TeamSeasonRoster() {
             <p>Loading...</p>
         )
     } else {
-        //console.log(data.resultSets[0].rowSet[2]);
-        console.log(data);
+        const headersRoster = [{'header':'No.', 'type':'empty'}, {'header':'Player', 'type':'name'}, {'header':'Pos', 'type':'empty'}, {'header':'Ht', 'type':'empty'}, {'header':'Wt', 'type':'empty'}, {'header':'Birth Date', 'type':'empty'}, {'header':'Exp', 'type':'empty'}, {'header':'College', 'type':'empty'}];
+        const headersPER = [{'header':'Rk', 'type':'empty'}, {'header':'Player', 'type':'name'}, {'header':'Age', 'type':'empty'}, {'header':'G', 'type':'number'}, {'header':'GS', 'type':'empty'}, {'header':'MP', 'type':'number'}, {'header':'FG', 'type':'number'}, {'header':'FGA', 'type':'number'}, {'header':'FG%', 'type':'number'}, {'header':'3PM', 'type':'number'}, {'header':'3PA', 'type':'number'}, {'header':'3P%', 'type':'number'}, {'header':'FTM', 'type':'number'}, {'header':'FTA', 'type':'number'}, {'header':'FT%', 'type':'number'}, {'header':'OREB', 'type':'number'}, {'header':'DREB', 'type':'number'}, {'header':'REB', 'type':'number'}, {'header':'AST', 'type':'number'}, {'header':'STL', 'type':'number'}, {'header':'BLK', 'type':'number'}, {'header':'TOV', 'type':'number'}, {'header':'PF', 'type':'number'}, {'header':'PTS', 'type':'number'}];
+        const tableDataRoster = []
+        const tableDataPER = []
+        data.resultSets[1].rowSet.forEach((player) => {
+            const dataItem = [];
+            dataItem.push({'dataContent': '--', 'link': null});
+            dataItem.push({'dataContent': player[2], 'link': `/players/${player[2].split(' ')[1][0]}/${player[1]}`});
+            dataItem.push({'dataContent': '--', 'link': null});
+            dataItem.push({'dataContent': '--', 'link': null});
+            dataItem.push({'dataContent': '--', 'link': null});
+            dataItem.push({'dataContent': '--', 'link': null});
+            dataItem.push({'dataContent': '--', 'link': null});
+            dataItem.push({'dataContent': '--', 'link': null});
+            tableDataRoster.push(dataItem);
+        })
+        data.resultSets[1].rowSet.forEach((player) => {
+            const dataItem = [];
+            dataItem.push({'dataContent': '--', 'link': null});
+            dataItem.push({'dataContent': player[2], 'link': `/players/${player[2].split(' ')[1][0]}/${player[1]}`});
+            dataItem.push({'dataContent': '--', 'link': null});
+            dataItem.push({'dataContent': player[4], 'link': null});
+            dataItem.push({'dataContent': '--', 'link': null});
+            dataItem.push({'dataContent': player[8], 'link': null});
+            dataItem.push({'dataContent': player[9], 'link': null});
+            dataItem.push({'dataContent': player[10], 'link': null});
+            dataItem.push({'dataContent': player[11], 'link': null});
+            dataItem.push({'dataContent': player[12], 'link': null});
+            dataItem.push({'dataContent': player[13], 'link': null});
+            dataItem.push({'dataContent': player[14], 'link': null});
+            dataItem.push({'dataContent': player[15], 'link': null});
+            dataItem.push({'dataContent': player[16], 'link': null});
+            dataItem.push({'dataContent': player[17], 'link': null});
+            dataItem.push({'dataContent': player[18], 'link': null});
+            dataItem.push({'dataContent': player[19], 'link': null});
+            dataItem.push({'dataContent': player[20], 'link': null});
+            dataItem.push({'dataContent': player[21], 'link': null});
+            dataItem.push({'dataContent': player[23], 'link': null});
+            dataItem.push({'dataContent': player[24], 'link': null});
+            dataItem.push({'dataContent': player[22], 'link': null});
+            dataItem.push({'dataContent': player[26], 'link': null});
+            dataItem.push({'dataContent': player[28], 'link': null});
+            tableDataPER.push(dataItem);
+        })
         return(
             <div className="content">
                 <div className="common">
@@ -30,108 +74,11 @@ function TeamSeasonRoster() {
                 </div>
                 <div className="roster">
                     <h3>Roster</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>Player</th>
-                                <th>Pos</th>
-                                <th>Ht</th>
-                                <th>Wt</th>
-                                <th>Birth Date</th>
-                                <th>Exp</th>
-                                <th>College</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {
-                            data.resultSets[1].rowSet.map((player) => {
-                                return(
-                                    <tr>
-                                        <td>--</td>
-                                        <td><Link to={`/players/${player[2].split(' ')[1][0]}/${player[1]}`}>{player[2]}</Link></td>
-                                        <td>--</td>
-                                        <td>--</td>
-                                        <td>--</td>
-                                        <td>--</td>
-                                        <td>--</td>
-                                        <td>--</td>
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                    </table>
+                    <SortableTable headers={headersRoster} tableData={tableDataRoster}/>
                 </div>
                 <div className="perGame">
-                <h3>Per Game</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Rk</th>
-                                <th>Player</th>
-                                <th>Age</th>
-                                <th>G</th>
-                                <th>GS</th>
-                                <th>MP</th>
-                                <th>FG</th>
-                                <th>FGA</th>
-                                <th>FG%</th>
-                                <th>3PM</th>
-                                <th>3PA</th>
-                                <th>3P%</th>
-                                <th>FTM</th>
-                                <th>FTA</th>
-                                <th>FT%</th>
-                                <th>OREB</th>
-                                <th>DREB</th>
-                                <th>REB</th>
-                                <th>AST</th>
-                                <th>STL</th>
-                                <th>BLK</th>
-                                <th>TOV</th>
-                                <th>PF</th>
-                                <th>PTS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {
-                            data.resultSets[1].rowSet.map((player) => {
-                                return(
-                                    <tr>
-                                        <td>--</td>
-                                        <td><Link to={`/players/${player[2].split(' ')[1][0]}/${player[1]}`}>{player[2]}</Link></td>
-                                        <td>--</td>
-                                        <td>{player[4]}</td>
-                                        <td>--</td>
-                                        <td>{player[8]}</td>
-                                        <td>{player[9]}</td>
-                                        <td>{player[10]}</td>
-                                        <td>{player[11]}</td>
-
-
-                                        <td>{player[12]}</td>
-                                        <td>{player[13]}</td>
-                                        <td>{player[14]}</td>
-                                        <td>{player[15]}</td>
-                                        <td>{player[16]}</td>
-                                        <td>{player[17]}</td>
-                                        <td>{player[18]}</td>
-                                        <td>{player[19]}</td>
-                                        <td>{player[20]}</td>
-                                        <td>{player[21]}</td>
-                                        <td>{player[23]}</td>
-                                        <td>{player[24]}</td>
-                                        <td>{player[22]}</td>
-                                        <td>{player[26]}</td>
-                                        <td>{player[28]}</td>
-                                        
-                                    </tr>
-                                )
-                            })
-                        }
-                    </tbody>
-                    </table>
+                    <h3>Per Game</h3>
+                    <SortableTable headers={headersPER} tableData={tableDataPER}/>
                 </div>
             </div>
         )

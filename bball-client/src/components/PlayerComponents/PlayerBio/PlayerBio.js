@@ -3,6 +3,7 @@ import './PlayerBio.css';
 import teamRouter from '../../widgets/Helpers/teamRouter';
 
 import PlayerBasicInfo from '../PlayerBasicInfo/PlayerBasicInfo';
+import SortableTable from '../../widgets/SortableTable/SortableTable';
 
 import {Link, useParams} from 'react-router-dom';
 
@@ -23,11 +24,68 @@ function PlayerBio() {
         <div className="content">Loading...</div>
       )
     } else {
-    //console.log(data)
-    console.log('rendering data');
-    window.scrollTo(0,0);
-    //console.log(data.playerInfo.data[0][3]);
-      return(
+    const headers = [{'header':'Season', 'type':'string'}, {'header':'Age', 'type':'number'}, {'header':'Tm', 'type':'string'}, {'header':'Lg', 'type':'empty'}, {'header':'GP', 'type':'number'}, {'header':'GS', 'type':'number'}, {'header':'MP', 'type':'number'}, {'header':'FGM', 'type':'number'}, {'header':'FGA', 'type':'number'}, {'header':'FG%', 'type':'number'}, {'header':'3PM', 'type':'number'}, {'header':'3PA', 'type':'number'}, {'header':'3P%', 'type':'number'}, {'header':'FT', 'type':'number'}, {'header':'FTA', 'type':'number'}, {'header':'FT%', 'type':'number'}, {'header':'OREB', 'type':'number'}, {'header':'DREB', 'type':'number'}, {'header':'REB', 'type':'number'}, {'header':'AST', 'type':'number'}, {'header':'STL', 'type':'number'}, {'header':'BLK', 'type':'number'}, {'header':'TOV', 'type':'number'}, {'header':'PF', 'type':'number'}, {'header':'PTS', 'type':'number'}]
+    const tableData1 = []
+    const tableData2 = []
+    data.resultSets[0].rowSet.forEach((season) => {
+      const dataItem = [];
+      dataItem.push({'dataContent': season[1], 'link': `/players/${params.letter}/${params.id}/gamelog/${season[1]}`});
+      dataItem.push({'dataContent': season[5], 'link': null});
+      dataItem.push({'dataContent': season[4], 'link': `/teams/${teamRouter(season[4])}/${season[1]}`});
+      dataItem.push({'dataContent': 'NBA', 'link': null});
+      dataItem.push({'dataContent': season[6], 'link': null});
+      dataItem.push({'dataContent': season[7], 'link': null});
+      dataItem.push({'dataContent': season[8], 'link': null});
+      dataItem.push({'dataContent': season[9], 'link': null});
+      dataItem.push({'dataContent': season[10], 'link': null});
+      dataItem.push({'dataContent': season[11], 'link': null});
+      dataItem.push({'dataContent': season[12], 'link': null});
+      dataItem.push({'dataContent': season[13], 'link': null});
+      dataItem.push({'dataContent': season[14], 'link': null});
+      dataItem.push({'dataContent': season[15], 'link': null});
+      dataItem.push({'dataContent': season[16], 'link': null});
+      dataItem.push({'dataContent': season[17], 'link': null});
+      dataItem.push({'dataContent': season[18], 'link': null});
+      dataItem.push({'dataContent': season[19], 'link': null});
+      dataItem.push({'dataContent': season[20], 'link': null});
+      dataItem.push({'dataContent': season[21], 'link': null});
+      dataItem.push({'dataContent': season[22], 'link': null});
+      dataItem.push({'dataContent': season[23], 'link': null});
+      dataItem.push({'dataContent': season[24], 'link': null});
+      dataItem.push({'dataContent': season[25], 'link': null});
+      dataItem.push({'dataContent': season[26], 'link': null});
+      tableData1.push(dataItem);
+    });
+    data.resultSets[2].rowSet.forEach((season) => {
+      const dataItem = [];
+      dataItem.push({'dataContent': season[1], 'link': `/players/${params.letter}/${params.id}/gamelog/${season[1]}`});
+      dataItem.push({'dataContent': season[5], 'link': null});
+      dataItem.push({'dataContent': season[4], 'link': `/teams/${teamRouter(season[4])}/${season[1]}`});
+      dataItem.push({'dataContent': 'NBA', 'link': null});
+      dataItem.push({'dataContent': season[6], 'link': null});
+      dataItem.push({'dataContent': season[7], 'link': null});
+      dataItem.push({'dataContent': season[8], 'link': null});
+      dataItem.push({'dataContent': season[9], 'link': null});
+      dataItem.push({'dataContent': season[10], 'link': null});
+      dataItem.push({'dataContent': season[11], 'link': null});
+      dataItem.push({'dataContent': season[12], 'link': null});
+      dataItem.push({'dataContent': season[13], 'link': null});
+      dataItem.push({'dataContent': season[14], 'link': null});
+      dataItem.push({'dataContent': season[15], 'link': null});
+      dataItem.push({'dataContent': season[16], 'link': null});
+      dataItem.push({'dataContent': season[17], 'link': null});
+      dataItem.push({'dataContent': season[18], 'link': null});
+      dataItem.push({'dataContent': season[19], 'link': null});
+      dataItem.push({'dataContent': season[20], 'link': null});
+      dataItem.push({'dataContent': season[21], 'link': null});
+      dataItem.push({'dataContent': season[22], 'link': null});
+      dataItem.push({'dataContent': season[23], 'link': null});
+      dataItem.push({'dataContent': season[24], 'link': null});
+      dataItem.push({'dataContent': season[25], 'link': null});
+      dataItem.push({'dataContent': season[26], 'link': null});
+      tableData2.push(dataItem);
+    });
+    return(
         <div className="content">
           <PlayerBasicInfo/>
           <div className="data-selectors">
@@ -36,102 +94,12 @@ function PlayerBio() {
           </div>
           <div className="dataShow">
             <div className="regular-season show">
-              <table>
-                <thead>
-                  <th>Season</th>
-                  <th>Age</th>
-                  <th>Tm</th>
-                  <th>Lg</th>
-                  <th>GP</th>
-                  <th>GS</th>
-                  <th>MP</th>
-                  <th>FGM</th>
-                  <th>FGA</th>
-                  <th>FG%</th>
-                  <th>3PM</th>
-                  <th>3PA</th>
-                  <th>3P%</th>
-                  <th>FT</th>
-                  <th>FTA</th>
-                  <th>FT%</th>
-                  <th>OREB</th>
-                  <th>DREB</th>
-                  <th>REB</th>
-                  <th>AST</th>
-                  <th>STL</th>
-                  <th>BLK</th>
-                  <th>TOV</th>
-                  <th>PF</th>
-                  <th>PTS</th> 
-                </thead>
-                <tbody>
-                  {
-                    showData == 'Regular Season' ?
-                    data.resultSets[0].rowSet.slice(0).reverse().map((season) => {
-                      return(
-                        <tr>
-                          <td><Link to={`/players/${params.letter}/${params.id}/gamelog/${season[1]}`}>{season[1]}</Link></td>
-                          <td>{season[5]}</td>
-                          <td><Link to={`/teams/${teamRouter(season[4])}/${season[1]}`}>{season[4]}</Link></td>
-                          <td>NBA</td>
-                          <td>{season[6]}</td>
-                          <td>{season[7]}</td>
-                          <td>{season[8]}</td>
-                          <td>{season[9]}</td>
-                          <td>{season[10]}</td>
-                          <td>{season[11]}</td>
-                          <td>{season[12]}</td>
-                          <td>{season[13]}</td>
-                          <td>{season[14]}</td>
-                          <td>{season[15]}</td>
-                          <td>{season[16]}</td>
-                          <td>{season[17]}</td>
-                          <td>{season[18]}</td>
-                          <td>{season[19]}</td>
-                          <td>{season[20]}</td>
-                          <td>{season[21]}</td>
-                          <td>{season[22]}</td>
-                          <td>{season[23]}</td>
-                          <td>{season[24]}</td>
-                          <td>{season[25]}</td>
-                          <td>{season[26]}</td>
-                        </tr>
-                      )
-                    }) :
-                    data.resultSets[2].rowSet.slice(0).reverse().map((season) => {
-                      return(
-                        <tr>
-                          <td><Link to={`/players/${params.letter}/${params.id}/gamelog/${season[1]}`}>{season[1]}</Link></td>
-                          <td>{season[5]}</td>
-                          <td>{season[4]}</td>
-                          <td>NBA</td>
-                          <td>{season[6]}</td>
-                          <td>{season[7]}</td>
-                          <td>{season[8]}</td>
-                          <td>{season[9]}</td>
-                          <td>{season[10]}</td>
-                          <td>{season[11]}</td>
-                          <td>{season[12]}</td>
-                          <td>{season[13]}</td>
-                          <td>{season[14]}</td>
-                          <td>{season[15]}</td>
-                          <td>{season[16]}</td>
-                          <td>{season[17]}</td>
-                          <td>{season[18]}</td>
-                          <td>{season[19]}</td>
-                          <td>{season[20]}</td>
-                          <td>{season[21]}</td>
-                          <td>{season[22]}</td>
-                          <td>{season[23]}</td>
-                          <td>{season[24]}</td>
-                          <td>{season[25]}</td>
-                          <td>{season[26]}</td>
-                        </tr>
-                      )
-                    })
-                  }
-                </tbody>
-              </table>
+              {
+                showData == 'Regular Season' ?
+                <SortableTable headers = {headers} tableData = {tableData1}/>
+                :
+                <SortableTable headers = {headers} tableData = {tableData2}/>
+              }
             </div>
           </div>
         </div>
@@ -140,117 +108,3 @@ function PlayerBio() {
 }
 
 export default PlayerBio;
-
-/*
-- Full Name
-- Position, Shoots: L/R 
-- Height, Weight
-- Birth Date -> Age
-- College
-- Draft: Round, (pick num, overall num), draft year
-- From: start year to end year
-- Career Length: do math above
-
-*/
-
-{/* <div className="career">
-            <table>
-              <thead>
-                <tr>
-                  <th>Season</th>
-                  <th>Age</th>
-                  <th>Tm</th>
-                  <th>Lg</th>
-                  <th>GP</th>
-                  <th>GS</th>
-                  <th>MP</th>
-                  <th>FGM</th>
-                  <th>FGA</th>
-                  <th>FG%</th>
-                  <th>3PM</th>
-                  <th>3PA</th>
-                  <th>3P%</th>
-                  <th>FT</th>
-                  <th>FTA</th>
-                  <th>FT%</th>
-                  <th>OREB</th>
-                  <th>DREB</th>
-                  <th>REB</th>
-                  <th>AST</th>
-                  <th>STL</th>
-                  <th>BLK</th>
-                  <th>TOV</th>
-                  <th>PF</th>
-                  <th>PTS</th>          
-                </tr>
-              </thead>
-              <tbody>
-                  {
-                    data.careerStats.resultSets[0].rowSet.map((season) => {
-                      return(
-                        <tr>
-                          <td><Link to={`/players/${params.letter}/${params.id}/${season[1]}`}>{season[1]}</Link></td>
-                          <td>{season[5]}</td>
-                          <td>{season[4]}</td>
-                          <td>NBA</td>
-                          <td>{season[6]}</td>
-                          <td>{season[7]}</td>
-                          <td>{season[8]}</td>
-                          <td>{season[9]}</td>
-                          <td>{season[10]}</td>
-                          <td>{season[11]}</td>
-                          <td>{season[12]}</td>
-                          <td>{season[13]}</td>
-                          <td>{season[14]}</td>
-                          <td>{season[15]}</td>
-                          <td>{season[16]}</td>
-                          <td>{season[17]}</td>
-                          <td>{season[18]}</td>
-                          <td>{season[19]}</td>
-                          <td>{season[20]}</td>
-                          <td>{season[21]}</td>
-                          <td>{season[22]}</td>
-                          <td>{season[23]}</td>
-                          <td>{season[24]}</td>
-                          <td>{season[25]}</td>
-                          <td>{season[26]}</td>
-                        </tr>
-                      )
-                    })
-                  }
-                  {
-                      data.careerStats.resultSets[1].rowSet.map((season) => {
-                        return(
-                          <tr>
-                            <td>Career</td>
-                            <td></td>
-                            <td></td>
-                            <td>NBA</td>
-                            <td>{season[3]}</td>
-                            <td>{season[4]}</td>
-                            <td>{season[5]}</td>
-                            <td>{season[6]}</td>
-                            <td>{season[7]}</td>
-                            <td>{season[8]}</td>
-                            <td>{season[9]}</td>
-                            <td>{season[10]}</td>
-                            <td>{season[11]}</td>
-                            <td>{season[12]}</td>
-                            <td>{season[13]}</td>
-                            <td>{season[14]}</td>
-                            <td>{season[15]}</td>
-                            <td>{season[16]}</td>
-                            <td>{season[17]}</td>
-                            <td>{season[18]}</td>
-                            <td>{season[19]}</td>
-                            <td>{season[20]}</td>
-                            <td>{season[21]}</td>
-                            <td>{season[22]}</td>
-                            <td>{season[23]}</td>
-                          </tr>
-                        )
-                      })
-                  }
-              </tbody>
-            </table>
-          </div> */}
