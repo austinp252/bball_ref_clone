@@ -40,8 +40,11 @@
   display: flex;
   flex-direction: row;
   align-items: left;
+  width: auto;
   height: 100px;
   background-color: rgb(150, 80, 0);
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .menu h2 {

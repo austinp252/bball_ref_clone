@@ -214,6 +214,22 @@ app.get('/teams/:id/:season/games', (req, res) => {
   })
 });
 
+app.get('/seasons/:season', (req, res) => {
+  var dataToSend;
+  const python = spawn('python', ['server/apiScripts/getSeason.py']);
+  python.stdout.on('data', (data) => {
+    console.log('Pipe data from python script ...');
+    dataToSend = data.toString();
+    dataToSend = JSON.parse(dataToSend);
+  });
+
+  python.on('close', (code) => {
+    console.log(`child process close all stdio with code ${code}`);
+    console.log('season data');
+    res.send(dataToSend);
+  })
+});
+
 
 
 app.get('/scores/:date', (req, res) => {
