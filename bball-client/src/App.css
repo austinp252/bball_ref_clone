@@ -13,6 +13,7 @@
 
 table {
   border-collapse: collapse;
+  overflow-x: auto;
 }
 
 td {
