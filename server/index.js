@@ -216,7 +216,7 @@ app.get('/teams/:id/:season/games', (req, res) => {
 
 app.get('/seasons/:season', (req, res) => {
   var dataToSend;
-  const python = spawn('python', ['server/apiScripts/getSeason.py']);
+  const python = spawn('python', ['server/apiScripts/getSeason.py',req.params.season]);
   python.stdout.on('data', (data) => {
     console.log('Pipe data from python script ...');
     dataToSend = data.toString();

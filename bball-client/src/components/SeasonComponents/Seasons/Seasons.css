@@ -1,0 +1,17 @@
+.data-conference-container {
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.data-division-container {
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+tr.division {
+    text-align: center;
+}
