@@ -43,7 +43,6 @@ function App() {
                 <Route exact path='/teams/:id/:season' element = {<TeamSeasonRoster/>}/>
                 <Route exact path='/teams/:id/:season/gamelog' element = {<TeamSeasonGamelog/>}/>
                 <Route exact path='/seasons' element = {<Seasons/>}/>
-                <Route exact path='/seasons' element = {<Seasons/>}/>
                 <Route exact path='/leaders' element = {<Leaders/>}/>
                 <Route exact path='/scores' element = {<Scores/>}/>
                 <Route exact path='/scores/:gameid/boxscore' element = {<BoxScore/>}/>

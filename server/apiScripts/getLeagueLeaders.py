@@ -132,7 +132,7 @@ for player in data["data"]:
         if((player[24]/player[4]) > (perEFF[24]/perEFF[4])):
             perEFF = player
 newData = {"HEADERS": ['PLAYER_ID', 'RANK', 'PLAYER', 'TEAM', 'GP', 'MIN', 'FGM', 'FGA', 'FG_PCT', 'FG3M', 'FG3A', 'FG3_PCT', 'FTM', 'FTA', 'FT_PCT', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS', 'EFF', 'AST_TOV', 'STL_TOV'], "CATEGORIES": ['GP', 'MIN', 'FGM', 'FGA', '3PM', '3PA', 'FTM', 'FTA',
-                                                                                                                                                                                                                                                                   'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PF', 'PTS', 'FGP', '3PP', 'FTP' 'perMIN', 'perPTS', 'perREB', 'perAST', 'perSTL', 'perBLK', 'EFF'], 'data': [maxGP, maxMIN, maxFGM, maxFGA, max3PM, max3PA, maxFTM, maxFTA, maxOREB, maxDREB, maxREB, maxAST, maxSTL, maxBLK, maxTOV, maxPF, maxPTS, maxFGP, max3PP, maxFTP, perMIN, perPTS, perREB, perAST, perSTL, perBLK, perEFF]}
+                                                                                                                                                                                                                                                                   'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PF', 'PTS', 'FGP', '3PP', 'FTP' 'perMIN', 'perPTS', 'perREB', 'perAST', 'perSTL', 'perBLK', 'perTOV', 'EFF'], 'data': [maxGP, maxMIN, maxFGM, maxFGA, max3PM, max3PA, maxFTM, maxFTA, maxOREB, maxDREB, maxREB, maxAST, maxSTL, maxBLK, maxTOV, maxPF, maxPTS, maxFGP, max3PP, maxFTP, perMIN, perPTS, perREB, perAST, perSTL, perBLK, perTOV, perEFF]}
 print(json.dumps(newData))
 # print("GP: ", maxGP[2], " ", maxGP[4])
 # print("MIN: ", maxMIN[2], " ", maxMIN[5])
@@ -147,6 +147,7 @@ print(json.dumps(newData))
 # print("REB: ", maxREB[2], " ", maxREB[17])
 # print("AST: ", maxAST[2], " ", maxAST[18])
 # print("STL: ", maxSTL[2], " ", maxSTL[19])
+
 # print("BLK: ", maxBLK[2], " ", maxBLK[20])
 # print("TO: ", maxTOV[2], " ", maxTOV[21])
 # print("PF: ", maxPF[2], " ", maxPF[22])

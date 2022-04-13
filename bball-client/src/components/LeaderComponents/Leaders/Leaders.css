@@ -1,0 +1,27 @@
+.data-container {
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #c9cbcd;
+  margin: 20px;
+}
+
+.data-matched-container {
+  display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+
+.data-block {
+  margin: 20px;
+}
+
+.data-item .header {
+  font-weight: bold;
+}
+
+tr.division {
+    text-align: center;
+}
