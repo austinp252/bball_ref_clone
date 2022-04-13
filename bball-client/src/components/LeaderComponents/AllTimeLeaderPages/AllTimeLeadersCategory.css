@@ -1,0 +1,9 @@
+.player-images {
+    display: flex;
+    flex-direction: row;
+}
+
+.player .player-img-leaders {
+    width: 60%;
+    padding: 0;
+}

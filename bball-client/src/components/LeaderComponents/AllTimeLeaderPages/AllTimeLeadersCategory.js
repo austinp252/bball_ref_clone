@@ -6,6 +6,7 @@ import Dropdown from '../../widgets/Dropdown/Dropdown';
 import SortableTable from '../../widgets/SortableTable/SortableTable';
 import getInitial from '../../widgets/Helpers/getInitial';
 
+import './AllTimeLeadersCategory.css'
 
 import {Link, useParams} from 'react-router-dom';
 
@@ -33,7 +34,18 @@ function AllTimeLeadersCategory(props) {
       <div className="content">
         <h3>NBA {season_type} Career Leaders in {title}</h3>
           <div className="top-ten">
-              top ten players
+            <h3>All-Time {title} Leaders</h3>
+            <div className="player-images">
+            {
+                data.data.slice(0, 10).map((player) => {
+                  return(
+                    <div className="player">
+                      <img className="player-img-leaders"src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${player[0]}.png`} alt='missing image'/>
+                    </div>
+                  )
+                })
+              }
+            </div>
           </div>
           <div className="top-all">
             <h3>NBA/ABA Leaders</h3>
