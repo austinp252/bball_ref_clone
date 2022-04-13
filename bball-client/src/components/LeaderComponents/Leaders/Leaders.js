@@ -4,6 +4,7 @@ import teamRouter from '../../widgets/Helpers/teamRouter';
 import Dropdown from '../../widgets/Dropdown/Dropdown';
 
 import SortableTable from '../../widgets/SortableTable/SortableTable';
+import AllTimeLeaders from '../AllTimeLeaders/AllTimeLeaders';
 
 import './Leaders.css';
 
@@ -226,6 +227,9 @@ function Leaders() {
               </div>
           </div>
           </div>
+        </div>
+        <div className="regular-season-leaders">
+          <AllTimeLeaders/>
         </div>
       </div>
     )

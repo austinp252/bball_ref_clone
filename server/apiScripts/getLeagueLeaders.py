@@ -162,3 +162,30 @@ print(json.dumps(newData))
 # print("perSTL: ", perSTL[2], " ", perSTL[19]/perSTL[4])
 # print("perBLK: ", perBLK[2], " ", perBLK[20]/perBLK[4])
 # print("EFF: ", perEFF[2], " ", perEFF[24]/perEFF[4])
+
+# TOTAL
+# gp
+# fgm
+# fga
+# 3pm
+# 3pa
+# ftm
+# fta
+# oreb
+# dreb
+# ast
+# stl
+# blk
+# tov
+# pf
+# points
+# SHOOTING
+# fgp
+# 3pp
+# ftp
+# PERGAME
+# points
+# rebounds
+# assists
+# steals
+# blocks

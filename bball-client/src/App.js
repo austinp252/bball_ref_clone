@@ -18,6 +18,8 @@ import Scores from './components/ScoreComponents/Scores/Scores';
 import BoxScore from './components/ScoreComponents/BoxScore/BoxScore';
 import Navbar from './components/Navbar/Navbar'; //would specifying .js remove overlapping css?
 import Footer from './components/Footer/Footer';
+
+import AllTimeLeaderCategory from './components/LeaderComponents/AllTimeLeaderPages/AllTimeLeadersCategory';
 //import navbar
 
 import {BrowserRouter, Routes, Route, useHistory} from 'react-router-dom';
@@ -44,6 +46,23 @@ function App() {
                 <Route exact path='/teams/:id/:season/gamelog' element = {<TeamSeasonGamelog/>}/>
                 <Route exact path='/seasons' element = {<Seasons/>}/>
                 <Route exact path='/leaders' element = {<Leaders/>}/>
+                <Route exact path='/leaders/career/GP' element = {<AllTimeLeaderCategory category='GP'/>}/>
+                <Route exact path='/leaders/career/FG' element = {<AllTimeLeaderCategory category='FG'/>}/>
+                <Route exact path='/leaders/career/FGA' element = {<AllTimeLeaderCategory category='FGA'/>}/>
+                <Route exact path='/leaders/career/3P' element = {<AllTimeLeaderCategory category='3P'/>}/>
+                <Route exact path='/leaders/career/3PA' element = {<AllTimeLeaderCategory category='3PA'/>}/>
+                <Route exact path='/leaders/career/FT' element = {<AllTimeLeaderCategory category='FT'/>}/>
+                <Route exact path='/leaders/career/FTA' element = {<AllTimeLeaderCategory category='FTA'/>}/>
+                <Route exact path='/leaders/career/OREB' element = {<AllTimeLeaderCategory category='OREB'/>}/>
+                <Route exact path='/leaders/career/DREB' element = {<AllTimeLeaderCategory category='DREB'/>}/>
+                <Route exact path='/leaders/career/REB' element = {<AllTimeLeaderCategory category='REB'/>}/>
+                <Route exact path='/leaders/career/AST' element = {<AllTimeLeaderCategory category='AST'/>}/>
+                <Route exact path='/leaders/career/STL' element = {<AllTimeLeaderCategory category='STL'/>}/>
+                <Route exact path='/leaders/career/BLK' element = {<AllTimeLeaderCategory category='BLK'/>}/>
+                <Route exact path='/leaders/career/TOV' element = {<AllTimeLeaderCategory category='TOV'/>}/>
+                <Route exact path='/leaders/career/PF' element = {<AllTimeLeaderCategory category='PF'/>}/>
+                <Route exact path='/leaders/career/PTS' element = {<AllTimeLeaderCategory category='PTS'/>}/>
+                
                 <Route exact path='/scores' element = {<Scores/>}/>
                 <Route exact path='/scores/:gameid/boxscore' element = {<BoxScore/>}/>
               </Routes>

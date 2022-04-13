@@ -230,6 +230,38 @@ app.get('/leaders/:season', (req, res) => {
   })
 });
 
+app.get('/leaders/alltime/games', (req, res) => {
+  var dataToSend;
+  const python = spawn('python', ['server/apiScripts/allTimeCategories/getLeadersGamesPlayed.py']);
+  python.stdout.on('data', (data) => {
+    console.log('Pipe data from python script ...');
+    dataToSend = data.toString();
+    dataToSend = JSON.parse(dataToSend);
+  });
+  
+  python.on('close', (code) => {
+    console.log(`child process close all stdio with code ${code}`);
+    console.log('season data');
+    res.send(dataToSend);
+  })
+});
+
+app.get('/leaders/alltime/:category', (req, res) => {
+  var dataToSend;
+  const python = spawn('python', [`server/apiScripts/allTimeCategories/getLeaders${req.params.category}.py`]);
+  python.stdout.on('data', (data) => {
+    console.log('Pipe data from python script ...');
+    dataToSend = data.toString();
+    dataToSend = JSON.parse(dataToSend);
+  });
+  
+  python.on('close', (code) => {
+    console.log(`child process close all stdio with code ${code}`);
+    console.log('season data');
+    res.send(dataToSend);
+  })
+});
+
 
 app.get('/seasons/:season', (req, res) => {
   var dataToSend;
