@@ -38,7 +38,7 @@ function Leaders() {
     return(
       <div className="content">
         <div className="header">
-          <h3>NBA {season} Season Leaders</h3>
+          <h3>NBA Leaders and Records</h3>
         </div>
         <div className="season-selector">
             <form onSubmit={handleSubmit}>
@@ -46,6 +46,7 @@ function Leaders() {
             <input type="submit" value="Submit"/>
             </form>
         </div>
+        <h3>{season} Leaders</h3>
         <div className="data-container">
           <div className="data-matched-container">
             <div className="data-block">

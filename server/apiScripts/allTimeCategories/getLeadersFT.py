@@ -3,6 +3,8 @@ import json
 
 from nba_api.stats.endpoints import alltimeleadersgrids
 
+type = sys.argv[1]
+
 data = alltimeleadersgrids.AllTimeLeadersGrids(
-    per_mode_simple='Totals', season_type='Regular Season', topx=250).ftm_leaders.get_json()
+    per_mode_simple='Totals', season_type=type, topx=250).ftm_leaders.get_json()
 print(data)

@@ -12,10 +12,13 @@ import {Link, useParams} from 'react-router-dom';
 function AllTimeLeadersCategory(props) {
   const [data, setData] = useState(null);
   const category = props.category;
+  const title = props.title;
+  const metric = props.metric;
+  const season_type = props.seasonType;
 
   useEffect(() => {
     console.log("fetching leader data")
-    fetch(`/leaders/alltime/${category}`)
+    fetch(`/leaders/alltime/${season_type}/${category}`)
     .then((res) => res.json())
     .then((data) => setData(data));
 }, []);
@@ -28,16 +31,18 @@ function AllTimeLeadersCategory(props) {
     console.log(data.data)
     return(
       <div className="content">
+        <h3>NBA {season_type} Career Leaders in {title}</h3>
           <div className="top-ten">
               top ten players
           </div>
           <div className="top-all">
+            <h3>NBA/ABA Leaders</h3>
               <table>
                   <thead>
                       <tr>
                           <th>Rank</th>
                           <th>Player</th>
-                          <th>{category}</th>
+                          <th>{metric}</th>
                       </tr>
                   </thead>
                   <tbody>
