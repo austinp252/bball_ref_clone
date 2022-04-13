@@ -42,7 +42,7 @@ function Leaders() {
                       </tr>
                       <tr>
                           <td>Games</td>
-                          <td><Link to='/leaders/career/gp'>Career</Link></td>
+                          <td><Link to='/leaders/career/GP'>Career</Link></td>
                       </tr>
                       <tr>
                           <td>Field Goals</td>

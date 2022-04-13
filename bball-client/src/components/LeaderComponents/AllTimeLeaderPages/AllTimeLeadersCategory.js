@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import teamRouter from '../../widgets/Helpers/teamRouter';
 
 import Dropdown from '../../widgets/Dropdown/Dropdown';
 
 import SortableTable from '../../widgets/SortableTable/SortableTable';
+import getInitial from '../../widgets/Helpers/getInitial';
 
 
 import {Link, useParams} from 'react-router-dom';
 
-function AllTimeLeadersGames(props) {
+function AllTimeLeadersCategory(props) {
   const [data, setData] = useState(null);
   const category = props.category;
 
@@ -24,7 +25,7 @@ function AllTimeLeadersGames(props) {
       <div className="content">Loading...</div>
     )
   } else {
-    console.log(data)
+    console.log(data.data)
     return(
       <div className="content">
           <div className="top-ten">
@@ -41,13 +42,24 @@ function AllTimeLeadersGames(props) {
                   </thead>
                   <tbody>
                       {
-                          data.data.map((player) => {
+                          data.data.map((player, index) => {
+                            console.log(player)
                               return(
+                                <Fragment>
                                   <tr>
                                       <td>{player[3]}</td>
-                                      <td>{player[1]}</td>
+                                      <td><Link to={`/players/${getInitial(player[1])}/${player[0]}`}>{player[1]}</Link></td>
                                       <td>{player[2]}</td>
                                   </tr>
+                                  {
+                                    ((index+1)%25===0 && index+1!=250) &&
+                                    <tr>
+                                      <th>Rank</th>
+                                      <th>Player</th>
+                                      <th>{category}</th>
+                                    </tr>
+                                  }
+                                </Fragment>
                               )
                           })
                       }
@@ -59,4 +71,4 @@ function AllTimeLeadersGames(props) {
   }
 }
 
-export default AllTimeLeadersGames;
+export default AllTimeLeadersCategory;
