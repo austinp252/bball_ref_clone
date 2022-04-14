@@ -123,8 +123,8 @@ for player in data["data"]:
         perPF = insertIntoMax(perPF, 22, player, per=True)
         perEFF = insertIntoMax(perEFF, 24, player, per=True)
 
-newData = {"HEADERS": ['PLAYER_ID', 'RANK', 'PLAYER', 'TEAM', 'GP', 'MIN', 'FGM', 'FGA', 'FG_PCT', 'FG3M', 'FG3A', 'FG3_PCT', 'FTM', 'FTA', 'FT_PCT', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS', 'EFF', 'AST_TOV', 'STL_TOV'], "CATEGORIES": ['GP', 'MIN', 'FGM', 'FGA', '3PM', '3PA', 'FTM', 'FTA',
-                                                                                                                                                                                                                                                                   'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PF', 'PTS', 'FGP', '3PP', 'FTP' 'perMIN', 'perPTS', 'perREB', 'perAST', 'perSTL', 'perBLK', 'perTOV', 'EFF'], 'data': [maxGP, maxMIN, maxFGM, maxFGA, max3PM, max3PA, maxFTM, maxFTA, maxOREB, maxDREB, maxREB, maxAST, maxSTL, maxBLK, maxTOV, maxPF, maxPTS, maxFGP, max3PP, maxFTP, perMIN, perPTS, perREB, perAST, perSTL, perBLK, perTOV, perEFF]}
+newData = {"GP": maxGP, "MIN": maxMIN, "FGM": maxFGM, "FGA": maxFGA, "3PM": max3PM, "3PA": max3PA, "FTM": maxFTM, "FTA": maxFTA, "OREB": maxOREB, "DREB": maxDREB, "REB": maxREB, "AST": maxAST, "STL": maxSTL, "BLK": maxBLK,
+           "TOV": maxTOV, "PF": maxPF, "PTS": maxPTS, "FGP": maxFGP, "3PP": max3PP, "FTP": maxFTP, "perPTS": perPTS, "perREB": perREB, "perAST": perAST, "perSTL": perSTL, "perBLK": perBLK, "perTOV": perTOV, "EFF": perEFF}
 print(json.dumps(newData))
 # print("GP: ", maxGP[2], " ", maxGP[4])
 # print("MIN: ", maxMIN[2], " ", maxMIN[5])

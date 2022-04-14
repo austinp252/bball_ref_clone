@@ -5,6 +5,7 @@ import Dropdown from '../../widgets/Dropdown/Dropdown';
 
 import SortableTable from '../../widgets/SortableTable/SortableTable';
 import SeasonStandings from '../SeasonStandings/SeasonStandings';
+import SeasonLeaders from '../SeasonLeaders/SeasonLeaders';
 
 import {Link, useParams} from 'react-router-dom';
 
@@ -46,7 +47,7 @@ function Seasons() {
               <input type="submit" value="Submit"/>
             </form>
         </div>
-        
+        <SeasonLeaders season={season}/>
       </div>
     )
   }

@@ -9,19 +9,23 @@ function SeasonLeaders(props) {
 
   useEffect(() => {
     console.log("fetching season data")
-    fetch(`/seasons/${season}`)
+    fetch(`/seasons/leaders/${season}`)
     .then((res) => res.json())
     .then((data) => setData(data));
-}, [season]);
+}, []);
 
   if(!data) {
     return(
       <div className="content">Loading...</div>
     )
   } else {
+      console.log(data);
     return(
       <div className="leaders-content">
-
+          <h3>League Leaders</h3>
+          <div className="leader-container">
+              
+          </div>
       </div>
     )
   }
