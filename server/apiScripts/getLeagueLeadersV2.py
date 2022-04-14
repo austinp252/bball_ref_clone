@@ -9,123 +9,136 @@ data = leagueleaders.LeagueLeaders(
     per_mode48="Totals", season=season, stat_category_abbreviation="PTS").league_leaders.get_dict()
 
 
-def insertIntoMax(array, index, newObject, per):
-    if(not per):
-        for arrayIndex, item in enumerate(array):
-            if newObject[index] > item[index]:
-                array.insert(arrayIndex, newObject)
-                break
-    else:
-        for arrayIndex, item in enumerate(array):
-            if (newObject[index]/newObject[4]) > (item[index]/item[4]):
-                array.insert(arrayIndex, newObject)
-                break
-    if(len(array) < 10):
+def insertIntoMax(array, player, stat):
+    newObject = [player[0], player[2], player[3], stat]
+    for arrayIndex, item in enumerate(array):
+        if newObject[3] > item[3]:
+            array.insert(arrayIndex, newObject)
+            break
+    if(len(array) < 5):
         array.append(newObject)
-    elif(len(array) > 10):
+    elif(len(array) > 5):
         array.pop()
     return array
 
 
-maxGP = None
-maxMIN = None
-maxFGA = None
-maxFGM = None
-maxFGP = None
-max3PA = None
-max3PM = None
-max3PP = None
-maxFTA = None
-maxFTM = None
-maxFTP = None
-maxOREB = None
-maxDREB = None
-maxREB = None
-maxAST = None
-maxSTL = None
-maxBLK = None
-maxTOV = None
-maxPF = None
-maxPTS = None
+def initData(data):
+    maxGP = None
+    maxMIN = None
+    maxFGA = None
+    maxFGM = None
+    maxFGP = None
+    max3PA = None
+    max3PM = None
+    max3PP = None
+    maxFTA = None
+    maxFTM = None
+    maxFTP = None
+    maxOREB = None
+    maxDREB = None
+    maxREB = None
+    maxAST = None
+    maxSTL = None
+    maxBLK = None
+    maxTOV = None
+    maxPF = None
+    maxPTS = None
 
-perPTS = None
-perMIN = None
-perREB = None
-perAST = None
-perSTL = None
-perBLK = None
-perTOV = None
-perPF = None
-perEFF = None
+    perPTS = None
+    perMIN = None
+    perREB = None
+    perAST = None
+    perSTL = None
+    perBLK = None
+    perTOV = None
+    perPF = None
+    perEFF = None
 
-for player in data["data"]:
-    if(not maxGP):
-        maxGP = [player]
-        maxMIN = [player]
-        maxFGA = [player]
-        maxFGM = [player]
-        maxFGP = [player]
-        max3PA = [player]
-        max3PM = [player]
-        max3PP = [player]
-        maxFTA = [player]
-        maxFTM = [player]
-        maxFTP = [player]
-        maxOREB = [player]
-        maxDREB = [player]
-        maxREB = [player]
-        maxAST = [player]
-        maxSTL = [player]
-        maxBLK = [player]
-        maxTOV = [player]
-        maxPF = [player]
-        maxPTS = [player]
+    for player in data["data"]:
+        if(not maxGP):
+            maxGP = insertIntoMax([], player, player[4])
+            maxMIN = insertIntoMax([], player, player[5])
+            maxFGA = insertIntoMax([], player, player[7])
+            maxFGM = insertIntoMax([], player, player[6])
+            maxFGP = insertIntoMax([], player, player[8])
+            max3PA = insertIntoMax([], player, player[10])
+            max3PM = insertIntoMax([], player, player[9])
+            max3PP = insertIntoMax([], player, player[11])
+            maxFTA = insertIntoMax([], player, player[13])
+            maxFTM = insertIntoMax([], player, player[12])
+            maxFTP = insertIntoMax([], player, player[14])
+            maxOREB = insertIntoMax([], player, player[15])
+            maxDREB = insertIntoMax([], player, player[16])
+            maxREB = insertIntoMax([], player, player[17])
+            maxAST = insertIntoMax([], player, player[18])
+            maxSTL = insertIntoMax([], player, player[19])
+            maxBLK = insertIntoMax([], player, player[20])
+            maxTOV = insertIntoMax([], player, player[21])
+            maxPF = insertIntoMax([], player, player[22])
+            maxPTS = insertIntoMax([], player, player[23])
 
-        perPTS = [player]
-        perMIN = [player]
-        perREB = [player]
-        perAST = [player]
-        perSTL = [player]
-        perBLK = [player]
-        perTOV = [player]
-        perPF = [player]
-        perEFF = [player]
-    else:
-        maxGP = insertIntoMax(maxGP, 4, player, per=False)
-        # cond for ties?
-        maxMIN = insertIntoMax(maxMIN, 5, player, per=False)
-        maxFGM = insertIntoMax(maxFGM, 6, player, per=False)
-        maxFGA = insertIntoMax(maxFGA, 7, player, per=False)
-        maxFGP = insertIntoMax(maxFGP, 8, player, per=False)
-        max3PM = insertIntoMax(max3PM, 9, player, per=False)
-        max3PA = insertIntoMax(max3PA, 10, player, per=False)
-        max3PP = insertIntoMax(max3PP, 11, player, per=False)
-        maxFTM = insertIntoMax(maxFTM, 12, player, per=False)
-        maxFTA = insertIntoMax(maxFTA, 13, player, per=False)
-        maxFTP = insertIntoMax(maxFTP, 14, player, per=False)
-        maxOREB = insertIntoMax(maxOREB, 15, player, per=False)
-        maxDREB = insertIntoMax(maxDREB, 16, player, per=False)
-        maxREB = insertIntoMax(maxREB, 17, player, per=False)
-        maxAST = insertIntoMax(maxAST, 18, player, per=False)
-        maxSTL = insertIntoMax(maxSTL, 19, player, per=False)
-        maxBLK = insertIntoMax(maxBLK, 20, player, per=False)
-        maxTOV = insertIntoMax(maxTOV, 21, player, per=False)
-        maxPF = insertIntoMax(maxPF, 22, player, per=False)
-        maxPTS = insertIntoMax(maxPTS, 23, player, per=False)
+            perPTS = insertIntoMax([], player, round(player[23]/player[4], 2))
+            perMIN = insertIntoMax([], player, round(player[5]/player[4], 2))
+            perREB = insertIntoMax([], player, round(player[17]/player[4], 2))
+            perAST = insertIntoMax([], player, round(player[18]/player[4], 2))
+            perSTL = insertIntoMax([], player, round(player[19]/player[4], 2))
+            perBLK = insertIntoMax([], player, round(player[20]/player[4], 2))
+            perTOV = insertIntoMax([], player, round(player[21]/player[4], 2))
+            perPF = insertIntoMax([], player, round(player[22]/player[4], 2))
+            perEFF = insertIntoMax([], player, round(player[23]/player[4], 2))
+        else:
+            maxGP = insertIntoMax(maxGP, player, player[4])
+            # cond for ties?
+            maxMIN = insertIntoMax(maxMIN, player, player[5])
+            maxFGM = insertIntoMax(maxFGM, player, player[6])
+            maxFGA = insertIntoMax(maxFGA, player, player[7])
+            maxFGP = insertIntoMax(maxFGP, player, player[8])
+            max3PM = insertIntoMax(max3PM, player, player[9])
+            max3PA = insertIntoMax(max3PA, player, player[10])
+            max3PP = insertIntoMax(max3PP, player, player[11])
+            maxFTM = insertIntoMax(maxFTM, player, player[12])
+            maxFTA = insertIntoMax(maxFTA, player, player[13])
+            maxFTP = insertIntoMax(maxFTP, player, player[14])
+            maxOREB = insertIntoMax(maxOREB, player, player[15])
+            maxDREB = insertIntoMax(maxDREB, player, player[16])
+            maxREB = insertIntoMax(maxREB, player, player[17])
+            maxAST = insertIntoMax(maxAST, player, player[18])
+            maxSTL = insertIntoMax(maxSTL, player, player[19])
+            maxBLK = insertIntoMax(maxBLK, player, player[20])
+            maxTOV = insertIntoMax(maxTOV, player, player[21])
+            maxPF = insertIntoMax(maxPF, player, player[22])
+            maxPTS = insertIntoMax(maxPTS, player, player[23])
 
-        perPTS = insertIntoMax(perPTS, 23, player, per=True)
-        perMIN = insertIntoMax(perMIN, 5, player, per=True)
-        perREB = insertIntoMax(perREB, 17, player, per=True)
-        perAST = insertIntoMax(perAST, 18, player, per=True)
-        perSTL = insertIntoMax(perSTL, 19, player, per=True)
-        perBLK = insertIntoMax(perBLK, 20, player, per=True)
-        perTOV = insertIntoMax(perTOV, 21, player, per=True)
-        perPF = insertIntoMax(perPF, 22, player, per=True)
-        perEFF = insertIntoMax(perEFF, 24, player, per=True)
+            perPTS = insertIntoMax(
+                perPTS, player, round(player[23]/player[4], 2))
+            perMIN = insertIntoMax(
+                perMIN, player, round(player[5]/player[4], 2))
+            perREB = insertIntoMax(
+                perREB, player, round(player[17]/player[4], 2))
+            perAST = insertIntoMax(
+                perAST, player, round(player[18]/player[4], 2))
+            perSTL = insertIntoMax(
+                perSTL, player, round(player[19]/player[4], 2))
+            perBLK = insertIntoMax(
+                perBLK, player, round(player[20]/player[4], 2))
+            perTOV = insertIntoMax(
+                perTOV, player, round(player[21]/player[4], 2))
+            perPF = insertIntoMax(
+                perPF, player, round(player[22]/player[4], 2))
+            perEFF = insertIntoMax(
+                perEFF, player, round(player[24]/player[4], 2))
 
-newData = {"GP": maxGP, "MIN": maxMIN, "FGM": maxFGM, "FGA": maxFGA, "3PM": max3PM, "3PA": max3PA, "FTM": maxFTM, "FTA": maxFTA, "OREB": maxOREB, "DREB": maxDREB, "REB": maxREB, "AST": maxAST, "STL": maxSTL, "BLK": maxBLK,
-           "TOV": maxTOV, "PF": maxPF, "PTS": maxPTS, "FGP": maxFGP, "3PP": max3PP, "FTP": maxFTP, "perPTS": perPTS, "perREB": perREB, "perAST": perAST, "perSTL": perSTL, "perBLK": perBLK, "perTOV": perTOV, "EFF": perEFF}
-print(json.dumps(newData))
+    newData = {"data": [{"title": "Games Played", "dataTable": maxGP}, {"title": "Total Minutes", "dataTable": maxMIN}, {"title": "Field Goals", "dataTable": maxFGM}, {"title": "Field Goals Attempted", "dataTable": maxFGA}, {"title": "3-Pt Field Goals", "dataTable": max3PM}, {"title": "3-Pt Field Goal Attempts", "dataTable": max3PA}, {"title": "Free Throws", "dataTable": maxFTM}, {"title": "Free Throw Attempts", "dataTable": maxFTA}, {"title": "Offensive Rebounds", "dataTable": maxOREB}, {"title": "Defensive Rebounds", "dataTable": maxDREB}, {"title": "Total Rebounds", "dataTable": maxREB}, {"title": "Assists", "dataTable": maxAST}, {"title": "Steals", "dataTable": maxSTL}, {"title": "Blocks",
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            "dataTable": maxBLK}, {"title": "Turnovers", "dataTable": maxTOV}, {"title": "Personal Fouls", "dataTable": maxPF}, {"title": "Points", "dataTable": maxPTS}, {"title": "Field Goal Pct", "dataTable": maxFGP}, {"title": "3-Pt Field Goal Pct", "dataTable": max3PP}, {"title": "Free Throw Pct", "dataTable": maxFTP}, {"title": "Points Per Game", "dataTable": perPTS}, {"title": "Rebounds Per Game", "dataTable": perREB}, {"title": "Assists Per Game", "dataTable": perAST}, {"title": "Steals Per Game", "dataTable": perSTL},  {"title": "Blocks Per Game", "dataTable": perBLK},  {"title": "Turnovers Per Game", "dataTable": perTOV},  {"title": "Player Efficiency Rating", "dataTable": perEFF}]}
+    return newData
+# newData = {"HEADERS": ['PLAYER_ID', 'RANK', 'PLAYER', 'TEAM', 'GP', 'MIN', 'FGM', 'FGA', 'FG_PCT', 'FG3M', 'FG3A', 'FG3_PCT', 'FTM', 'FTA', 'FT_PCT', 'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS', 'EFF', 'AST_TOV', 'STL_TOV'], "CATEGORIES": ['GP', 'MIN', 'FGM', 'FGA', '3PM', '3PA', 'FTM', 'FTA',
+#
+# playerid, name, team, stat                                                                                                                                                                                                                                                             'OREB', 'DREB', 'REB', 'AST', 'STL', 'BLK', 'TO', 'PF', 'PTS', 'FGP', '3PP', 'FTP' 'perMIN', 'perPTS', 'perREB', 'perAST', 'perSTL', 'perBLK', 'perTOV', 'EFF'], 'data': [maxGP, maxMIN, maxFGM, maxFGA, max3PM, max3PA, maxFTM, maxFTA, maxOREB, maxDREB, maxREB, maxAST, maxSTL, maxBLK, maxTOV, maxPF, maxPTS, maxFGP, max3PP, maxFTP, perMIN, perPTS, perREB, perAST, perSTL, perBLK, perTOV, perEFF]}
+
+
+newData = initData(data)
+
+print(json.dumps(newData), end='')
 # print("GP: ", maxGP[2], " ", maxGP[4])
 # print("MIN: ", maxMIN[2], " ", maxMIN[5])
 # print("FGM: ", maxFGM[2], " ", maxFGM[6])

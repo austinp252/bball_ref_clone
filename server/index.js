@@ -1,5 +1,6 @@
 const express = require("express");
 const {spawn} = require("child_process");
+const { PassThrough } = require("stream");
 
 const PORT = process.env.PORT || 4000;
 
@@ -231,12 +232,16 @@ app.get('/seasons/:season', (req, res) => {
 });
 
 app.get('/seasons/leaders/:season', (req, res) => {
+  console.log('running get')
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getLeagueLeadersV2.py',req.params.season]);
   python.stdout.on('data', (data) => {
+    console.log('running')
     console.log('Pipe data from python script ...');
     dataToSend = data.toString();
+    console.log(dataToSend);
     dataToSend = JSON.parse(dataToSend);
+    return;
   });
 
   python.on('close', (code) => {

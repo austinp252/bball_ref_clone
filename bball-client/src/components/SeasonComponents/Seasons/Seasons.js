@@ -26,16 +26,8 @@ function Seasons() {
 
   useEffect(() => {
     console.log("fetching season data")
-    fetch(`/seasons/${season}`)
-    .then((res) => res.json())
-    .then((data) => setData(data));
 }, [season]);
 
-  if(!data) {
-    return(
-      <div className="content">Loading...</div>
-    )
-  } else {
     return(
       <div className="content">
         <div className="header">
@@ -50,7 +42,6 @@ function Seasons() {
         <SeasonLeaders season={season}/>
       </div>
     )
-  }
 }
 
 export default Seasons;

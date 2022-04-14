@@ -8,10 +8,14 @@ function SeasonLeaders(props) {
   const season = props.season;
 
   useEffect(() => {
-    console.log("fetching season data")
-    fetch(`/seasons/leaders/${season}`)
-    .then((res) => res.json())
-    .then((data) => setData(data));
+    const fetchJSON = async () => {
+      console.log("fetching season data")
+      const res = await fetch(`/seasons/leaders/${season}`);
+      let json = await res.json();
+      setData(json);
+    };
+
+    fetchJSON();
 }, []);
 
   if(!data) {
@@ -24,7 +28,31 @@ function SeasonLeaders(props) {
       <div className="leaders-content">
           <h3>League Leaders</h3>
           <div className="leader-container">
-              
+              {
+                data.data.map((leaderTable) => {
+                  return(
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td colspan='4'>{leaderTable.title}</td>
+                        </tr>
+                        {
+                          leaderTable.dataTable.map((leader, index) => {
+                            return(
+                              <tr>
+                                <td>{index+1}</td>
+                                <td>{leader[1]}</td>
+                                <td>{leader[2]}</td>
+                                <td>{leader[3]}</td>
+                              </tr>
+                            )
+                          })
+                        }
+                      </tbody>
+                    </table>
+                  )
+                })
+              }
           </div>
       </div>
     )
