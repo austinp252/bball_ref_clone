@@ -3,6 +3,10 @@ import teamRouter from '../../widgets/Helpers/teamRouter';
 
 import {Link, useParams} from 'react-router-dom';
 
+import getInitial from '../../widgets/Helpers/getInitial';
+
+import './SeasonLeaders.css'
+
 function SeasonLeaders(props) {
   const [data, setData] = useState(null);
   const season = props.season;
@@ -29,19 +33,19 @@ function SeasonLeaders(props) {
           <h3>League Leaders</h3>
           <div className="leader-container">
               {
-                data.data.map((leaderTable) => {
+                data.data.map((leaderTable, tableIndex) => {
                   return(
-                    <table>
+                    <table className='leader-table'>
                       <tbody>
                         <tr>
-                          <td colspan='4'>{leaderTable.title}</td>
+                          <th colspan='4'>{leaderTable.title}</th>
                         </tr>
                         {
                           leaderTable.dataTable.map((leader, index) => {
                             return(
                               <tr>
                                 <td>{index+1}</td>
-                                <td>{leader[1]}</td>
+                                <td><Link to={`/players/${getInitial(leader[1])}/${leader[0]}`}>{leader[1]}</Link></td>
                                 <td>{leader[2]}</td>
                                 <td>{leader[3]}</td>
                               </tr>

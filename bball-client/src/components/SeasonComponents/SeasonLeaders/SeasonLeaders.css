@@ -1,0 +1,10 @@
+.leader-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.leader-table {
+    width: 400px;
+    height: 300px;
+}
