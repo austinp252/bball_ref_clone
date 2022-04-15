@@ -14,7 +14,7 @@ function SeasonTeamData(props) {
 
   useEffect(() => {
     const fetchJSON = async () => {
-      console.log("fetching season data")
+      console.log("fetching season team data")
       const res = await fetch(`/seasons/teamstats/Base/${mode}/${season}`);
       let json = await res.json();
       setData(json);
@@ -28,7 +28,6 @@ function SeasonTeamData(props) {
       <div className="content">Loading...</div>
     )
   } else {
-      console.log(data);
     const headers = [{'header':'Rk', 'type':'number'}, {'header':'Team', 'type':'string'}, {'header':'G', 'type':'number'}, {'header':'MP', 'type':'number'}, {'header':'FG', 'type':'number'}, {'header':'FGA', 'type':'number'}, {'header':'FG%', 'type':'number'}, {'header':'3P', 'type':'number'}, {'header':'3PA', 'type':'number'}, {'header':'3P%', 'type':'number'}, {'header':'FT', 'type':'number'}, {'header':'FTA', 'type':'number'}, {'header':'FT%', 'type':'number'}, {'header':'ORB', 'type':'number'}, {'header':'DRB', 'type':'number'}, {'header':'TRB', 'type':'number'}, {'header':'AST', 'type':'number'}, {'header':'STL', 'type':'number'}, {'header':'BLK', 'type':'number'}, {'header':'TOV', 'type':'number'}, {'header':'PF', 'type':'number'}, {'header':'PTS', 'type':'number'}]
     const tableDataTeam = []
     const tableDataOpp = []

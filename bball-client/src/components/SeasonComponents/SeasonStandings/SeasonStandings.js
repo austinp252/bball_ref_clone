@@ -13,7 +13,7 @@ function SeasonStandings(props) {
 
   useEffect(() => {
     const fetchJSON = async () => {
-      console.log("fetching season data")
+      console.log("fetching season standings data")
       const res = await fetch(`/seasons/standings/${season}`);
       let json = await res.json();
       setData(json);
@@ -27,7 +27,6 @@ function SeasonStandings(props) {
       <div className="content">Loading...</div>
     )
   } else {
-    console.log(data);
     const headers1 = [{'header':'Eastern Conference', 'type':'empty'}, {'header':'W', 'type':'number'}, {'header':'L', 'type':'number'}, {'header':'W/L%', 'type':'number'}, {'header':'GB', 'type':'number'},{'header':'PPG', 'type':'number'}, {'header':'OPPG', 'type':'number'}]
     const headers2 = [{'header':'Western Conference', 'type':'empty'}, {'header':'W', 'type':'number'}, {'header':'L', 'type':'number'}, {'header':'W/L%', 'type':'number'}, {'header':'GB', 'type':'number'},{'header':'PPG', 'type':'number'}, {'header':'OPPG', 'type':'number'}]
     const tableData1 = []

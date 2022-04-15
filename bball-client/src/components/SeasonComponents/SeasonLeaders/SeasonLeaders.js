@@ -13,7 +13,7 @@ function SeasonLeaders(props) {
 
   useEffect(() => {
     const fetchJSON = async () => {
-      console.log("fetching season data")
+      console.log("fetching season leader data")
       const res = await fetch(`/seasons/leaders/${season}`);
       let json = await res.json();
       setData(json);
@@ -27,7 +27,6 @@ function SeasonLeaders(props) {
       <div className="content">Loading...</div>
     )
   } else {
-      console.log(data);
     return(
       <div className="leaders-content">
           <h3>League Leaders</h3>

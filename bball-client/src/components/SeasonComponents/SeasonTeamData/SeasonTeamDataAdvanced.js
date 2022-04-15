@@ -12,7 +12,7 @@ function SeasonTeamDataAdvanced(props) {
 
   useEffect(() => {
     const fetchJSON = async () => {
-      console.log("fetching season data")
+      console.log("fetching season team advanced data")
       const res = await fetch(`/seasons/teamstats/Advanced/PerGame/${season}`);
       let json = await res.json();
       setData(json);
@@ -26,7 +26,6 @@ function SeasonTeamDataAdvanced(props) {
       <div className="content">Loading...</div>
     )
   } else {
-      console.log(data);
       const headers = [{'header':'Rk', 'type':'number'}, {'header':'Team', 'type':'string'}, {'header':'W', 'type':'number'}, {'header':'L', 'type':'number'}, {'header':'ORtg', 'type':'number'}, {'header':'DRtg', 'type':'number'}, {'header':'NRtg', 'type':'number'}, {'header':'Pace', 'type':'number'}, {'header':'TS%', 'type':'number'}, {'header':'eFG%', 'type':'number'}, {'header':'AST%', 'type':'number'}, {'header':'TOV%', 'type':'number'}, {'header':'AST/TOV%', 'type':'number'}, {'header':'OREB%', 'type':'number'}, {'header':'DREB%', 'type':'number'}, {'header':'REB%', 'type':'number'}]
       const tableData = []
       data.data.forEach((team, index) => {

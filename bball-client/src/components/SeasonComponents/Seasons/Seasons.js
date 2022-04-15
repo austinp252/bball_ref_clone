@@ -27,7 +27,7 @@ function Seasons() {
   }
 
   useEffect(() => {
-    console.log("fetching season data")
+    console.log("rerendering season")
 }, [season]);
 
     return(
