@@ -12,17 +12,22 @@ function SeasonStandings(props) {
   const season = props.season;
 
   useEffect(() => {
-    console.log("fetching season data")
-    fetch(`/seasons/${season}`)
-    .then((res) => res.json())
-    .then((data) => setData(data));
-}, [season]);
+    const fetchJSON = async () => {
+      console.log("fetching season data")
+      const res = await fetch(`/seasons/standings/${season}`);
+      let json = await res.json();
+      setData(json);
+    };
+
+    fetchJSON();
+}, [props.season]);
 
   if(!data) {
     return(
       <div className="content">Loading...</div>
     )
   } else {
+    console.log(data);
     const headers1 = [{'header':'Eastern Conference', 'type':'empty'}, {'header':'W', 'type':'number'}, {'header':'L', 'type':'number'}, {'header':'W/L%', 'type':'number'}, {'header':'GB', 'type':'number'},{'header':'PPG', 'type':'number'}, {'header':'OPPG', 'type':'number'}]
     const headers2 = [{'header':'Western Conference', 'type':'empty'}, {'header':'W', 'type':'number'}, {'header':'L', 'type':'number'}, {'header':'W/L%', 'type':'number'}, {'header':'GB', 'type':'number'},{'header':'PPG', 'type':'number'}, {'header':'OPPG', 'type':'number'}]
     const tableData1 = []
@@ -53,8 +58,8 @@ function SeasonStandings(props) {
       <div className="standings-content">
         <h3>Conference Standings</h3>
         <div className="data-conference-container">
-          <SortableTable headers={headers2} tableData={tableData2}/>
-          <SortableTable headers={headers1} tableData={tableData1}/>
+          <SortableTable headers={headers2} tableData={tableData2} defaultIndex={1}/>
+          <SortableTable headers={headers1} tableData={tableData1} defaultIndex={1}/>
         </div>
         <h3>Division Standings</h3>
         <div className="data-division-container">

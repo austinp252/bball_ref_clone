@@ -12,6 +12,7 @@ function SortableTable(props) {
     const [tableData, setTableData] = useState(props.tableData);
     const [sortCategory, setSortCategory] = useState(-1);
     const [sortMethod, setSortMethod] = useState(true);
+    const defaultIndex = props.defaultIndex;
     const params = useParams();
     const downArrow = (
         <Fragment>
@@ -29,7 +30,7 @@ function SortableTable(props) {
             setSubHeadDiv(props.subHeadDiv);
         }
         setData(props.tableData);
-        setTableData(props.tableData);
+        setTableData(sortTable(props.tableData, defaultIndex, true));
     },[props.tableData]);
 
   return (
@@ -44,7 +45,7 @@ function SortableTable(props) {
                                         if(sortCategory === index) {
                                             if(!sortMethod) {
                                                 setSortCategory(-1);
-                                                setTableData(sortTable(data, 0, false));
+                                                setTableData(sortTable(data, defaultIndex, true));
                                             } else {
                                                 setSortMethod(!sortMethod);
                                                 setTableData(sortTable(data, sortCategory, !sortMethod));

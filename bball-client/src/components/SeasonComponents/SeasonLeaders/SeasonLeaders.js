@@ -20,7 +20,7 @@ function SeasonLeaders(props) {
     };
 
     fetchJSON();
-}, []);
+}, [props.season]);
 
   if(!data) {
     return(

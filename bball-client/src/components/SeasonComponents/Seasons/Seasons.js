@@ -6,6 +6,8 @@ import Dropdown from '../../widgets/Dropdown/Dropdown';
 import SortableTable from '../../widgets/SortableTable/SortableTable';
 import SeasonStandings from '../SeasonStandings/SeasonStandings';
 import SeasonLeaders from '../SeasonLeaders/SeasonLeaders';
+import SeasonTeamData from '../SeasonTeamData/SeasonTeamData';
+import SeasonTeamDataAdvanced from '../SeasonTeamData/SeasonTeamDataAdvanced';
 
 import {Link, useParams} from 'react-router-dom';
 
@@ -39,11 +41,15 @@ function Seasons() {
               <input type="submit" value="Submit"/>
             </form>
         </div>
+        <SeasonStandings season={season}/>
         <SeasonLeaders season={season}/>
+        <SeasonTeamData season={season} mode={'PerGame'} title={'Per Game'}/>
+        <SeasonTeamData season={season} mode={'Totals'} title={'Total'}/>
+        <SeasonTeamData season={season} mode={'Per100Possessions'} title={'Per 100 Possessions'}/>
+        <SeasonTeamDataAdvanced season={season} title={'Advanced'}/>
       </div>
     )
 }
 
 export default Seasons;
 
-{/* <SeasonStandings season={season}/> */}
