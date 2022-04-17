@@ -96,9 +96,9 @@ function PlayerBio() {
             <div className="regular-season show">
               {
                 showData == 'Regular Season' ?
-                <SortableTable headers = {headers} tableData = {tableData1}/>
+                <SortableTable headers = {headers} tableData = {tableData1} defaultIndex={0} defaultSort={false}/>
                 :
-                <SortableTable headers = {headers} tableData = {tableData2}/>
+                <SortableTable headers = {headers} tableData = {tableData2} defaultIndex={0} defaultSort={false}/>
               }
             </div>
           </div>

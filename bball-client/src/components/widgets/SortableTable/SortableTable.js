@@ -13,6 +13,7 @@ function SortableTable(props) {
     const [sortCategory, setSortCategory] = useState(-1);
     const [sortMethod, setSortMethod] = useState(true);
     const defaultIndex = props.defaultIndex;
+    const defaultSort = props.defaultSort;
     const showRank = props.showRank;
     const params = useParams();
     const downArrow = (
@@ -31,7 +32,7 @@ function SortableTable(props) {
             setSubHeadDiv(props.subHeadDiv);
         }
         setData(props.tableData);
-        setTableData(sortTable(props.tableData, defaultIndex, true));
+        setTableData(sortTable(props.tableData, defaultIndex, defaultSort));
     },[props.tableData]);
 
   return (
@@ -50,7 +51,7 @@ function SortableTable(props) {
                                         if(sortCategory === index) {
                                             if(!sortMethod) {
                                                 setSortCategory(-1);
-                                                setTableData(sortTable(data, defaultIndex, true));
+                                                setTableData(sortTable(data, defaultIndex, defaultSort));
                                             } else {
                                                 setSortMethod(!sortMethod);
                                                 setTableData(sortTable(data, sortCategory, !sortMethod));
@@ -72,7 +73,7 @@ function SortableTable(props) {
                                         if(sortCategory === index) {
                                             if(!sortMethod) {
                                                 setSortCategory(-1);
-                                                setTableData(sortTableLastname(data, 0, true));
+                                                setTableData(sortTableLastname(data, defaultIndex, defaultSort));
                                             } else {
                                                 setSortMethod(!sortMethod);
                                                 setTableData(sortTableLastname(data, sortCategory, !sortMethod));
@@ -94,7 +95,7 @@ function SortableTable(props) {
                                         if(sortCategory === index) {
                                             if(!sortMethod) {
                                                 setSortCategory(-1);
-                                                setTableData(sortTableDate(data, 0, false));
+                                                setTableData(sortTableDate(data, defaultIndex, defaultSort));
                                             } else {
                                                 setSortMethod(!sortMethod);
                                                 setTableData(sortTableDate(data, sortCategory, !sortMethod));

@@ -24,7 +24,7 @@ function TeamSeasonRoster() {
         )
     } else {
         const headersRoster = [{'header':'No.', 'type':'empty'}, {'header':'Player', 'type':'name'}, {'header':'Pos', 'type':'empty'}, {'header':'Ht', 'type':'empty'}, {'header':'Wt', 'type':'empty'}, {'header':'Birth Date', 'type':'empty'}, {'header':'Exp', 'type':'empty'}, {'header':'College', 'type':'empty'}];
-        const headersPER = [{'header':'Rk', 'type':'empty'}, {'header':'Player', 'type':'name'}, {'header':'Age', 'type':'empty'}, {'header':'G', 'type':'number'}, {'header':'GS', 'type':'empty'}, {'header':'MP', 'type':'number'}, {'header':'FG', 'type':'number'}, {'header':'FGA', 'type':'number'}, {'header':'FG%', 'type':'number'}, {'header':'3PM', 'type':'number'}, {'header':'3PA', 'type':'number'}, {'header':'3P%', 'type':'number'}, {'header':'FTM', 'type':'number'}, {'header':'FTA', 'type':'number'}, {'header':'FT%', 'type':'number'}, {'header':'OREB', 'type':'number'}, {'header':'DREB', 'type':'number'}, {'header':'REB', 'type':'number'}, {'header':'AST', 'type':'number'}, {'header':'STL', 'type':'number'}, {'header':'BLK', 'type':'number'}, {'header':'TOV', 'type':'number'}, {'header':'PF', 'type':'number'}, {'header':'PTS', 'type':'number'}];
+        const headersPER = [{'header':'Player', 'type':'name'}, {'header':'Age', 'type':'empty'}, {'header':'G', 'type':'number'}, {'header':'GS', 'type':'empty'}, {'header':'MP', 'type':'number'}, {'header':'FG', 'type':'number'}, {'header':'FGA', 'type':'number'}, {'header':'FG%', 'type':'number'}, {'header':'3PM', 'type':'number'}, {'header':'3PA', 'type':'number'}, {'header':'3P%', 'type':'number'}, {'header':'FTM', 'type':'number'}, {'header':'FTA', 'type':'number'}, {'header':'FT%', 'type':'number'}, {'header':'OREB', 'type':'number'}, {'header':'DREB', 'type':'number'}, {'header':'REB', 'type':'number'}, {'header':'AST', 'type':'number'}, {'header':'STL', 'type':'number'}, {'header':'BLK', 'type':'number'}, {'header':'TOV', 'type':'number'}, {'header':'PF', 'type':'number'}, {'header':'PTS', 'type':'number'}];
         const tableDataRoster = []
         const tableDataPER = []
         data.resultSets[1].rowSet.forEach((player) => {
@@ -41,7 +41,6 @@ function TeamSeasonRoster() {
         })
         data.resultSets[1].rowSet.forEach((player) => {
             const dataItem = [];
-            dataItem.push({'dataContent': '--', 'link': null});
             dataItem.push({'dataContent': player[2], 'link': `/players/${player[2].split(' ')[1][0]}/${player[1]}`});
             dataItem.push({'dataContent': '--', 'link': null});
             dataItem.push({'dataContent': player[4], 'link': null});
@@ -74,11 +73,11 @@ function TeamSeasonRoster() {
                 </div>
                 <div className="roster">
                     <h3>Roster</h3>
-                    <SortableTable headers={headersRoster} tableData={tableDataRoster}/>
+                    <SortableTable headers={headersRoster} tableData={tableDataRoster} defaultIndex={1} defaultSort={true}/>
                 </div>
                 <div className="perGame">
                     <h3>Per Game</h3>
-                    <SortableTable headers={headersPER} tableData={tableDataPER}/>
+                    <SortableTable headers={headersPER} tableData={tableDataPER} defaultIndex={22} defaultSort={true} showRank={true}/>
                 </div>
             </div>
         )

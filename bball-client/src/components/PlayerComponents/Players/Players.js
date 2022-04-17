@@ -75,7 +75,7 @@ function Players() {
           </div>
           <div className="date-table">
             {
-              <SortableTable headers={headers} tableData={tableData}/>
+              <SortableTable headers={headers} tableData={tableData} defaultIndex={0}/>
             }
           </div>
       </div>

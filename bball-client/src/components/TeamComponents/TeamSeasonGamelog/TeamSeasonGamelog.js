@@ -49,7 +49,7 @@ function TeamSeasonGamelog() {
                     <TeamSeasonBasicInfo textName="Gamelog"/>
                 </div>
                 <div className="games">
-                    <SortableTable headers={headers} tableData={tableData} subHeadDiv={20}/>
+                    <SortableTable headers={headers} tableData={tableData} subHeadDiv={20} defaultIndex={0}/>
                 </div>
             </div>
         )

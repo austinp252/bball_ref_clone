@@ -45,7 +45,7 @@ function FranchiseBio() {
         </div>
         <div className="dataShow">
           <h1>Last {data.stats.data.length} NBA Seasons</h1>
-          <SortableTable headers={headers} tableData={tableData}/>
+          <SortableTable headers={headers} tableData={tableData} defaultIndex={0} defaultSort={true}/>
         </div>
       </div>
     )
