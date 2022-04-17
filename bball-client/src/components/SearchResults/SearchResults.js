@@ -41,7 +41,7 @@ function SearchResults() {
                             data.playerData.map((player) => {
                                 return(
                                     <div className="infoCard">
-                                        <h4><Link to={`/players/${player.last_name[0]}/${player.id}`}>{player.full_name}</Link></h4>
+                                        <h4><Link to={`/players/${player.last_name[0]}/${player.id}/overview`}>{player.full_name}</Link></h4>
                                         <h6>{`/players/${player.last_name[0]}/${player.id}`}</h6>
                                         <h6>{player.is_active ? "Active" : "Inactive"}</h6>
                                     </div>

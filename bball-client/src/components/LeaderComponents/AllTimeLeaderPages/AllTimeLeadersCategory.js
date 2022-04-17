@@ -65,7 +65,7 @@ function AllTimeLeadersCategory(props) {
                                 <Fragment>
                                   <tr>
                                       <td>{player[3]}</td>
-                                      <td><Link to={`/players/${getInitial(player[1])}/${player[0]}`}>{player[1]}</Link></td>
+                                      <td><Link to={`/players/${getInitial(player[1])}/${player[0]}/overview`}>{player[1]}</Link></td>
                                       <td>{player[2]}</td>
                                   </tr>
                                   {

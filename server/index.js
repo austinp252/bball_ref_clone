@@ -52,7 +52,7 @@ app.get('/players/:letter', (req, res) => {
 });
 
 //get info for specific player by id
-app.get('/players/:letter/:id', (req, res) => {
+app.get('/players/:letter/:id/', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getPlayerBasicInfo.py', req.params.id]);
   python.stdout.on('data', (data) => {

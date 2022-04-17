@@ -3,6 +3,8 @@ import teamRouter from '../../widgets/Helpers/teamRouter';
 
 import PlayerBasicInfo from '../PlayerBasicInfo/PlayerBasicInfo';
 import PlayerSplitsCareer from '../PlayerSplits/PlayerSplitsCareer';
+import PlayerStatsSeason from '../PlayerGameLogs/PlayerGameLogs';
+import PlayerPageSelectors from '../PlayerPageSelectors/PlayerPageSelectors';
 
 import {Link, useParams} from 'react-router-dom';
 
@@ -11,20 +13,33 @@ function PlayerPage() {
   const params = useParams();
   const lastInitial = params.letter;
   const playerID = params.id;
+  const mode = params.mode;
 
 
   useEffect(() => {
     console.log("rendering player front page")
-}, []);
+}, [params.id]);
 
     return(
         <div className="content">
           <PlayerBasicInfo lastInitial={lastInitial} playerID={playerID}/>
+          <PlayerPageSelectors lastInitial={lastInitial} playerID={playerID} mode={mode}/>
           <br />
           <hr />
-          <PlayerSplitsCareer lastInitial={lastInitial} playerID={playerID} perMode={'PerGame'} title={'Per Game'}/>
-          <PlayerSplitsCareer lastInitial={lastInitial} playerID={playerID} perMode={'Totals'} title={'Totals'}/>
-          <PlayerSplitsCareer lastInitial={lastInitial} playerID={playerID} perMode={'Per36'} title={'Per 36 Minutes'}/>
+          {
+            mode==='overview' &&
+            <div className="page-contents">
+              <PlayerSplitsCareer lastInitial={lastInitial} playerID={playerID} perMode={'PerGame'} title={'Per Game'}/>
+              <PlayerSplitsCareer lastInitial={lastInitial} playerID={playerID} perMode={'Totals'} title={'Totals'}/>
+              <PlayerSplitsCareer lastInitial={lastInitial} playerID={playerID} perMode={'Per36'} title={'Per 36 Minutes'}/>
+            </div>
+          }
+          {
+            mode==='gamelog' &&
+            <div className="page-contents">
+              <PlayerStatsSeason/>
+            </div>
+          }
         </div>
       )
 }

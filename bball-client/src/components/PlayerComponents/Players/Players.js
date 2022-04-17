@@ -27,7 +27,7 @@ function Players() {
     const tableData = []
     data.forEach((player) => {
       const dataItem = [];
-      dataItem.push({'dataContent': player.full_name, 'link': `/players/${index}/${player.id}`});
+      dataItem.push({'dataContent': player.full_name, 'link': `/players/${index}/${player.id}/overview`});
       dataItem.push({'dataContent': 'N/A', 'link':null});
       dataItem.push({'dataContent': 'N/A', 'link':null});
       dataItem.push({'dataContent': 'N/A', 'link':null});

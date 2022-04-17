@@ -1,0 +1,17 @@
+.info-selectors button {
+    cursor: pointer;
+    background-color: rgb(223, 223, 223);
+    margin: 1px;
+    border: 1px solid rgb(58, 58, 58);
+    border-radius: 2px;
+    padding: 10px 5px;
+}
+
+.info-selectors button.active {
+    background-color: #8f5400;
+    color: #fff;
+    margin: 1px;
+    border: 1px solid rgb(58, 58, 58);
+    border-radius: 2px;
+    padding: 10px 5px;
+}

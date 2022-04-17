@@ -117,14 +117,7 @@ function PlayerBio(props) {
               </tbody>
             </table>
           </div>
-          <div className="info-selectors">
-            <br />
-            <Link to={`/players/${lastInitial}/${playerID}`}><button>Overview</button></Link>
-            <button>Game Logs</button>
-            <button>Splits</button>
-            <button>More</button>
-            </div>
-          </div>
+        </div>
       )
   }
 }

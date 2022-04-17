@@ -4,6 +4,7 @@ import './TeamSeasonRoster.css';
 import TeamSeasonBasicInfo from '../TeamSeasonBasicInfo/TeamSeasonBasicInfo';
 
 import SortableTable from '../../widgets/SortableTable/SortableTable';
+import getInitial from '../../widgets/Helpers/getInitial';
 
 import {Link, useParams} from 'react-router-dom';
 
@@ -30,7 +31,7 @@ function TeamSeasonRoster() {
         data.resultSets[1].rowSet.forEach((player) => {
             const dataItem = [];
             dataItem.push({'dataContent': '--', 'link': null});
-            dataItem.push({'dataContent': player[2], 'link': `/players/${player[2].split(' ')[1][0]}/${player[1]}`});
+            dataItem.push({'dataContent': player[2], 'link': `/players/${getInitial(player[2])}/${player[1]}/overview`});
             dataItem.push({'dataContent': '--', 'link': null});
             dataItem.push({'dataContent': '--', 'link': null});
             dataItem.push({'dataContent': '--', 'link': null});
@@ -41,7 +42,7 @@ function TeamSeasonRoster() {
         })
         data.resultSets[1].rowSet.forEach((player) => {
             const dataItem = [];
-            dataItem.push({'dataContent': player[2], 'link': `/players/${player[2].split(' ')[1][0]}/${player[1]}`});
+            dataItem.push({'dataContent': player[2], 'link': `/players/${getInitial(player[2])}/${player[1]}`});
             dataItem.push({'dataContent': '--', 'link': null});
             dataItem.push({'dataContent': player[4], 'link': null});
             dataItem.push({'dataContent': '--', 'link': null});

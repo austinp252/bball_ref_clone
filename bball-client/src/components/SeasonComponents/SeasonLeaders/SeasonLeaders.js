@@ -44,7 +44,7 @@ function SeasonLeaders(props) {
                             return(
                               <tr>
                                 <td>{index+1}</td>
-                                <td><Link to={`/players/${getInitial(leader[1])}/${leader[0]}`}>{leader[1]}</Link></td>
+                                <td><Link to={`/players/${getInitial(leader[1])}/${leader[0]}/overview`}>{leader[1]}</Link></td>
                                 <td>{leader[2]}</td>
                                 <td>{leader[3]}</td>
                               </tr>

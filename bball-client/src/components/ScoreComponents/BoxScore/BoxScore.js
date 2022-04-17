@@ -4,6 +4,7 @@ import './BoxScore.css';
 import teamRouter from '../../widgets/Helpers/teamRouter';
 
 import {Link, useParams} from 'react-router-dom';
+import getInitial from '../../widgets/Helpers/getInitial';
 
 function BoxScore() {
     const [data, setData] = useState(null);
@@ -157,7 +158,7 @@ function BoxScore() {
                                                         return(
                                                             <Fragment>
                                                                 <tr>
-                                                                    <td><Link to={`/players/${player[5].split(' ')[1][0]}/${player[4]}`}>{player[5]}</Link></td>
+                                                                    <td><Link to={`/players/${getInitial(player[5])}/${player[4]}/overview`}>{player[5]}</Link></td>
                                                                     <td>{player[9]}</td>
                                                                     <td>{player[10]}</td>
                                                                     <td>{player[11]}</td>

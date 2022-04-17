@@ -69,46 +69,46 @@ function CurrentSeasonLeaders(props) {
                 </div>
                 <div className="data-block">
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[0][2].split(' ')[1][0]}/${data.data[0][0]}`}>{data.data[0][2]}</Link> {data.data[0][3]} {data.data[0][4]}</span>
+                    <span className='data'><Link to={`/players/${data.data[0][2].split(' ')[1][0]}/${data.data[0][0]}/overview`}>{data.data[0][2]}</Link> {data.data[0][3]} {data.data[0][4]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[1][2].split(' ')[1][0]}/${data.data[1][0]}`}>{data.data[1][2]}</Link> {data.data[1][3]} {data.data[1][5]}</span>
+                    <span className='data'><Link to={`/players/${data.data[1][2].split(' ')[1][0]}/${data.data[1][0]}/overview`}>{data.data[1][2]}</Link> {data.data[1][3]} {data.data[1][5]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[2][2].split(' ')[1][0]}/${data.data[2][0]}`}>{data.data[2][2]}</Link> {data.data[2][3]} {data.data[2][6]}</span>
+                    <span className='data'><Link to={`/players/${data.data[2][2].split(' ')[1][0]}/${data.data[2][0]}/overview`}>{data.data[2][2]}</Link> {data.data[2][3]} {data.data[2][6]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[3][2].split(' ')[1][0]}/${data.data[3][0]}`}>{data.data[3][2]}</Link> {data.data[3][3]} {data.data[3][7]}</span>
+                    <span className='data'><Link to={`/players/${data.data[3][2].split(' ')[1][0]}/${data.data[3][0]}/overview`}>{data.data[3][2]}</Link> {data.data[3][3]} {data.data[3][7]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[4][2].split(' ')[1][0]}/${data.data[4][0]}`}>{data.data[4][2]}</Link> {data.data[4][3]} {data.data[4][9]}</span>
+                    <span className='data'><Link to={`/players/${data.data[4][2].split(' ')[1][0]}/${data.data[4][0]}/overview`}>{data.data[4][2]}</Link> {data.data[4][3]} {data.data[4][9]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[5][2].split(' ')[1][0]}/${data.data[5][0]}`}>{data.data[5][2]}</Link> {data.data[5][3]} {data.data[5][4]}</span>
+                    <span className='data'><Link to={`/players/${data.data[5][2].split(' ')[1][0]}/${data.data[5][0]}/overview`}>{data.data[5][2]}</Link> {data.data[5][3]} {data.data[5][4]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[6][2].split(' ')[1][0]}/${data.data[6][0]}`}>{data.data[6][2]}</Link> {data.data[6][3]} {data.data[6][12]}</span>
+                    <span className='data'><Link to={`/players/${data.data[6][2].split(' ')[1][0]}/${data.data[6][0]}/overview`}>{data.data[6][2]}</Link> {data.data[6][3]} {data.data[6][12]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[7][2].split(' ')[1][0]}/${data.data[7][0]}`}>{data.data[7][2]}</Link> {data.data[7][3]} {data.data[7][13]}</span>
+                    <span className='data'><Link to={`/players/${data.data[7][2].split(' ')[1][0]}/${data.data[7][0]}/overview`}>{data.data[7][2]}</Link> {data.data[7][3]} {data.data[7][13]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[8][2].split(' ')[1][0]}/${data.data[8][0]}`}>{data.data[8][2]}</Link> {data.data[8][3]} {data.data[8][13]}</span>
+                    <span className='data'><Link to={`/players/${data.data[8][2].split(' ')[1][0]}/${data.data[8][0]}/overview`}>{data.data[8][2]}</Link> {data.data[8][3]} {data.data[8][13]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[9][2].split(' ')[1][0]}/${data.data[9][0]}`}>{data.data[9][2]}</Link> {data.data[9][3]} {data.data[9][15]}</span>
+                    <span className='data'><Link to={`/players/${data.data[9][2].split(' ')[1][0]}/${data.data[9][0]}/overview`}>{data.data[9][2]}</Link> {data.data[9][3]} {data.data[9][15]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[10][2].split(' ')[1][0]}/${data.data[10][0]}`}>{data.data[10][2]}</Link> {data.data[10][3]} {data.data[10][16]}</span>
+                    <span className='data'><Link to={`/players/${data.data[10][2].split(' ')[1][0]}/${data.data[10][0]}/overview`}>{data.data[10][2]}</Link> {data.data[10][3]} {data.data[10][16]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[11][2].split(' ')[1][0]}/${data.data[11][0]}`}>{data.data[11][2]}</Link> {data.data[11][3]} {data.data[11][17]}</span>
+                    <span className='data'><Link to={`/players/${data.data[11][2].split(' ')[1][0]}/${data.data[11][0]}/overview`}>{data.data[11][2]}</Link> {data.data[11][3]} {data.data[11][17]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[12][2].split(' ')[1][0]}/${data.data[12][0]}`}>{data.data[12][2]}</Link> {data.data[12][3]} {data.data[12][18]}</span>
+                    <span className='data'><Link to={`/players/${data.data[12][2].split(' ')[1][0]}/${data.data[12][0]}/overview`}>{data.data[12][2]}</Link> {data.data[12][3]} {data.data[12][18]}</span>
                 </div>
                 <div className="data-item">
-                    <span className='data'><Link to={`/players/${data.data[13][2].split(' ')[1][0]}/${data.data[13][0]}`}>{data.data[13][2]}</Link> {data.data[13][3]} {data.data[13][19]}</span>
+                    <span className='data'><Link to={`/players/${data.data[13][2].split(' ')[1][0]}/${data.data[13][0]}/overview`}>{data.data[13][2]}</Link> {data.data[13][3]} {data.data[13][19]}</span>
                 </div>
                 </div>
             </div>
