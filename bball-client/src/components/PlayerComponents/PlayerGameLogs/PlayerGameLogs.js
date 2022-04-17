@@ -90,7 +90,7 @@ function PlayerStatsSeason() {
       });
     return(
         <div className="content">
-            <PlayerBasicInfo/>
+            <PlayerBasicInfo lastInitial={params.letter} playerID={params.id}/>
             <div className="dataShow">
                 <div className="regular-season">
                     <h2>{params.season} Regular Season</h2>

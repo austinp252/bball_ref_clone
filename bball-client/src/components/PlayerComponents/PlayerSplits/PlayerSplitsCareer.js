@@ -1,20 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import './PlayerBio.css';
 import teamRouter from '../../widgets/Helpers/teamRouter';
 
-import PlayerBasicInfo from '../PlayerBasicInfo/PlayerBasicInfo';
 import SortableTable from '../../widgets/SortableTable/SortableTable';
 
 import {Link, useParams} from 'react-router-dom';
 
-function PlayerBio() {
+function PlayerSplitsCareer(props) {
   const [data, setData] = useState(null);
   const [showData, setShowData] = useState('Regular Season')
-  const params = useParams();
+  const lastInitial = props.lastInitial;
+  const playerID = props.playerID;
+  const perMode = props.perMode;
+  const title = props.title;
 
   useEffect(() => {
     console.log("fetching player career stats")
-    fetch(`/players/${params.letter}/${params.id}/stats`)
+    fetch(`/players/${lastInitial}/${playerID}/${perMode}/splits`)
     .then((res) => res.json())
     .then((data) => setData(data));
 }, []);
@@ -29,7 +30,7 @@ function PlayerBio() {
     const tableData2 = []
     data.resultSets[0].rowSet.forEach((season) => {
       const dataItem = [];
-      dataItem.push({'dataContent': season[1], 'link': `/players/${params.letter}/${params.id}/gamelog/${season[1]}`});
+      dataItem.push({'dataContent': season[1], 'link': `/players/${lastInitial}/${playerID}/gamelog/${season[1]}`});
       dataItem.push({'dataContent': season[5], 'link': null});
       dataItem.push({'dataContent': season[4], 'link': `/teams/${teamRouter(season[4])}/${season[1]}`});
       dataItem.push({'dataContent': 'NBA', 'link': null});
@@ -58,7 +59,7 @@ function PlayerBio() {
     });
     data.resultSets[2].rowSet.forEach((season) => {
       const dataItem = [];
-      dataItem.push({'dataContent': season[1], 'link': `/players/${params.letter}/${params.id}/gamelog/${season[1]}`});
+      dataItem.push({'dataContent': season[1], 'link': `/players/${lastInitial}/${playerID}/gamelog/${season[1]}`});
       dataItem.push({'dataContent': season[5], 'link': null});
       dataItem.push({'dataContent': season[4], 'link': `/teams/${teamRouter(season[4])}/${season[1]}`});
       dataItem.push({'dataContent': 'NBA', 'link': null});
@@ -87,7 +88,7 @@ function PlayerBio() {
     });
     return(
         <div className="content">
-          <PlayerBasicInfo/>
+            <h3>{title}</h3>
           <div className="data-selectors">
             <button onClick={() => setShowData('Regular Season')}>Regular Season</button>
             <button onClick={() => setShowData('Playoffs')}>Playoffs</button>
@@ -96,9 +97,9 @@ function PlayerBio() {
             <div className="regular-season show">
               {
                 showData == 'Regular Season' ?
-                <SortableTable headers = {headers} tableData = {tableData1} defaultIndex={0} defaultSort={false}/>
+                <SortableTable headers = {headers} tableData = {tableData1} defaultIndex={0}/>
                 :
-                <SortableTable headers = {headers} tableData = {tableData2} defaultIndex={0} defaultSort={false}/>
+                <SortableTable headers = {headers} tableData = {tableData2} defaultIndex={0}/>
               }
             </div>
           </div>
@@ -107,4 +108,4 @@ function PlayerBio() {
     }
 }
 
-export default PlayerBio;
+export default PlayerSplitsCareer;

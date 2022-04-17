@@ -68,9 +68,9 @@ app.get('/players/:letter/:id', (req, res) => {
   })
 });
 
-app.get('/players/:letter/:id/stats', (req, res) => {
+app.get('/players/:letter/:id/:perMode/splits', (req, res) => {
   var dataToSend;
-  const python = spawn('python', ['server/apiScripts/getPlayerCareerStats.py', req.params.id]);
+  const python = spawn('python', ['server/apiScripts/getPlayerCareerStats.py', req.params.id, req.params.perMode]);
   python.stdout.on('data', (data) => {
     console.log('Pipe data from python script ...');
     dataToSend = data.toString();
