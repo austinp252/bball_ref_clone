@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import teamRouter from '../../widgets/Helpers/teamRouter';
-
-import Dropdown from '../../widgets/Dropdown/Dropdown';
 
 import SortableTable from '../../widgets/SortableTable/SortableTable';
 
 import {Link, useParams} from 'react-router-dom';
+
+import "./SeasonStandings.css"
 
 function SeasonStandings(props) {
   const [data, setData] = useState(null);

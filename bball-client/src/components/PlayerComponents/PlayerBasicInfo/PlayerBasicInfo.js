@@ -106,14 +106,27 @@ function PlayerBio(props) {
               <tbody>
                 <tr>
                   <td>Career</td>
-                  <td>{data.summary.data[0][3]}</td>
-                  <td>{data.summary.data[0][23]}</td>
-                  <td>{data.summary.data[0][17]}</td>
-                  <td>{data.summary.data[0][18]}</td>
-                  <td>{data.summary.data[0][8]}</td>
-                  <td>{data.summary.data[0][11]}</td>
-                  <td>{data.summary.data[0][14]}</td>
+                  <td>{data.summary[0].career.data[0][3]}</td>
+                  <td>{data.summary[0].career.data[0][23]}</td>
+                  <td>{data.summary[0].career.data[0][17]}</td>
+                  <td>{data.summary[0].career.data[0][18]}</td>
+                  <td>{data.summary[0].career.data[0][8]}</td>
+                  <td>{data.summary[0].career.data[0][11]}</td>
+                  <td>{data.summary[0].career.data[0][14]}</td>
                 </tr>
+                {
+                  data.summary[1].season &&
+                  <tr>
+                    <td>{data.summary[1].season.data[0][1]}</td>
+                    <td>{data.summary[1].season.data[0][5]}</td>
+                    <td>{data.summary[1].season.data[0][29]}</td>
+                    <td>{data.summary[1].season.data[0][21]}</td>
+                    <td>{data.summary[1].season.data[0][22]}</td>
+                    <td>{data.summary[1].season.data[0][12]}</td>
+                    <td>{data.summary[1].season.data[0][15]}</td>
+                    <td>{data.summary[1].season.data[0][18]}</td>
+                  </tr>
+                }
               </tbody>
             </table>
           </div>
