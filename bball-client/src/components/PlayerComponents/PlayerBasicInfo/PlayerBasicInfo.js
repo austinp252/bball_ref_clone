@@ -17,14 +17,11 @@ function PlayerBio(props) {
   }, []); //props?
 
   if(!data) {
-    console.log('loading');
+    console.log('rendering basic info');
     return(
       <p>Loading...</p>
     )
   } else {
-    //setPlayerInfo(data.basic.playerInfo);
-    console.log('rendering basic info');
-    console.log(data);
     const date = new Date(data.basic.data[0][7])
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
       return(
