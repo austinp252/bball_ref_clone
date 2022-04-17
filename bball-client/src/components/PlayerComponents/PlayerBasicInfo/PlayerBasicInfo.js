@@ -1,19 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import './PlayerBasicInfo.css';
 
-import {Link, useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-function PlayerBio() {
+function PlayerBio(props) {
   const [data, setData] = useState(null);
-  const params = useParams();
+  const lastInitial = props.lastInitial;
+  const playerID = props.playerID;
 
   //console.log(`/players/:${params.letter}/:${params.id}`);
   useEffect(() => {
     console.log("fetching player bio info")
-    fetch(`/players/${params.letter}/${params.id}`)
+    fetch(`/players/${lastInitial}/${playerID}`)
     .then((res) => res.json())
     .then((data) => setData(data));
-  }, []);
+  }, []); //props?
 
   if(!data) {
     console.log('loading');
@@ -27,7 +28,7 @@ function PlayerBio() {
       return(
         <div>
           <div className="bio-content">
-          <img className="player-img"src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${params.id}.png`} alt="" />
+          <img className="player-img"src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${playerID}.png`} alt="" />
             <div className="bio-info">
                 <h1>{data.data[0][3]}</h1>
                 <span className="info-container">
@@ -61,7 +62,7 @@ function PlayerBio() {
             </div>
           </div>
           <div className="info-selectors">
-                <Link to={`/players/${params.letter}/${params.id}`}><button>Overview</button></Link>
+                <Link to={`/players/${lastInitial}/${playerID}`}><button>Overview</button></Link>
                 <button>Game Logs</button>
                 <button>Splits</button>
                 <button>More</button>

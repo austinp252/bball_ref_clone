@@ -27,7 +27,7 @@ function Seasons() {
   }
 
   useEffect(() => {
-    console.log("rerendering season")
+    console.log("rerendering season front page")
 }, [season]);
 
     return(

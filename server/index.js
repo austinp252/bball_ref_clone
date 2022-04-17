@@ -255,7 +255,6 @@ app.get('/seasons/leaders/:season', (req, res) => {
     console.log('running')
     console.log('Pipe data from python script ...');
     dataToSend = data.toString();
-    console.log(dataToSend);
     dataToSend = JSON.parse(dataToSend);
     return;
   });

@@ -7,7 +7,7 @@ import Home from './components/HomeComponents/Home/Home';
 import SearchResults from './components/SearchResults/SearchResults';
 import Players from './components/PlayerComponents/Players/Players';
 import PlayerGameLogs from './components/PlayerComponents/PlayerGameLogs/PlayerGameLogs';
-import PlayerBio from './components/PlayerComponents/PlayerBio/PlayerBio';
+import PlayerPage from './components/PlayerComponents/PlayerPage/PlayerPage';
 import TeamsIndex from './components/TeamComponents/TeamsIndex/TeamsIndex';
 import FranchiseBio from './components/TeamComponents/FranchiseBio/FranchiseBio';
 import TeamSeasonRoster from './components/TeamComponents/TeamSeasonRoster/TeamSeasonRoster';
@@ -38,7 +38,7 @@ function App() {
                 <Route exact path='/' element = {<Home/>}/>
                 <Route exact path='/search/:term/:page' element = {<SearchResults/>}/>
                 <Route exact path='/players' element = {<Players/>}/>
-                <Route exact path='/players/:letter/:id' element = {<PlayerBio/>}/>
+                <Route exact path='/players/:letter/:id' element = {<PlayerPage/>}/>
                 <Route exact path='/players/:letter/:id/gamelog/:season' element = {<PlayerGameLogs/>}/>
                 <Route exact path='/teams' element = {<TeamsIndex/>}/>
                 <Route exact path='/teams/:id' element = {<FranchiseBio/>}/>

@@ -57,8 +57,8 @@ function SeasonStandings(props) {
       <div className="standings-content">
         <h3>Conference Standings</h3>
         <div className="data-conference-container">
-          <SortableTable headers={headers2} tableData={tableData2} defaultIndex={1}/>
-          <SortableTable headers={headers1} tableData={tableData1} defaultIndex={1}/>
+          <SortableTable headers={headers2} tableData={tableData2} defaultIndex={1} defaultSort={true}/>
+          <SortableTable headers={headers1} tableData={tableData1} defaultIndex={1} defaultSort={true}/>
         </div>
         <h3>Division Standings</h3>
         <div className="data-division-container">
@@ -181,6 +181,7 @@ function SeasonStandings(props) {
                       return(
                         <tr>
                          <td><Link to={`/teams/${data.east[teamIndex][2]}/${season}`}>{data.east[teamIndex][3] + ' ' + data.east[teamIndex][4]  + ' (' + data.east[teamIndex][8] + ')'}</Link></td>
+                          <td>{data.east[teamIndex][13]}</td>
                           <td>{data.east[teamIndex][14]}</td>
                           <td>{data.east[teamIndex][15]}</td>
                           <td>{data.east[teamIndex][38]}</td>
