@@ -5,6 +5,8 @@ import SortableTable from '../../widgets/SortableTable/SortableTable';
 
 import {Link, useParams} from 'react-router-dom';
 
+import './PlayerSplitsCareer.css'
+
 function PlayerSplitsCareer(props) {
   const [data, setData] = useState(null);
   const [showData, setShowData] = useState('Regular Season')
@@ -87,11 +89,11 @@ function PlayerSplitsCareer(props) {
       tableData2.push(dataItem);
     });
     return(
-        <div className="content">
-            <h3>{title}</h3>
+        <div className="stat-table">
+            <h3 className="table-header">{title}</h3>
           <div className="data-selectors">
-            <button onClick={() => setShowData('Regular Season')}>Regular Season</button>
-            <button onClick={() => setShowData('Playoffs')}>Playoffs</button>
+            <button className={showData==='Regular Season' ? 'active' : ''} onClick={() => setShowData('Regular Season')}>Regular Season</button>
+            <button className={showData==='Playoffs' ? 'active' : ''} onClick={() => setShowData('Playoffs')}>Playoffs</button>
           </div>
           <div className="dataShow">
             <div className="regular-season show">

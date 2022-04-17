@@ -25,6 +25,8 @@ function PlayerBio(props) {
     //setPlayerInfo(data.basic.playerInfo);
     console.log('rendering basic info');
     console.log(data);
+    const date = new Date(data.basic.data[0][7])
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
       return(
         <div>
           <div className="bio-content">
@@ -45,7 +47,7 @@ function PlayerBio(props) {
                 </span>
                 <span className="info-container">
                   <p className="info-header">Born:</p>
-                  <p className="info-content">{data.basic.data[0][7]} in {data.basic.data[0][9]}</p>
+                  <p className="info-content">{months[date.getMonth()]} {date.getDate()}, {date.getFullYear()} in {data.basic.data[0][9]}</p>
                 </span>
                 <span className="info-container">
                   <p className="info-header">College:</p>
@@ -87,13 +89,42 @@ function PlayerBio(props) {
                     }
           </div>
           </div>
+          <div className="stat-summary">
+            <table>
+              <thead>
+                <tr>
+                  <th>SUMMARY</th>
+                  <th>G</th>
+                  <th>PTS</th>
+                  <th>REB</th>
+                  <th>AST</th>
+                  <th>FG%</th>
+                  <th>FG3%</th>
+                  <th>FT%</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Career</td>
+                  <td>{data.summary.data[0][3]}</td>
+                  <td>{data.summary.data[0][23]}</td>
+                  <td>{data.summary.data[0][17]}</td>
+                  <td>{data.summary.data[0][18]}</td>
+                  <td>{data.summary.data[0][8]}</td>
+                  <td>{data.summary.data[0][11]}</td>
+                  <td>{data.summary.data[0][14]}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div className="info-selectors">
-                <Link to={`/players/${lastInitial}/${playerID}`}><button>Overview</button></Link>
-                <button>Game Logs</button>
-                <button>Splits</button>
-                <button>More</button>
+            <br />
+            <Link to={`/players/${lastInitial}/${playerID}`}><button>Overview</button></Link>
+            <button>Game Logs</button>
+            <button>Splits</button>
+            <button>More</button>
             </div>
-        </div>
+          </div>
       )
   }
 }

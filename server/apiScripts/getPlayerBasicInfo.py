@@ -2,7 +2,7 @@ import sys
 import json
 
 
-from nba_api.stats.endpoints import commonplayerinfo, playerawards
+from nba_api.stats.endpoints import commonplayerinfo, playerawards, playerprofilev2
 
 playerID = sys.argv[1]
 playerBasics = commonplayerinfo.CommonPlayerInfo(
@@ -39,8 +39,12 @@ def filterAwards(data):
     return awards
 
 
+careerData = playerprofilev2.PlayerProfileV2(
+    player_id=playerID, per_mode36='PerGame').career_totals_regular_season.get_dict()
+
+
 awards = filterAwards(playerAwards)
 
-data = {"basic": playerBasics, "awards": awards}
+data = {"basic": playerBasics, "awards": awards, "summary": careerData}
 
 print(json.dumps(data), end='')

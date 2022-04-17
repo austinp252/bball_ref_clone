@@ -20,7 +20,8 @@ function PlayerPage() {
     return(
         <div className="content">
           <PlayerBasicInfo lastInitial={lastInitial} playerID={playerID}/>
-          <h3>Career Splits</h3>
+          <br />
+          <hr />
           <PlayerSplitsCareer lastInitial={lastInitial} playerID={playerID} perMode={'PerGame'} title={'Per Game'}/>
           <PlayerSplitsCareer lastInitial={lastInitial} playerID={playerID} perMode={'Totals'} title={'Totals'}/>
           <PlayerSplitsCareer lastInitial={lastInitial} playerID={playerID} perMode={'Per36'} title={'Per 36 Minutes'}/>

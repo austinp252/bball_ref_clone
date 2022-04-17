@@ -26,6 +26,7 @@ td.active {
 
 th {
   color: #900;
+  background-color: rgb(223, 223, 223);
 }
 
 table,
@@ -50,6 +51,24 @@ td.active {
   background-color: #ffa;
 }
 
+.data-selectors button{
+  background-color: rgb(223, 223, 223);
+  color: #900;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid rgb(58, 58, 58);
+  height: 40px;
+}
+
+.data-selectors button.active{
+  background-color: #8f5400;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid rgb(58, 58, 58);
+  height: 40px;
+}
+
 .info {
   display: flex;
 }
@@ -71,4 +90,11 @@ img {
 
 .info-selectors {
   margin: 10px 0;
+}
+
+.table-header {
+  color: #8f5400;
+  font-weight: bolder;
+  font-size: 30px;
+  margin: 30px 0 10px 0;
 }
