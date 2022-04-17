@@ -13,6 +13,7 @@ function SortableTable(props) {
     const [sortCategory, setSortCategory] = useState(-1);
     const [sortMethod, setSortMethod] = useState(true);
     const defaultIndex = props.defaultIndex;
+    const showRank = props.showRank;
     const params = useParams();
     const downArrow = (
         <Fragment>
@@ -37,6 +38,10 @@ function SortableTable(props) {
         <table>
             <thead>
                 <tr>
+                    {
+                        showRank &&
+                        <th>Rk</th>
+                    }
                     {
                         props.headers.map((header, index) => {
                             if(header.type === 'number' || header.type === 'string') {
@@ -122,6 +127,10 @@ function SortableTable(props) {
                         return(
                             <Fragment>
                                 <tr>
+                                    {
+                                        showRank &&
+                                        <td>{index+1}</td>
+                                    }
                                     {
                                         dataRow.map((dataItem, colIndex) => {
                                             if(!dataItem.link) {

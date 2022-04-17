@@ -28,12 +28,13 @@ function SeasonTeamData(props) {
       <div className="content">Loading...</div>
     )
   } else {
-    const headers = [{'header':'Rk', 'type':'number'}, {'header':'Team', 'type':'string'}, {'header':'G', 'type':'number'}, {'header':'MP', 'type':'number'}, {'header':'FG', 'type':'number'}, {'header':'FGA', 'type':'number'}, {'header':'FG%', 'type':'number'}, {'header':'3P', 'type':'number'}, {'header':'3PA', 'type':'number'}, {'header':'3P%', 'type':'number'}, {'header':'FT', 'type':'number'}, {'header':'FTA', 'type':'number'}, {'header':'FT%', 'type':'number'}, {'header':'ORB', 'type':'number'}, {'header':'DRB', 'type':'number'}, {'header':'TRB', 'type':'number'}, {'header':'AST', 'type':'number'}, {'header':'STL', 'type':'number'}, {'header':'BLK', 'type':'number'}, {'header':'TOV', 'type':'number'}, {'header':'PF', 'type':'number'}, {'header':'PTS', 'type':'number'}]
+    //const headers = [{'header':'Rk', 'type':'empty'}, {'header':'Team', 'type':'string'}, {'header':'G', 'type':'number'}, {'header':'MP', 'type':'number'}, {'header':'FG', 'type':'number'}, {'header':'FGA', 'type':'number'}, {'header':'FG%', 'type':'number'}, {'header':'3P', 'type':'number'}, {'header':'3PA', 'type':'number'}, {'header':'3P%', 'type':'number'}, {'header':'FT', 'type':'number'}, {'header':'FTA', 'type':'number'}, {'header':'FT%', 'type':'number'}, {'header':'ORB', 'type':'number'}, {'header':'DRB', 'type':'number'}, {'header':'TRB', 'type':'number'}, {'header':'AST', 'type':'number'}, {'header':'STL', 'type':'number'}, {'header':'BLK', 'type':'number'}, {'header':'TOV', 'type':'number'}, {'header':'PF', 'type':'number'}, {'header':'PTS', 'type':'number'}]
+    const headers = [{'header':'Team', 'type':'string'}, {'header':'G', 'type':'number'}, {'header':'MP', 'type':'number'}, {'header':'FG', 'type':'number'}, {'header':'FGA', 'type':'number'}, {'header':'FG%', 'type':'number'}, {'header':'3P', 'type':'number'}, {'header':'3PA', 'type':'number'}, {'header':'3P%', 'type':'number'}, {'header':'FT', 'type':'number'}, {'header':'FTA', 'type':'number'}, {'header':'FT%', 'type':'number'}, {'header':'ORB', 'type':'number'}, {'header':'DRB', 'type':'number'}, {'header':'TRB', 'type':'number'}, {'header':'AST', 'type':'number'}, {'header':'STL', 'type':'number'}, {'header':'BLK', 'type':'number'}, {'header':'TOV', 'type':'number'}, {'header':'PF', 'type':'number'}, {'header':'PTS', 'type':'number'}]
     const tableDataTeam = []
     const tableDataOpp = []
     data.Team.data.forEach((team, index) => {
         const dataItem = [];
-        dataItem.push({'dataContent': index+1, 'link': null});
+        // dataItem.push({'dataContent': index+1, 'link': null});
         dataItem.push({'dataContent': team[1], 'link': `/teams/${team[0]}/${season}`});
         dataItem.push({'dataContent': team[2], 'link': null});
         dataItem.push({'dataContent': team[6], 'link': null});
@@ -59,7 +60,7 @@ function SeasonTeamData(props) {
     });
     data.Opponent.data.forEach((team, index) => {
         const dataItem = [];
-        dataItem.push({'dataContent': index+1, 'link': null});
+        // dataItem.push({'dataContent': index+1, 'link': null});
         dataItem.push({'dataContent': team[1], 'link': `/teams/${team[0]}/${season}`});
         dataItem.push({'dataContent': team[2], 'link': null});
         dataItem.push({'dataContent': team[6], 'link': null});
@@ -92,9 +93,9 @@ function SeasonTeamData(props) {
           </div>
           {
               showData === 'Team' ?
-              <SortableTable headers={headers} tableData = {tableDataTeam} defaultIndex = {21}/>
+              <SortableTable headers={headers} tableData = {tableDataTeam} defaultIndex = {20} showRank={true}/>
               :
-              <SortableTable headers={headers} tableData = {tableDataOpp} defaultIndex = {21}/>
+              <SortableTable headers={headers} tableData = {tableDataOpp} defaultIndex = {20} showRank={true}/>
           }
     </div>
     )
