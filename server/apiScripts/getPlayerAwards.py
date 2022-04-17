@@ -7,11 +7,10 @@ playerID = sys.argv[1]
 
 data = playerawards.PlayerAwards(player_id=playerID).player_awards.get_dict()
 
-awards = {"allStar": [], "allNBA": [], "mvp": [], "fmvp": [],
-          "allRookie": [], "roty": [], "mostImproved": []}
-
 
 def filterAwards(data):
+    awards = {"allStar": [], "allNBA": [], "mvp": [], "fmvp": [],
+              "allRookie": [], "roty": [], "mostImproved": []}
     for dataItem in data["data"]:
         if(dataItem[4] == "All-NBA"):
             awards["allNBA"].append(dataItem)
@@ -25,9 +24,17 @@ def filterAwards(data):
             awards["roty"].append(dataItem)
         elif(dataItem[4] == "NBA Most Improved Player"):
             awards["mostImproved"].append(dataItem)
+    return awards
 
 
-print(awards)
+awards = filterAwards(data)
+print(data)
 
 # all star appearances
-# most improved player
+# all defense
+# dpoy
+# as-mvp
+# scoring champ
+# stl champ
+# blk champ
+# hof

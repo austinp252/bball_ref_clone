@@ -11,6 +11,28 @@ playerBasics = commonplayerinfo.CommonPlayerInfo(
 playerAwards = playerawards.PlayerAwards(
     player_id=playerID).player_awards.get_dict()
 
-data = {"basic": playerBasics, "awards": playerAwards}
 
-print(json.dumps(playerBasics), end='')
+def filterAwards(data):
+    awards = {"allStar": [], "allNBA": [], "mvp": [], "fmvp": [],
+              "allRookie": [], "roty": [], "mostImproved": []}
+    for dataItem in data["data"]:
+        if(dataItem[4] == "All-NBA"):
+            awards["allNBA"].append(dataItem)
+        elif(dataItem[4] == "All-Rookie Team"):
+            awards["allRookie"].append(dataItem)
+        elif(dataItem[4] == "NBA Most Valuable Player"):
+            awards["mvp"].append(dataItem)
+        elif(dataItem[4] == "NBA Finals Most Valuable Player"):
+            awards["fmvp"].append(dataItem)
+        elif(dataItem[4] == "NBA Rookie of the Year"):
+            awards["roty"].append(dataItem)
+        elif(dataItem[4] == "NBA Most Improved Player"):
+            awards["mostImproved"].append(dataItem)
+    return awards
+
+
+awards = filterAwards(playerAwards)
+
+data = {"basic": playerBasics, "awards": awards}
+
+print(json.dumps(data), end='')

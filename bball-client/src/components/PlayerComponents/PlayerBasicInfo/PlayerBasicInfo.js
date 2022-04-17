@@ -22,43 +22,95 @@ function PlayerBio(props) {
       <p>Loading...</p>
     )
   } else {
-    //setPlayerInfo(data.playerInfo);
+    //setPlayerInfo(data.basic.playerInfo);
     console.log('rendering basic info');
-    //console.log(data);
+    console.log(data);
       return(
         <div>
           <div className="bio-content">
           <img className="player-img"src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${playerID}.png`} alt="" />
             <div className="bio-info">
-                <h1>{data.data[0][3]}</h1>
+                <h1>{data.basic.data[0][3]}</h1>
                 <span className="info-container">
                   <p className="info-header">Position:</p>
-                  <p className="info-content">{data.data[0][15]}</p>
+                  <p className="info-content">{data.basic.data[0][15]}</p>
                 </span>
                 <span className="info-container">
                   <p className="info-header">Height:</p>
-                  <p className="info-content">{data.data[0][11]}</p>
+                  <p className="info-content">{data.basic.data[0][11]}</p>
                 </span>
                 <span className="info-container">
                   <p className="info-header">Weight:</p>
-                  <p className="info-content">{data.data[0][12]} lbs</p>
+                  <p className="info-content">{data.basic.data[0][12]} lbs</p>
                 </span>
                 <span className="info-container">
                   <p className="info-header">Born:</p>
-                  <p className="info-content">{data.data[0][7]} in {data.data[0][9]}</p>
+                  <p className="info-content">{data.basic.data[0][7]} in {data.basic.data[0][9]}</p>
                 </span>
                 <span className="info-container">
                   <p className="info-header">College:</p>
-                  <p className="info-content">{data.data[0][8]}</p>
+                  <p className="info-content">{data.basic.data[0][8]}</p>
                 </span>
                 <span className="info-container">
                   <p className="info-header">NBA Draft:</p>
-                  <p className="info-content">{data.data[0][29]} (Round: {data.data[0][30]} / Pick: {data.data[0][31]})</p>
+                  <p className="info-content">{data.basic.data[0][29]} (Round: {data.basic.data[0][30]} / Pick: {data.basic.data[0][31]})</p>
                 </span>
                 <span className="info-container">
                   <p className="info-header">League Experience:</p>
-                  <p className="info-content">{data.data[0][13]} year(s)</p>
+                  <p className="info-content">{data.basic.data[0][13]} year(s)</p>
                 </span>
+            </div>
+          </div>
+          <div className="awards">
+            <div className="award-item all-star">
+              {
+                data.awards.allStar.length === 1 &&
+                <span>{data.awards.allStar[0][6]} All-Star</span>
+              }
+              {
+                data.awards.allStar.length > 1 &&
+                <span>{data.awards.allStar[0].length} x All-Star</span>
+              }
+            </div>
+            <div className="award-item all-nba">
+              {
+                (data.awards.allNBA.length === 1) &&
+                <span>{data.awards.allNBA[0][6]} All-NBA</span>
+              }
+              {
+                (data.awards.allNBA.length > 1) &&
+                <span>{data.awards.allNBA.length} x All-NBA</span>
+              }
+            </div>
+            <div className="award-item mvp">
+              {
+                (data.awards.mvp.length === 1) &&
+                <span>{data.awards.mvp[0][6]} MVP</span>
+              }
+              {
+                (data.awards.mvp.length > 1) &&
+                <span>{data.awards.mvp.length} x All-MVP</span>
+              }
+            </div>
+            <div className="award-item fmvp">
+              {
+                (data.awards.fmvp.length === 1) &&
+                <span>{data.awards.fmvp[0][6]} Finals MVP</span>
+              }
+              {
+                (data.awards.fmvp.length > 1) &&
+                <span>{data.awards.fmvp.length} x Finals MVP</span>
+              }
+            </div>
+            <div className="award-item allRookie">
+              {
+                (data.awards.allRookie.length === 1) &&
+                <span>{data.awards.allRookie[0][6]} All-Rookie</span>
+              }
+              {
+                (data.awards.allRookie.length > 1) &&
+                <span>{data.awards.allRookie.length} x All-Rookie</span>
+              }
             </div>
           </div>
           <div className="info-selectors">
