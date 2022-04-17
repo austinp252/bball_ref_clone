@@ -13,21 +13,29 @@ playerAwards = playerawards.PlayerAwards(
 
 
 def filterAwards(data):
-    awards = {"allStar": [], "allNBA": [], "mvp": [], "fmvp": [],
-              "allRookie": [], "roty": [], "mostImproved": []}
+    awards = {"data": [{"award": [], "title": "All Star"}, {"award": [], "title": "All NBA"}, {"award": [], "title": "All-Rookie"}, {"award": [], "title": "MVP"}, {"award": [], "title": "Finals MVP"},
+              {"award": [], "title": "ROY"}, {"award": [], "title": "Most Improved"}, {"award": [], "title": "AS MVP"}, {"award": [], "title": "All-Defensive"}, {"award": [], "title": "Def. POY"}]}
     for dataItem in data["data"]:
-        if(dataItem[4] == "All-NBA"):
-            awards["allNBA"].append(dataItem)
+        if(dataItem[4] == "All-Star"):
+            awards["data"][0]["award"].append(dataItem)
+        elif(dataItem[4] == "All-NBA"):
+            awards["data"][1]["award"].append(dataItem)
         elif(dataItem[4] == "All-Rookie Team"):
-            awards["allRookie"].append(dataItem)
+            awards["data"][2]["award"].append(dataItem)
         elif(dataItem[4] == "NBA Most Valuable Player"):
-            awards["mvp"].append(dataItem)
+            awards["data"][3]["award"].append(dataItem)
         elif(dataItem[4] == "NBA Finals Most Valuable Player"):
-            awards["fmvp"].append(dataItem)
+            awards["data"][4]["award"].append(dataItem)
         elif(dataItem[4] == "NBA Rookie of the Year"):
-            awards["roty"].append(dataItem)
+            awards["data"][5]["award"].append(dataItem)
         elif(dataItem[4] == "NBA Most Improved Player"):
-            awards["mostImproved"].append(dataItem)
+            awards["data"][6]["award"].append(dataItem)
+        elif(dataItem[4] == "NBA All-Star Most Valuable Player"):
+            awards["data"][7]["award"].append(dataItem)
+        elif(dataItem[4] == "All-Defensive Team"):
+            awards["data"][8]["award"].append(dataItem)
+        elif(dataItem[4] == "NBA Defensive Player of the Year"):
+            awards["data"][9]["award"].append(dataItem)
     return awards
 
 

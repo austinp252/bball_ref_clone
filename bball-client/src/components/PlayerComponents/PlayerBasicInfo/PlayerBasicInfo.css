@@ -2,3 +2,39 @@
   width: 200px;
   height: 200px;
 }
+
+.bio-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.bio-content .bio-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.bio-info h1{
+  margin: 20px 0 0 0;
+}
+
+.bio-info span{
+  height: 20px;
+}
+
+.bio-content .awards {
+  margin: 20px 0 0 30px;
+  height: fit-content;
+  display: grid;
+  grid-gap: 5px 4px;
+  grid-template-columns: 180px 180px;
+}
+
+.award-item {
+  background-color: #8f5400;
+  height: 20px;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+}

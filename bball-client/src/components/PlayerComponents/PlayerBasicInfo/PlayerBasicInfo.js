@@ -60,58 +60,32 @@ function PlayerBio(props) {
                   <p className="info-content">{data.basic.data[0][13]} year(s)</p>
                 </span>
             </div>
+            <div className="awards">
+            {
+              data.awards.data.map((awardItem, index) => {
+                if(awardItem.award.length > 0) {
+                  return(
+                    <div className="award-item">
+                      {
+                        awardItem.award.length === 1 &&
+                        <span>{awardItem.award[0][6]} {awardItem.title}</span>
+                      }
+                      {
+                        awardItem.award.length > 1 &&
+                        <span>{awardItem.award.length} x {awardItem.title}</span>
+                      }
+                   </div>
+                  )
+                }
+              })
+            }
+            {
+                      data.basic.data[0][32] === 'Y' &&
+                      <div className="award-item">
+                        <span>NBA 75th Anniv. Team</span>
+                      </div>
+                    }
           </div>
-          <div className="awards">
-            <div className="award-item all-star">
-              {
-                data.awards.allStar.length === 1 &&
-                <span>{data.awards.allStar[0][6]} All-Star</span>
-              }
-              {
-                data.awards.allStar.length > 1 &&
-                <span>{data.awards.allStar[0].length} x All-Star</span>
-              }
-            </div>
-            <div className="award-item all-nba">
-              {
-                (data.awards.allNBA.length === 1) &&
-                <span>{data.awards.allNBA[0][6]} All-NBA</span>
-              }
-              {
-                (data.awards.allNBA.length > 1) &&
-                <span>{data.awards.allNBA.length} x All-NBA</span>
-              }
-            </div>
-            <div className="award-item mvp">
-              {
-                (data.awards.mvp.length === 1) &&
-                <span>{data.awards.mvp[0][6]} MVP</span>
-              }
-              {
-                (data.awards.mvp.length > 1) &&
-                <span>{data.awards.mvp.length} x All-MVP</span>
-              }
-            </div>
-            <div className="award-item fmvp">
-              {
-                (data.awards.fmvp.length === 1) &&
-                <span>{data.awards.fmvp[0][6]} Finals MVP</span>
-              }
-              {
-                (data.awards.fmvp.length > 1) &&
-                <span>{data.awards.fmvp.length} x Finals MVP</span>
-              }
-            </div>
-            <div className="award-item allRookie">
-              {
-                (data.awards.allRookie.length === 1) &&
-                <span>{data.awards.allRookie[0][6]} All-Rookie</span>
-              }
-              {
-                (data.awards.allRookie.length > 1) &&
-                <span>{data.awards.allRookie.length} x All-Rookie</span>
-              }
-            </div>
           </div>
           <div className="info-selectors">
                 <Link to={`/players/${lastInitial}/${playerID}`}><button>Overview</button></Link>
