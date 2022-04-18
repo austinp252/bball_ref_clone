@@ -27,7 +27,7 @@ function PlayerBio(props) {
 
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
       return(
-        <div>
+        <div className='basic-info'>
           <div className="bio-content">
           <img className="player-img"src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${playerID}.png`} alt="" />
             <div className="bio-info">
@@ -92,40 +92,40 @@ function PlayerBio(props) {
             <table>
               <thead>
                 <tr>
-                  <th>SUMMARY</th>
+                  <th className='divider'>SUMMARY</th>
                   <th>G</th>
                   <th>PTS</th>
                   <th>REB</th>
-                  <th>AST</th>
+                  <th className='divider'>AST</th>
                   <th>FG%</th>
                   <th>FG3%</th>
                   <th>FT%</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Career</td>
-                  <td>{data.summary[0].career.data[0][3]}</td>
-                  <td>{data.summary[0].career.data[0][23]}</td>
-                  <td>{data.summary[0].career.data[0][17]}</td>
-                  <td>{data.summary[0].career.data[0][18]}</td>
-                  <td>{data.summary[0].career.data[0][8]}</td>
-                  <td>{data.summary[0].career.data[0][11]}</td>
-                  <td>{data.summary[0].career.data[0][14]}</td>
-                </tr>
                 {
                   data.summary[1].season &&
                   <tr>
-                    <td>{data.summary[1].season.data[0][1]}</td>
+                    <td className='row-header divider'>{data.summary[1].season.data[0][1]}</td>
                     <td>{data.summary[1].season.data[0][5]}</td>
                     <td>{data.summary[1].season.data[0][29]}</td>
                     <td>{data.summary[1].season.data[0][21]}</td>
-                    <td>{data.summary[1].season.data[0][22]}</td>
+                    <td className='divider'>{data.summary[1].season.data[0][22]}</td>
                     <td>{data.summary[1].season.data[0][12]}</td>
                     <td>{data.summary[1].season.data[0][15]}</td>
                     <td>{data.summary[1].season.data[0][18]}</td>
                   </tr>
                 }
+                <tr>
+                  <td className='row-header divider'>Career</td>
+                  <td>{data.summary[0].career.data[0][3]}</td>
+                  <td>{data.summary[0].career.data[0][23]}</td>
+                  <td>{data.summary[0].career.data[0][17]}</td>
+                  <td className='divider'>{data.summary[0].career.data[0][18]}</td>
+                  <td>{data.summary[0].career.data[0][8]}</td>
+                  <td>{data.summary[0].career.data[0][11]}</td>
+                  <td>{data.summary[0].career.data[0][14]}</td>
+                </tr>
               </tbody>
             </table>
           </div>

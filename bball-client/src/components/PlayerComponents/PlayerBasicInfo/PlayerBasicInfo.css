@@ -38,3 +38,38 @@
   border-radius: 5px;
   color: #fff;
 }
+
+.basic-info .stat-summary th {
+  background-color: #fff;
+}
+
+.basic-info .stat-summary table{
+  border: 0;
+}
+
+.basic-info .stat-summary tr{
+  border: 0;
+}
+
+.basic-info .stat-summary td{
+  border: 0;
+}
+
+.basic-info .stat-summary th{
+  border: 0;
+}
+
+.basic-info .stat-summary td.row-header{
+  font-weight: bolder;
+  color: #000;
+}
+
+.basic-info .stat-summary .divider {
+  border-right: 1px solid #747678;
+  padding-right: 10px;
+}
+
+.basic-info .stat-summary :not(.divider) {
+  padding-left: 20px;
+}
+

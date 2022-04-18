@@ -68,6 +68,22 @@ app.get('/players/:letter/:id/', (req, res) => {
   })
 });
 
+app.get('/players/:letter/:id/footer', (req, res) => {
+  var dataToSend;
+  const python = spawn('python', ['server/apiScripts/getPlayerFooterDates.py', req.params.id]);
+  python.stdout.on('data', (data) => {
+    console.log('Pipe data from python script ...');
+    dataToSend = data.toString();
+    dataToSend = JSON.parse(dataToSend);
+  });
+
+  python.on('close', (code) => {
+    console.log(`child process close all stdio with code ${code}`);
+    //console.log(dataToSend);
+    res.send(dataToSend);
+  })
+});
+
 app.get('/players/:letter/:id/:perMode/splits', (req, res) => {
   var dataToSend;
   const python = spawn('python', ['server/apiScripts/getPlayerCareerStats.py', req.params.id, req.params.perMode]);

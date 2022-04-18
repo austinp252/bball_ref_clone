@@ -1,0 +1,20 @@
+.player-page-footer-header {
+    color: #8f5400;
+    font-size:22px;
+}
+
+.category-header {
+    font-size: 16px;
+    margin: 10px 0 0 0;
+}
+
+.category .season-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.category .season-items .season-item {
+    margin: 4px 10px 10px 0;
+}

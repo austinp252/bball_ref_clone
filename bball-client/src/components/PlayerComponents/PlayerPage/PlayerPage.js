@@ -6,6 +6,7 @@ import PlayerSplitsCareer from '../PlayerSplits/PlayerSplitsCareer';
 import PlayerStatsSeason from '../PlayerGameLogs/PlayerGameLogs';
 import PlayerGeneralSplits from '../PlayerGeneralSplits/PlayerGeneralSplits';
 import PlayerShootingSplits from '../PlayerShootingSplits/PlayerShootingSplits';
+import PlayerPageFooter from '../PlayerPageFooter/PlayerPageFooter';
 
 import {Link, useParams} from 'react-router-dom';
 
@@ -50,6 +51,7 @@ function PlayerPage() {
               <PlayerShootingSplits/>
             </div>
           }
+          <PlayerPageFooter/>
         </div>
       )
 }
