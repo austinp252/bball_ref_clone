@@ -17,17 +17,33 @@
 }
 
 .menu-item {
-    margin: 20px 10px;
+    margin: 10px;
 }
 
-.season-selector {
+.menu-selector {
     display: flex;
     flex-direction: row;
-    background-color: rgb(200, 245, 129);
     flex-wrap: wrap;
 }
 
-.season-selector .season-item {
+.menu-selector.show {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgb(58, 58, 58);
+}
+
+.menu-item p {
+    font-style: italic;
+}
+
+.menu-item .season-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.menu-item .season-item {
     margin: 10px 5px;
 }
 
