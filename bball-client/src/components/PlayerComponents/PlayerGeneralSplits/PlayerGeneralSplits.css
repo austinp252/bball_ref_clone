@@ -1,0 +1,36 @@
+.split-table tr.split-table-header td{
+    background-color: rgb(223, 223, 223);
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    border-top: 1px solid #747678;
+    border-bottom: 1px solid #747678;
+}
+
+.split-table td {
+    border: 1px solid #ddd;
+    border-bottom: 0px;
+    font-size: 15px;
+}
+
+.split-table tr.split-header td{
+    background-color: rgb(223, 223, 223);
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    border-top: 1px solid #747678;
+    border-bottom: 1px solid #747678;
+}
+
+.split-table tr *{
+    border-left: 1px solid #747678;
+    border-right: 1px solid #747678;
+    font-size: 15px;
+}
+
+
+.split-table-header {
+    background-color: rgb(223, 223, 223);
+    color: #000;
+    text-align: center;
+}

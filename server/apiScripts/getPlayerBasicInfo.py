@@ -11,6 +11,19 @@ playerBasics = commonplayerinfo.CommonPlayerInfo(
 playerAwards = playerawards.PlayerAwards(
     player_id=playerID).player_awards.get_dict()
 
+playerSeasons = commonplayerinfo.CommonPlayerInfo(
+    player_id=playerID).available_seasons.get_dict()
+
+
+def formatSeasons(seasons):
+    newSeasonData = []
+    for item in seasons:
+        season = item[0]
+        if season[0] == '2':
+            season = season[1:]+'-' + str(int(season[1:])+1)[2:]
+            newSeasonData.append(season)
+    return newSeasonData
+
 
 def filterAwards(data):
     awards = {"data": [{"award": [], "title": "All Star"}, {"award": [], "title": "All NBA"}, {"award": [], "title": "All-Rookie"}, {"award": [], "title": "MVP"}, {"award": [], "title": "Finals MVP"},
@@ -43,14 +56,15 @@ careerData = playerprofilev2.PlayerProfileV2(
     player_id=playerID, per_mode36='PerGame').career_totals_regular_season.get_dict()
 
 awards = filterAwards(playerAwards)
+newSeasonData = formatSeasons(playerSeasons["data"])
 
 if(playerBasics["data"][0][16] == "Active"):
     seasonData = playerdashboardbyyearoveryear.PlayerDashboardByYearOverYear(
         player_id=playerID, per_mode_detailed='PerGame').overall_player_dashboard.get_dict()
     data = {"basic": playerBasics, "awards": awards, "summary": [
-        {"career": careerData}, {"season": seasonData}]}
+        {"career": careerData}, {"season": seasonData}], "seasons": newSeasonData}
 else:
     data = {"basic": playerBasics, "awards": awards,
-            "summary": [{"career": careerData}, {"season": None}]}
+            "summary": [{"career": careerData}, {"season": None}], "seasons": newSeasonData}
 
 print(json.dumps(data), end='')

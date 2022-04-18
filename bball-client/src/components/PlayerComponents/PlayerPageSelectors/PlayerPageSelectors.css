@@ -15,3 +15,16 @@
     border-radius: 2px;
     padding: 10px 5px;
 }
+
+.season-selector {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(200, 245, 129);
+    flex-wrap: wrap;
+}
+
+
+
+.season-selector .season-item {
+    margin: 10px 5px;
+}

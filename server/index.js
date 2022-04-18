@@ -100,6 +100,22 @@ app.get('/players/:letter/:id/gamelog/:season', (req, res) => {
   })
 })
 
+app.get('/players/:letter/:id/season/:season/splits', (req, res) => {
+  var dataToSend;
+  const python = spawn('python', ['server/apiScripts/getPlayerGeneralSplitsBySeason.py', req.params.id, req.params.season]);
+  python.stdout.on('data', (data) => {
+    console.log('Pipe data from python script ...');
+    dataToSend = data.toString();
+    dataToSend = JSON.parse(dataToSend);
+  });
+
+  python.on('close', (code) => {
+    console.log(`child process close all stdio with code ${code}`);
+    //console.log(dataToSend);
+    res.send(dataToSend);
+  })
+});
+
 //get basic info for all franchises (currently active)
 app.get('/teams', (req, res) => {
   var dataToSend;

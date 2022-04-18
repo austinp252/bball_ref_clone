@@ -4,7 +4,7 @@ import teamRouter from '../../widgets/Helpers/teamRouter';
 import PlayerBasicInfo from '../PlayerBasicInfo/PlayerBasicInfo';
 import PlayerSplitsCareer from '../PlayerSplits/PlayerSplitsCareer';
 import PlayerStatsSeason from '../PlayerGameLogs/PlayerGameLogs';
-import PlayerPageSelectors from '../PlayerPageSelectors/PlayerPageSelectors';
+import PlayerGeneralSplits from '../PlayerGeneralSplits/PlayerGeneralSplits';
 
 import {Link, useParams} from 'react-router-dom';
 
@@ -22,10 +22,7 @@ function PlayerPage() {
 
     return(
         <div className="content">
-          <PlayerBasicInfo lastInitial={lastInitial} playerID={playerID}/>
-          <PlayerPageSelectors lastInitial={lastInitial} playerID={playerID} mode={mode}/>
-          <br />
-          <hr />
+          <PlayerBasicInfo lastInitial={lastInitial} playerID={playerID} mode={mode}/>
           {
             mode==='overview' &&
             <div className="page-contents">
@@ -38,6 +35,12 @@ function PlayerPage() {
             mode==='gamelog' &&
             <div className="page-contents">
               <PlayerStatsSeason/>
+            </div>
+          }
+          {
+            mode==='generalSplits' &&
+            <div className="page-contents">
+              <PlayerGeneralSplits/>
             </div>
           }
         </div>

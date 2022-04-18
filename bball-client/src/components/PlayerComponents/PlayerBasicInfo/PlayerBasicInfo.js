@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './PlayerBasicInfo.css';
-
+import PlayerPageSelectors from '../PlayerPageSelectors/PlayerPageSelectors';
 import {Link} from 'react-router-dom';
 
 function PlayerBio(props) {
@@ -14,7 +14,7 @@ function PlayerBio(props) {
     fetch(`/players/${lastInitial}/${playerID}`)
     .then((res) => res.json())
     .then((data) => setData(data));
-  }, []); //props?
+  }, [playerID]); //props?
 
   if(!data) {
     console.log('rendering basic info');
@@ -22,7 +22,9 @@ function PlayerBio(props) {
       <p>Loading...</p>
     )
   } else {
+    console.log(data)
     const date = new Date(data.basic.data[0][7])
+
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
       return(
         <div>
@@ -127,6 +129,9 @@ function PlayerBio(props) {
               </tbody>
             </table>
           </div>
+          <PlayerPageSelectors lastInitial={lastInitial} playerID={playerID} mode={props.mode} seasons={data.seasons}/>
+          <br />
+          <hr />
         </div>
       )
   }

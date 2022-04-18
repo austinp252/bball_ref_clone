@@ -8,19 +8,60 @@ function PlayerPageSelectors(props) {
   const lastInitial = props.lastInitial;
   const playerID = props.playerID;
   const mode = props.mode;
+  const seasons = props.seasons;
+  const [showMenu, setShowMenu] = useState(false);
+  const [menuMode, setMenuMode] = useState('');
 
   //console.log(`/players/:${params.letter}/:${params.id}`);
   useEffect(() => {
     console.log("rendering selectors")
   }, [mode]); //props?
     //setPlayerInfo(data.basic.playerInfo);
+  const handleMouseEnter = ((e, menu=null) => {
+      if(!menu) {
+        setShowMenu(true);
+      } else {
+        setMenuMode(menu);
+      }
+  });
+  const handleMouseLeave = ((e) => {
+        setShowMenu(false);
+        setMenuMode('');
+  });
+
     return(
-            <div className="info-selectors">
+            <div className="info-selectors" onMouseEnter={(e)=> handleMouseEnter(e)} onMouseLeave={(e)=> handleMouseLeave(e)}>
                 <br />
                 <Link to={`/players/${lastInitial}/${playerID}/overview`}><button className={mode==='overview' ? 'active' : ''}>Overview</button></Link>
-                <button className={mode==='gamelog' ? 'active' : ''}>Game Logs</button>
-                <button className={mode==='splits' ? 'active' : ''}>Splits</button>
-                <button className={mode==='more' ? 'active' : ''}>More</button>
+                <button onMouseEnter={(e)=> handleMouseEnter(e, 'gamelog')} className={mode==='gamelog' ? 'active gamelog' : 'gamelog'}>Game Logs
+                </button>
+                <button onMouseEnter={(e)=> handleMouseEnter(e, 'generalSplits')} className={mode==='generalSplits' ? 'active generalSplits' : 'generalSplits'}>Splits</button>
+                <button className={mode==='more' ? 'active more' : 'more'}>More</button>
+                {
+                    showMenu &&
+                    <div className="season-selector">
+                    {
+                        menuMode==='gamelog' &&
+                        seasons.map((season) => {
+                            return(
+                                <div className="season-item">
+                                    <Link to={`/players/${lastInitial}/${playerID}/gamelog/${season}`}>{season}</Link>
+                                </div>
+                            )
+                        })
+                    }
+                    {
+                        menuMode==='generalSplits' &&
+                        seasons.map((season) => {
+                            return(
+                                <div className="season-item">
+                                    <Link to={`/players/${lastInitial}/${playerID}/generalSplits/${season}`}>{season}</Link>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                }
             </div>
         )
 }
