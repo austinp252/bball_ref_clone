@@ -6,6 +6,7 @@ from nba_api.stats.endpoints import playerdashboardbygeneralsplits
 playerID = sys.argv[1]
 seasonID = sys.argv[2]
 #split = sys.argv[3]
+divisions = ["East", "West"]
 
 totalData = playerdashboardbygeneralsplits.PlayerDashboardByGeneralSplits(
     player_id=playerID, season=seasonID, per_mode_detailed="Totals", measure_type_detailed="Base", rank="N").overall_player_dashboard.get_dict()
