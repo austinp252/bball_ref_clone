@@ -5,6 +5,7 @@ import PlayerBasicInfo from '../PlayerBasicInfo/PlayerBasicInfo';
 import PlayerSplitsCareer from '../PlayerSplits/PlayerSplitsCareer';
 import PlayerStatsSeason from '../PlayerGameLogs/PlayerGameLogs';
 import PlayerGeneralSplits from '../PlayerGeneralSplits/PlayerGeneralSplits';
+import PlayerShootingSplits from '../PlayerShootingSplits/PlayerShootingSplits';
 
 import {Link, useParams} from 'react-router-dom';
 
@@ -41,6 +42,12 @@ function PlayerPage() {
             mode==='generalSplits' &&
             <div className="page-contents">
               <PlayerGeneralSplits/>
+            </div>
+          }
+          {
+            mode==='shootingSplits' &&
+            <div className="page-contents">
+              <PlayerShootingSplits/>
             </div>
           }
         </div>

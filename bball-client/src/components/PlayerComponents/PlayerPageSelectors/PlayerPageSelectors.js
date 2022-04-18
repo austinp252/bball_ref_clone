@@ -36,6 +36,7 @@ function PlayerPageSelectors(props) {
                 <button onMouseEnter={(e)=> handleMouseEnter(e, 'gamelog')} className={mode==='gamelog' ? 'active gamelog' : 'gamelog'}>Game Logs
                 </button>
                 <button onMouseEnter={(e)=> handleMouseEnter(e, 'generalSplits')} className={mode==='generalSplits' ? 'active generalSplits' : 'generalSplits'}>Splits</button>
+                <button onMouseEnter={(e)=> handleMouseEnter(e, 'shootingSplits')} className={mode==='shootingSplits' ? 'active shootingSplits' : 'shootingSplits'}>Shooting</button>
                 <button onMouseEnter={(e)=> handleMouseEnter(e, 'more')} className={mode==='more' ? 'active more' : 'more'}>More</button>
                 {
                     showMenu &&
@@ -56,6 +57,16 @@ function PlayerPageSelectors(props) {
                             return(
                                 <div className="season-item">
                                     <Link to={`/players/${lastInitial}/${playerID}/generalSplits/${season}`}>{season}</Link>
+                                </div>
+                            )
+                        })
+                    }
+                    {
+                        menuMode==='shootingSplits' &&
+                        seasons[1].data.map((season) => {
+                            return(
+                                <div className="season-item">
+                                    <Link to={`/players/${lastInitial}/${playerID}/shootingSplits/${season}`}>{season}</Link>
                                 </div>
                             )
                         })
