@@ -24,6 +24,6 @@ summaryData = playerdashboardbyshootingsplits.PlayerDashboardByShootingSplits(
     player_id=playerID, season=seasonID, per_mode_detailed="Totals", measure_type_detailed="Base", rank="N").shot_type_summary_player_dashboard.get_dict()
 
 data = {"data": [{"data": totalData, "title": "Total"}, {"data": areaData, "title": "Shot Location"}, {"data": shot5Data, "title": "Shot Distance"}, {
-    "data": summaryData, "title": "Shot Type - General"}]}
+    "data": summaryData, "title": "Shot Type"}]}
 
 print(json.dumps(data), end="")

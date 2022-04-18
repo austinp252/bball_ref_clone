@@ -16,6 +16,10 @@
     padding: 10px 5px;
 }
 
+.menu-item {
+    margin: 20px 10px;
+}
+
 .season-selector {
     display: flex;
     flex-direction: row;
@@ -23,8 +27,27 @@
     flex-wrap: wrap;
 }
 
-
-
 .season-selector .season-item {
     margin: 10px 5px;
 }
+
+.team-data, .team-item{
+    display: flex;
+    flex-direction: column;
+}
+
+.team-item {
+    margin: 5px 0 0 5px;
+}
+
+.player-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.player-item {
+    margin: 10px 10px 10px 0;
+    width: 200px;
+}
+

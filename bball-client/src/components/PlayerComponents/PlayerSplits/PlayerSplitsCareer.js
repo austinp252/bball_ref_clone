@@ -10,6 +10,7 @@ import './PlayerSplitsCareer.css'
 function PlayerSplitsCareer(props) {
   const [data, setData] = useState(null);
   const [showData, setShowData] = useState('Regular Season')
+  const params = useParams();
   const lastInitial = props.lastInitial;
   const playerID = props.playerID;
   const perMode = props.perMode;
@@ -20,7 +21,7 @@ function PlayerSplitsCareer(props) {
     fetch(`/players/${lastInitial}/${playerID}/${perMode}/splits`)
     .then((res) => res.json())
     .then((data) => setData(data));
-}, []);
+}, [props.playerID]);
 
     if(!data) {
       return(

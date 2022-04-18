@@ -129,7 +129,7 @@ function PlayerBio(props) {
               </tbody>
             </table>
           </div>
-          <PlayerPageSelectors lastInitial={lastInitial} playerID={playerID} mode={props.mode} seasons={data.seasons}/>
+          <PlayerPageSelectors lastInitial={lastInitial} playerID={playerID} mode={props.mode} seasons={data.seasons} team={data.team}/>
           <br />
           <hr />
         </div>

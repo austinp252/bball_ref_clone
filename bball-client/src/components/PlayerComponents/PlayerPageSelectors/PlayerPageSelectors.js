@@ -3,12 +3,14 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 import './PlayerPageSelectors.css';
+import getInitial from '../../widgets/Helpers/getInitial';
 
 function PlayerPageSelectors(props) {
   const lastInitial = props.lastInitial;
   const playerID = props.playerID;
   const mode = props.mode;
   const seasons = props.seasons;
+  const team = props.team.data ? props.team : null;
   const [showMenu, setShowMenu] = useState(false);
   const [menuMode, setMenuMode] = useState('');
 
@@ -28,7 +30,7 @@ function PlayerPageSelectors(props) {
         setShowMenu(false);
         setMenuMode('');
   });
-
+  console.log(team)
     return(
             <div className="info-selectors" onMouseEnter={(e)=> handleMouseEnter(e)} onMouseLeave={(e)=> handleMouseLeave(e)}>
                 <br />
@@ -39,14 +41,20 @@ function PlayerPageSelectors(props) {
                 <button onMouseEnter={(e)=> handleMouseEnter(e, 'shootingSplits')} className={mode==='shootingSplits' ? 'active shootingSplits' : 'shootingSplits'}>Shooting</button>
                 <button onMouseEnter={(e)=> handleMouseEnter(e, 'more')} className={mode==='more' ? 'active more' : 'more'}>More</button>
                 {
+                    team &&
+                    <button onMouseEnter={(e)=> handleMouseEnter(e, 'team')} className={mode==='team' ? 'active team' : 'team'}>2021-22 {team.data.resultSets[0].rowSet[0][2]}</button>
+                }
+                {
                     showMenu &&
                     <div className="season-selector">
                     {
                         menuMode==='gamelog' &&
                         seasons[0].data.map((season) => {
                             return(
-                                <div className="season-item">
-                                    <Link to={`/players/${lastInitial}/${playerID}/gamelog/${season}`}>{season}</Link>
+                                <div className="menu-item">
+                                    <div className="season-item">
+                                        <Link to={`/players/${lastInitial}/${playerID}/gamelog/${season}`}>{season}</Link>
+                                    </div>
                                 </div>
                             )
                         })
@@ -55,8 +63,10 @@ function PlayerPageSelectors(props) {
                         menuMode==='generalSplits' &&
                         seasons[1].data.map((season) => {
                             return(
-                                <div className="season-item">
-                                    <Link to={`/players/${lastInitial}/${playerID}/generalSplits/${season}`}>{season}</Link>
+                                <div className="menu-item">
+                                    <div className="season-item">
+                                        <Link to={`/players/${lastInitial}/${playerID}/generalSplits/${season}`}>{season}</Link>
+                                    </div>
                                 </div>
                             )
                         })
@@ -65,11 +75,40 @@ function PlayerPageSelectors(props) {
                         menuMode==='shootingSplits' &&
                         seasons[1].data.map((season) => {
                             return(
-                                <div className="season-item">
-                                    <Link to={`/players/${lastInitial}/${playerID}/shootingSplits/${season}`}>{season}</Link>
+                                <div className="menu-item">
+                                    <div className="season-item">
+                                        <Link to={`/players/${lastInitial}/${playerID}/shootingSplits/${season}`}>{season}</Link>
+                                    </div>
                                 </div>
                             )
                         })
+                    }
+                    {
+                        menuMode==='team' &&
+                        <div className="menu-item">
+                            <div className="team-data">
+                                <div className="team-item">
+                                    <span><Link to={`/teams/${team.data.resultSets[0].rowSet[0][1]}/2021-22`}>2021-22 {team.data.resultSets[0].rowSet[0][2]}</Link></span>
+                                    <span>({team.data.resultSets[0].rowSet[0][5]}-{team.data.resultSets[0].rowSet[0][6]})</span>
+                                </div>
+                                <div className="team-item">
+                                    <span><Link to={`/teams/${team.data.resultSets[0].rowSet[0][1]}/2021-22/gamelog`}>Full Schedule and Results</Link></span>
+                                </div>
+                                <div className="team-item">
+                                    <div className="player-list">
+                                    {
+                                        team.data.resultSets[1].rowSet.map((player) => {
+                                            return(
+                                                <div className="player-item">
+                                                    <span><Link to={`/players/${getInitial(player[2])}/${player[1]}/overview`}>{player[2]}</Link></span>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
                 </div>
                 }
