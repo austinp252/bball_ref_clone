@@ -32,17 +32,17 @@ function PlayerPageSelectors(props) {
     return(
             <div className="info-selectors" onMouseEnter={(e)=> handleMouseEnter(e)} onMouseLeave={(e)=> handleMouseLeave(e)}>
                 <br />
-                <Link to={`/players/${lastInitial}/${playerID}/overview`}><button className={mode==='overview' ? 'active' : ''}>Overview</button></Link>
+                <Link to={`/players/${lastInitial}/${playerID}/overview`}><button onMouseEnter={(e)=> handleMouseEnter(e, 'overview')} className={mode==='overview' ? 'active' : ''}>Overview</button></Link>
                 <button onMouseEnter={(e)=> handleMouseEnter(e, 'gamelog')} className={mode==='gamelog' ? 'active gamelog' : 'gamelog'}>Game Logs
                 </button>
                 <button onMouseEnter={(e)=> handleMouseEnter(e, 'generalSplits')} className={mode==='generalSplits' ? 'active generalSplits' : 'generalSplits'}>Splits</button>
-                <button className={mode==='more' ? 'active more' : 'more'}>More</button>
+                <button onMouseEnter={(e)=> handleMouseEnter(e, 'more')} className={mode==='more' ? 'active more' : 'more'}>More</button>
                 {
                     showMenu &&
                     <div className="season-selector">
                     {
                         menuMode==='gamelog' &&
-                        seasons.map((season) => {
+                        seasons[0].data.map((season) => {
                             return(
                                 <div className="season-item">
                                     <Link to={`/players/${lastInitial}/${playerID}/gamelog/${season}`}>{season}</Link>
@@ -52,7 +52,7 @@ function PlayerPageSelectors(props) {
                     }
                     {
                         menuMode==='generalSplits' &&
-                        seasons.map((season) => {
+                        seasons[1].data.map((season) => {
                             return(
                                 <div className="season-item">
                                     <Link to={`/players/${lastInitial}/${playerID}/generalSplits/${season}`}>{season}</Link>

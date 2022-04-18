@@ -25,9 +25,18 @@ def formatSeasons(seasons):
     return newSeasonData
 
 
+def getSeasonsInRange(seasons, lower=None):
+    newSeasons = seasons.copy()
+    if(lower):
+        for season in seasons:
+            if(int(season[0:4]) <= lower):
+                newSeasons.remove(season)
+    return newSeasons
+
+
 def filterAwards(data):
     awards = {"data": [{"award": [], "title": "All Star"}, {"award": [], "title": "All NBA"}, {"award": [], "title": "All-Rookie"}, {"award": [], "title": "MVP"}, {"award": [], "title": "Finals MVP"},
-              {"award": [], "title": "ROY"}, {"award": [], "title": "Most Improved"}, {"award": [], "title": "AS MVP"}, {"award": [], "title": "All-Defensive"}, {"award": [], "title": "Def. POY"}]}
+                       {"award": [], "title": "ROY"}, {"award": [], "title": "Most Improved"}, {"award": [], "title": "AS MVP"}, {"award": [], "title": "All-Defensive"}, {"award": [], "title": "Def. POY"}]}
     for dataItem in data["data"]:
         if(dataItem[4] == "All-Star"):
             awards["data"][0]["award"].append(dataItem)
@@ -62,9 +71,9 @@ if(playerBasics["data"][0][16] == "Active"):
     seasonData = playerdashboardbyyearoveryear.PlayerDashboardByYearOverYear(
         player_id=playerID, per_mode_detailed='PerGame').overall_player_dashboard.get_dict()
     data = {"basic": playerBasics, "awards": awards, "summary": [
-        {"career": careerData}, {"season": seasonData}], "seasons": newSeasonData}
+        {"career": careerData}, {"season": seasonData}], "seasons": [{"data": newSeasonData, "title": "gamelogs"}, {"data": getSeasonsInRange(newSeasonData, lower=1995), "title": "generalSplits"}]}
 else:
     data = {"basic": playerBasics, "awards": awards,
-            "summary": [{"career": careerData}, {"season": None}], "seasons": newSeasonData}
+            "summary": [{"career": careerData}, {"season": None}], "seasons": [{"data": newSeasonData, "title": "gamelogs"}, {"data": getSeasonsInRange(newSeasonData, lower=1995), "title": "generalSplits"}]}
 
 print(json.dumps(data), end='')

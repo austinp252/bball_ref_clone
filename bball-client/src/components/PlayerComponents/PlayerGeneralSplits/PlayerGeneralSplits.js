@@ -19,7 +19,7 @@ function PlayerGeneralSplits() {
     };
 
     fetchJSON();
-}, []);
+}, [params.season]);
 
   if(!data) {
     return(
