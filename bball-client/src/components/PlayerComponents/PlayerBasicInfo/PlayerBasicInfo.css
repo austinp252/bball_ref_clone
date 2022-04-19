@@ -34,13 +34,15 @@
 .award-item {
   background-color: #8f5400;
   height: 20px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
   color: #fff;
 }
 
 .basic-info .stat-summary th {
-  background-color: #fff;
+  background-color: rgb(240, 240, 240);
 }
 
 .basic-info .stat-summary table{
