@@ -42,7 +42,6 @@ function App() {
                 <Route exact path='/players/:letter/:id/:mode/:season' element = {<PlayerPage/>}/>
                 <Route exact path='/teams' element = {<TeamsIndex/>}/>
                 <Route exact path='/teams/:id/:mode' element = {<FranchisePage/>}/>
-                <Route exact path='/teams/:id/:mode/:perMode/:measureMode' element = {<FranchisePage/>}/>
                 <Route exact path='/teams/:id/:mode/:season' element = {<TeamSeasonRoster/>}/>
                 <Route exact path='/teams/:id/:season/gamelog' element = {<TeamSeasonGamelog/>}/>
                 <Route exact path='/seasons' element = {<Seasons/>}/>

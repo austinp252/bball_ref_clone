@@ -1,0 +1,14 @@
+.menu-item .category .category-items{
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-item .category p{
+    font-weight: bold;
+    font-style: normal;
+    font-size: 17px;
+}
+
+.menu-item .category .category-items .category-item {
+    margin: 8px 20px 8px 0;
+}

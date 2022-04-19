@@ -43,14 +43,14 @@ function TeamsIndex() {
                                 data.data?.map((franchise) => {
                                     //console.log(franchise);
                                     let iscurrent = false;
-                                    if(activeID != franchise[1]) {
+                                    if(activeID !== franchise[1]) {
                                         activeID = franchise[1] //reset for each new active team
                                         iscurrent = true; //can only occur once per active team
                                     }
                                     return(
                                         <tr>
                                             <td class={iscurrent ? 'current name' : 'name'}>
-                                                {iscurrent ? <Link class='link' to={`/teams/${franchise[1]}`}>{franchise[2]} {franchise[3]}</Link> : `${franchise[2]} ${franchise[3]}`}
+                                                {iscurrent ? <Link class='link' to={`/teams/${franchise[1]}/overview`}>{franchise[2]} {franchise[3]}</Link> : `${franchise[2]} ${franchise[3]}`}
                                             </td>
                                             <td class={iscurrent ? 'current' : ''}>NBA</td>
                                             <td class={iscurrent ? 'current' : ''}>{franchise[4]}</td>

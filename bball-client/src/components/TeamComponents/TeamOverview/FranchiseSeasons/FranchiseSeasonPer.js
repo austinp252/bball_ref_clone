@@ -8,6 +8,7 @@ function FranchiseSeasonPer(props) {
   const teamID = props.teamID;
   const perMode = props.perMode;
   const measureMode = props.measureMode;
+  const rank = props.hideRank;
   const title = props.title;
 
   useEffect(() => {
@@ -29,34 +30,34 @@ function FranchiseSeasonPer(props) {
       const dataItem = [];
       dataItem.push({'dataContent': season[1], 'link': `/teams/${teamID}/${season[1]}`});
       dataItem.push({'dataContent': 'NBA', 'link': null});
-      dataItem.push({'dataContent': season[3], 'link': null});
-      dataItem.push({'dataContent': season[4], 'link': null});
-      dataItem.push({'dataContent': season[2], 'link': null});
-      dataItem.push({'dataContent': season[6].toFixed(0)*5, 'link': null});
-      dataItem.push({'dataContent': season[7], 'link': null});
-      dataItem.push({'dataContent': season[8], 'link': null});
-      dataItem.push({'dataContent': season[9], 'link': null});
-      dataItem.push({'dataContent': season[10], 'link': null});
-      dataItem.push({'dataContent': season[11], 'link': null});
-      dataItem.push({'dataContent': season[12], 'link': null});
-      dataItem.push({'dataContent': season[13], 'link': null});
-      dataItem.push({'dataContent': season[14], 'link': null});
-      dataItem.push({'dataContent': season[15], 'link': null});
-      dataItem.push({'dataContent': season[16], 'link': null});
-      dataItem.push({'dataContent': season[17], 'link': null});
-      dataItem.push({'dataContent': season[18], 'link': null});
-      dataItem.push({'dataContent': season[19], 'link': null});
-      dataItem.push({'dataContent': season[21], 'link': null});
-      dataItem.push({'dataContent': season[22], 'link': null});
-      dataItem.push({'dataContent': season[20], 'link': null});
-      dataItem.push({'dataContent': season[24], 'link': null});
-      dataItem.push({'dataContent': season[26], 'link': null});
+      dataItem.push({'dataContent': rank ? season[3] : season[29], 'link': null});
+      dataItem.push({'dataContent': rank ? season[4] : season[30], 'link': null});
+      dataItem.push({'dataContent': rank ? season[2] : season[28], 'link': null});
+      dataItem.push({'dataContent': rank ? season[6].toFixed(0)*5 : season[32], 'link': null});
+      dataItem.push({'dataContent': rank ? season[7] : season[33], 'link': null});
+      dataItem.push({'dataContent': rank ? season[8] : season[34], 'link': null});
+      dataItem.push({'dataContent': rank ? season[9] : season[35], 'link': null});
+      dataItem.push({'dataContent': rank ? season[10] : season[36], 'link': null});
+      dataItem.push({'dataContent': rank ? season[11] : season[37], 'link': null});
+      dataItem.push({'dataContent': rank ? season[12] : season[38], 'link': null});
+      dataItem.push({'dataContent': rank ? season[13] : season[39], 'link': null});
+      dataItem.push({'dataContent': rank ? season[14] : season[40], 'link': null});
+      dataItem.push({'dataContent': rank ? season[15] : season[41], 'link': null});
+      dataItem.push({'dataContent': rank ? season[16] : season[42], 'link': null});
+      dataItem.push({'dataContent': rank ? season[17] : season[43], 'link': null});
+      dataItem.push({'dataContent': rank ? season[18] : season[44], 'link': null});
+      dataItem.push({'dataContent': rank ? season[19] : season[45], 'link': null});
+      dataItem.push({'dataContent': rank ? season[21] : season[47], 'link': null});
+      dataItem.push({'dataContent': rank ? season[22] : season[48], 'link': null});
+      dataItem.push({'dataContent': rank ? season[20] : season[46], 'link': null});
+      dataItem.push({'dataContent': rank ? season[24] : season[50], 'link': null});
+      dataItem.push({'dataContent': rank ? season[26] : season[52], 'link': null});
       
       tableData.push(dataItem);
     })
     return(
       <div className="stat-table">
-        <h3 className="table-header">{data.data.length} NBA Seasons</h3>
+        <h3 className="table-header">{title}{data.data.length} NBA Seasons</h3>
         <div className="dataShow">
           <SortableTable headers={headers} tableData={tableData} defaultIndex={0} defaultSort={true} subHeadDiv={20}/>
         </div>
