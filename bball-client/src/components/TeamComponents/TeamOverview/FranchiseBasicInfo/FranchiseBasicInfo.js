@@ -3,9 +3,13 @@ import './FranchiseBasicInfo.css';
 
 import {Link, useParams} from 'react-router-dom';
 
-function FranchiseBasicInfo() {
+import FranchisePageSelectors from '../FranchisePageSelectors/FranchisePageSelectors';
+
+function FranchiseBasicInfo(props) {
   const [data, setData] = useState(null);
   const params = useParams();
+  const teamID = props.teamID;
+  const title = props.title;
 
   useEffect(() => {
       fetch(`/teams/${params.id}/basic`)
@@ -19,14 +23,14 @@ function FranchiseBasicInfo() {
       <p>Loading...</p>
     )
   } else {
-    console.log('rendering');
+    console.log('rendering basic info');
     //console.log(data)
     return(
-      <div>
-        <div className="bio-content">
+      <div className="basic-info franchise">
+        <div className="bio-content franchise">
           <img className='team-img' src={`https://cdn.nba.com/logos/nba/${params.id}/primary/L/logo.svg`} alt="" />
           <div className="bio-info">
-            <h1>{data[0][2]} {data[0][3]}</h1>
+            <h1>{data[0][2]} {data[0][3]} {props.title}</h1>
             <span className="info-container">
               <p className="info-header">Location:</p>
               <p className="info-content">{data[0][2]}</p>
@@ -62,13 +66,9 @@ function FranchiseBasicInfo() {
             </span>
           </div>
         </div>
-          <div className="info-selectors">
-              <Link to={`/teams/${params.id}`}><button>Franchise Overview</button></Link>
-              <button>Year-By-Year Stats</button>
-              <button>Leaders</button>
-              <button>Honors</button>
-              <button>More</button>
-          </div>
+        <FranchisePageSelectors teamID={teamID} mode={props.mode}/>
+        <br />
+        <hr />
       </div>
     )
   }

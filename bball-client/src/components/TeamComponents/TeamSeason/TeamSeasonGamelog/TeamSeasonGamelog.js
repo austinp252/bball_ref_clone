@@ -1,10 +1,10 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import teamRouter from '../../widgets/Helpers/teamRouter';
+import teamRouter from '../../../widgets/Helpers/teamRouter';
 import './TeamSeasonGamelog.css';
 
-import Dropdown from '../../widgets/Dropdown/Dropdown';
+import Dropdown from '../../../widgets/Dropdown/Dropdown';
 import TeamSeasonBasicInfo from '../TeamSeasonBasicInfo/TeamSeasonBasicInfo';
-import SortableTable from '../../widgets/SortableTable/SortableTable';
+import SortableTable from '../../../widgets/SortableTable/SortableTable';
 import {Link, useParams} from 'react-router-dom';
 
 function TeamSeasonGamelog() {

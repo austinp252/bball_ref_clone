@@ -8,9 +8,10 @@ import SearchResults from './components/SearchResults/SearchResults';
 import Players from './components/PlayerComponents/Players/Players';
 import PlayerPage from './components/PlayerComponents/PlayerPage/PlayerPage';
 import TeamsIndex from './components/TeamComponents/TeamsIndex/TeamsIndex';
-import FranchiseBio from './components/TeamComponents/FranchiseBio/FranchiseBio';
-import TeamSeasonRoster from './components/TeamComponents/TeamSeasonRoster/TeamSeasonRoster';
-import TeamSeasonGamelog from './components/TeamComponents/TeamSeasonGamelog/TeamSeasonGamelog';
+import FranchiseBio from './components/TeamComponents/TeamOverview/FranchiseSeasons/FranchiseSeasons';
+import FranchisePage from './components/TeamComponents/TeamOverview/FranchisePage/FranchisePage';
+import TeamSeasonRoster from './components/TeamComponents/TeamSeason/TeamSeasonRoster/TeamSeasonRoster';
+import TeamSeasonGamelog from './components/TeamComponents/TeamSeason/TeamSeasonGamelog/TeamSeasonGamelog';
 import Seasons from './components/SeasonComponents/Seasons/Seasons';
 import Leaders from './components/LeaderComponents/Leaders/Leaders';
 import Scores from './components/ScoreComponents/Scores/Scores';
@@ -40,8 +41,9 @@ function App() {
                 <Route exact path='/players/:letter/:id/:mode' element = {<PlayerPage/>}/>
                 <Route exact path='/players/:letter/:id/:mode/:season' element = {<PlayerPage/>}/>
                 <Route exact path='/teams' element = {<TeamsIndex/>}/>
-                <Route exact path='/teams/:id' element = {<FranchiseBio/>}/>
-                <Route exact path='/teams/:id/:season' element = {<TeamSeasonRoster/>}/>
+                <Route exact path='/teams/:id/:mode' element = {<FranchisePage/>}/>
+                <Route exact path='/teams/:id/:mode/:perMode/:measureMode' element = {<FranchisePage/>}/>
+                <Route exact path='/teams/:id/:mode/:season' element = {<TeamSeasonRoster/>}/>
                 <Route exact path='/teams/:id/:season/gamelog' element = {<TeamSeasonGamelog/>}/>
                 <Route exact path='/seasons' element = {<Seasons/>}/>
                 <Route exact path='/leaders' element = {<Leaders/>}/>

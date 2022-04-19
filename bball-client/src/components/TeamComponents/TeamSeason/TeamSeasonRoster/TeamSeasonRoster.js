@@ -3,8 +3,8 @@ import './TeamSeasonRoster.css';
 
 import TeamSeasonBasicInfo from '../TeamSeasonBasicInfo/TeamSeasonBasicInfo';
 
-import SortableTable from '../../widgets/SortableTable/SortableTable';
-import getInitial from '../../widgets/Helpers/getInitial';
+import SortableTable from '../../../widgets/SortableTable/SortableTable';
+import getInitial from '../../../widgets/Helpers/getInitial';
 
 import {Link, useParams} from 'react-router-dom';
 

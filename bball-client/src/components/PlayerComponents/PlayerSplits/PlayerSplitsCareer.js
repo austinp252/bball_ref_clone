@@ -3,14 +3,11 @@ import teamRouter from '../../widgets/Helpers/teamRouter';
 
 import SortableTable from '../../widgets/SortableTable/SortableTable';
 
-import {Link, useParams} from 'react-router-dom';
-
 import './PlayerSplitsCareer.css'
 
 function PlayerSplitsCareer(props) {
   const [data, setData] = useState(null);
   const [showData, setShowData] = useState('Regular Season')
-  const params = useParams();
   const lastInitial = props.lastInitial;
   const playerID = props.playerID;
   const perMode = props.perMode;
