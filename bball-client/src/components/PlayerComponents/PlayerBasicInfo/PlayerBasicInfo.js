@@ -8,13 +8,21 @@ function PlayerBio(props) {
   const lastInitial = props.lastInitial;
   const playerID = props.playerID;
 
-  //console.log(`/players/:${params.letter}/:${params.id}`);
   useEffect(() => {
-    console.log("fetching player bio info")
-    fetch(`/players/${lastInitial}/${playerID}`)
-    .then((res) => res.json())
-    .then((data) => setData(data));
+    setData(null);
+    const fetchJSON = async () => {
+      const res = await fetch(`/players/${lastInitial}/${playerID}`);
+      let json = await res.json();
+      setData(json);
+    }
+    fetchJSON();
   }, [playerID]); //props?
+
+  useEffect(() => {
+    return(()=> {
+      console.log("new player or unmounting");
+    });
+  },[playerID])
 
   if(!data) {
     console.log('rendering basic info');
