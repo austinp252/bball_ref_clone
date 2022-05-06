@@ -26,7 +26,7 @@ function FranchiseSeasons(props) {
     const tableData = []
     data.stats.data.slice(0).reverse().forEach((season, index) => {
       const dataItem = [];
-      dataItem.push({'dataContent': season[3], 'link': `/teams/${teamID}/${season[3]}`});
+      dataItem.push({'dataContent': season[3], 'link': `/teams/${teamID}/season/${season[3]}/roster`});
       dataItem.push({'dataContent': 'NBA', 'link': null});
       dataItem.push({'dataContent': season[1] + ' ' + season[2], 'link': null});
       dataItem.push({'dataContent': season[5], 'link': null});

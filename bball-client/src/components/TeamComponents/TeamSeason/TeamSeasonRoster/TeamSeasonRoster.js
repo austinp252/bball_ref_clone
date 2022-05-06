@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import './TeamSeasonRoster.css';
 
-import TeamSeasonBasicInfo from '../TeamSeasonBasicInfo/TeamSeasonBasicInfo';
-
 import SortableTable from '../../../SortableTable/SortableTable';
 import getInitial from '../../../../utils/getInitial';
 
@@ -69,9 +67,6 @@ function TeamSeasonRoster() {
         })
         return(
             <div className="content">
-                <div className="common">
-                    <TeamSeasonBasicInfo textName="Roster & Stats"/>
-                </div>
                 <div className="roster">
                     <h3>Roster</h3>
                     <SortableTable headers={headersRoster} tableData={tableDataRoster} defaultIndex={1} defaultSort={true}/>

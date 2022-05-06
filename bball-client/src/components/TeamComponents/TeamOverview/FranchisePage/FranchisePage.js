@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 import FranchiseBasicInfo from '../FranchiseBasicInfo/FranchiseBasicInfo';
 import FranchiseSeasons from '../FranchiseSeasons/FranchiseSeasons';
@@ -8,16 +8,16 @@ import FranchiseSeasonPer from '../FranchiseSeasons/FranchiseSeasonPer';
 import FranchisePageFooter from '../FranchisePageFooter/FranchisePageFooter';
 
 function FranchisePage() {
-  const [data, setData] = useState(null);
+//   const [data, setData] = useState(null);
   const params = useParams();
   const teamID = params.id;
   const mode = params.mode;
-  var perMode = null;
-  var measureMode = null;
-  if(params.perMode) {
-      perMode = params.perMode;
-      measureMode = params.measureMode;
-  }
+//   var perMode = null;
+//   var measureMode = null;
+//   if(params.perMode) {
+//       perMode = params.perMode;
+//       measureMode = params.measureMode;
+//   }
 
   //const titleMeasure = {"overview": '', 'base': ' Stats - Basic', 'opponent': ' Opponent Stats - Basic'}
 
