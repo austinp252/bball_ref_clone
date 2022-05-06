@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './Players.css';
 import SortableTable from '../../SortableTable/SortableTable';
 
-import {Link, useParams} from 'react-router-dom';
+// import {Link, useParams} from 'react-router-dom';
 
 function Players() {
 

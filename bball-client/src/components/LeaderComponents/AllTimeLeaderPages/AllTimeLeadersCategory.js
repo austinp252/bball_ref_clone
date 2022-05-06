@@ -1,14 +1,14 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import teamRouter from '../../../utils/teamRouter';
+// import teamRouter from '../../../utils/teamRouter';
 
-import Dropdown from '../../Dropdown/Dropdown';
+// import Dropdown from '../../Dropdown/Dropdown';
 
-import SortableTable from '../../SortableTable/SortableTable'
+// import SortableTable from '../../SortableTable/SortableTable'
 import getInitial from '../../../utils/getInitial';
 
 import './AllTimeLeadersCategory.css'
 
-import {Link, useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function AllTimeLeadersCategory(props) {
   const [data, setData] = useState(null);
@@ -22,7 +22,7 @@ function AllTimeLeadersCategory(props) {
     fetch(`/leaders/alltime/${season_type}/${category}`)
     .then((res) => res.json())
     .then((data) => setData(data));
-}, []);
+}, [category, season_type]);
 
   if(!data) {
     return(
@@ -40,7 +40,7 @@ function AllTimeLeadersCategory(props) {
                 data.data.slice(0, 10).map((player) => {
                   return(
                     <div className="player">
-                      <img className="player-img-leaders"src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${player[0]}.png`} alt='missing image'/>
+                      <img className="player-img-leaders"src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${player[0]}.png`} alt='missing'/>
                     </div>
                   )
                 })
@@ -69,7 +69,7 @@ function AllTimeLeadersCategory(props) {
                                       <td>{player[2]}</td>
                                   </tr>
                                   {
-                                    ((index+1)%25===0 && index+1!=250) &&
+                                    ((index+1)%25===0 && index+1!==250) &&
                                     <tr>
                                       <th>Rank</th>
                                       <th>Player</th>

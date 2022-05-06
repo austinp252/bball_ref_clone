@@ -12,7 +12,7 @@
 .bio-content .bio-info {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .bio-info h1{

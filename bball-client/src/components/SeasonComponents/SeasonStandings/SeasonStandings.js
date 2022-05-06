@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 import SortableTable from '../../SortableTable/SortableTable';
 
-import {Link, useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import "./SeasonStandings.css"
 
@@ -19,7 +19,7 @@ function SeasonStandings(props) {
     };
 
     fetchJSON();
-}, [props.season]);
+}, [season]);
 
   if(!data) {
     return(

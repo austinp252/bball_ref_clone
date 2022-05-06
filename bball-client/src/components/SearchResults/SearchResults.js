@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './SearchResults.css';
 
-import Dropdown from '../Dropdown/Dropdown';
+// import Dropdown from '../Dropdown/Dropdown';
 
 import {Link, useParams} from 'react-router-dom';
 
@@ -34,10 +34,10 @@ function SearchResults() {
                 <div className="results-show">
                     <h3>{showData}</h3>
                     <div className={data.dataSize[0] > 0 ? 'players show' : 'players hide'}>
-                    <Link to={`/search/${params.term}/${parseInt(params.page)-1}`}><button className={(params.page > 0 && showData == 'Players') ? 'btn show' : 'btn hide'}>Previous 100 Results</button></Link>
-                        <Link to={`/search/${params.term}/${parseInt(params.page)+1}`}><button className={((data.dataSize[0] > (params.page+1)*100) && showData == 'Players') ? 'btn show' : 'btn hide'}>Next 100 Results</button></Link>
+                    <Link to={`/search/${params.term}/${parseInt(params.page)-1}`}><button className={(params.page > 0 && showData === 'Players') ? 'btn show' : 'btn hide'}>Previous 100 Results</button></Link>
+                        <Link to={`/search/${params.term}/${parseInt(params.page)+1}`}><button className={((data.dataSize[0] > (params.page+1)*100) && showData === 'Players') ? 'btn show' : 'btn hide'}>Next 100 Results</button></Link>
                         {
-                            showData == 'Players' ?
+                            showData === 'Players' ?
                             data.playerData.map((player) => {
                                 return(
                                     <div className="infoCard">
@@ -49,12 +49,12 @@ function SearchResults() {
                             })
                             : null
                         }
-                        <Link to={`/search/${params.term}/${parseInt(params.page)-1}`}><button className={(params.page > 0 && showData == 'Players') ? 'btn show' : 'btn hide'}>Previous 100 Results</button></Link>
-                        <Link to={`/search/${params.term}/${parseInt(params.page)+1}`}><button className={((data.dataSize[0] > (params.page+1)*100) && showData == 'Players') ? 'btn show' : 'btn hide'}>Next 100 Results</button></Link>
+                        <Link to={`/search/${params.term}/${parseInt(params.page)-1}`}><button className={(params.page > 0 && showData === 'Players') ? 'btn show' : 'btn hide'}>Previous 100 Results</button></Link>
+                        <Link to={`/search/${params.term}/${parseInt(params.page)+1}`}><button className={((data.dataSize[0] > (params.page+1)*100) && showData === 'Players') ? 'btn show' : 'btn hide'}>Next 100 Results</button></Link>
                     </div>
                     <div className={data.dataSize[1] > 0 ? 'teams show' : 'teams hide'}>
                         {
-                            showData == 'Teams' ?
+                            showData === 'Teams' ?
                             data.teamData.map((team) => {
                                 return(
                                     <div className="infoCard">

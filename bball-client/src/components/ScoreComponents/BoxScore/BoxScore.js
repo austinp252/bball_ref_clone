@@ -14,7 +14,7 @@ function BoxScore() {
         fetch(`/scores/boxscore/${params.gameid}`)
         .then((res) => res.json())
         .then((data) => setData(data));
-    }, []);
+    }, [params.gameid]);
 
     if(!data) {
         //console.log(params.gameid);
@@ -181,7 +181,7 @@ function BoxScore() {
                                                                     <td>{player[28]}</td> 
                                                                 </tr>
                                                                 {
-                                                                    index==4 &&
+                                                                    index===4 &&
                                                                     <tr>
                                                                         <th>Reserves</th>
                                                                         <th>MP</th>
@@ -217,7 +217,7 @@ function BoxScore() {
                                                                     <td colspan='20'className='status'>Did Not Play</td>
                                                                 </tr>
                                                                 {
-                                                                    index==4 &&
+                                                                    index===4 &&
                                                                     <tr>
                                                                         <th>Reserves</th>
                                                                         <th>MP</th>
@@ -292,7 +292,7 @@ function BoxScore() {
                                                                         <td>{player[12]}</td>
                                                                         <td>{player[14]}</td>
                                                                     </tr>
-                                                                    {index==4 &&
+                                                                    {index===4 &&
                                                                     <tr>
                                                                         <th>Reserves</th>
                                                                         <th>MP</th>
@@ -317,7 +317,7 @@ function BoxScore() {
                                                                         <td><Link to={`/players/${player[5].split(' ')[1][0]}/${player[4]}`}>{player[5]}</Link></td>
                                                                         <td className='status' colspan='12'>Did Not Play</td>
                                                                     </tr>
-                                                                    {index==4 &&
+                                                                    {index===4 &&
                                                                     <tr>
                                                                         <th>Reserves</th>
                                                                         <th>MP</th>

@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useRef, Fragment} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import React, {useState, useEffect, Fragment} from 'react';
+import {Link} from 'react-router-dom';
 
 import sortTable from '../../utils/sortTable';
 import sortTableLastname from '../../utils/sortTableLastname';
@@ -15,7 +15,7 @@ function SortableTable(props) {
     const defaultIndex = props.defaultIndex;
     const defaultSort = props.defaultSort;
     const showRank = props.showRank;
-    const params = useParams();
+    // const params = useParams();
     const downArrow = (
         <Fragment>
             &#x21e9;
@@ -33,7 +33,7 @@ function SortableTable(props) {
         }
         setData(props.tableData);
         setTableData(sortTable(props.tableData, defaultIndex, defaultSort));
-    },[props.tableData]);
+    },[defaultIndex, defaultSort, props.subHeadDiv, props.tableData]);
 
   return (
         <table>

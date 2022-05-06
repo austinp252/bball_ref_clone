@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './Navbar.css';
 
 import {Link} from 'react-router-dom';
@@ -11,7 +11,7 @@ function Navbar() {
     }
 
     const handleChange = (e) => {
-        setTerm(e.target.value == ''? 'xxx' : e.target.value);
+        setTerm(e.target.value === ''? 'xxx' : e.target.value);
     }
 
     return(

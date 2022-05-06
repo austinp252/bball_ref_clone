@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import teamRouter from '../../../utils/teamRouter';
+// import teamRouter from '../../../utils/teamRouter';
 
 import Dropdown from '../../Dropdown/Dropdown';
 
-import SortableTable from '../../SortableTable/SortableTable';
+// import SortableTable from '../../SortableTable/SortableTable';
 import AllTimeLeaders from '../AllTimeLeaders/AllTimeLeaders';
 import CurrentSeasonLeaders from '../CurrentSeasonLeaders/CurrentSeasonLeaders';
 
 import './Leaders.css';
 
-import {Link, useParams} from 'react-router-dom';
+// import {Link, useParams} from 'react-router-dom';
 
 function Leaders() {
   const [season, setSeason] = useState('2021-22');

@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react';
-import propTypes from 'prop-types';
+import React, {useState} from 'react';
+// import propTypes from 'prop-types';
 import './Dropdown.css';
 
 function Dropdown(props) {

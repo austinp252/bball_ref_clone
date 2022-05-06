@@ -15,7 +15,7 @@ function TeamSeasonGamelog() {
         fetch(`/teams/${params.id}/${params.season}/games`)
         .then((res) => res.json())
         .then((data) => setData(data));
-    }, []);
+    }, [params.id, params.season]);
 
     if(!data) {
         console.log('Loading');

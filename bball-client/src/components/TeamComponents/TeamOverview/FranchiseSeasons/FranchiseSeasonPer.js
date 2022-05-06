@@ -16,7 +16,7 @@ function FranchiseSeasonPer(props) {
       fetch(`/teams/${teamID}/${perMode}/${measureMode}/stats`)
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, [props.teamID]);
+  }, [measureMode, perMode, teamID]);
 
   if(!data) {
     return(

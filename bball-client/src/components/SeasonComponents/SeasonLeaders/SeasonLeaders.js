@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import teamRouter from '../../../utils/teamRouter';
+// import teamRouter from '../../../utils/teamRouter';
 
-import {Link, useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 import getInitial from '../../../utils/getInitial';
 
@@ -20,7 +20,7 @@ function SeasonLeaders(props) {
     };
 
     fetchJSON();
-}, [props.season]);
+}, [season]);
 
   if(!data) {
     return(

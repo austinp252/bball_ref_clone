@@ -1,8 +1,8 @@
 import React, {useState, useEffect, Fragment} from 'react';
 
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
-import getInitial from '../../../utils/getInitial';
+// import getInitial from '../../../utils/getInitial';
 
 import '../PlayerGeneralSplits/PlayerGeneralSplits.css'
 
@@ -19,7 +19,7 @@ function PlayerShootingSplits() {
     };
 
     fetchJSON();
-}, [params.season]);
+}, [params.id, params.letter, params.season]);
 
   if(!data) {
     return(

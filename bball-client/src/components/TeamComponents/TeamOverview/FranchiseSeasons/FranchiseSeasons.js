@@ -6,15 +6,15 @@ import SortableTable from '../../../SortableTable/SortableTable';
 function FranchiseSeasons(props) {
   const [data, setData] = useState(null);
   const teamID = props.teamID;
-  const perMode = props.perMode;
-  const title = props.title;
+  // const perMode = props.perMode;
+  // const title = props.title;
 
   useEffect(() => {
       console.log('fetching franchise seasons');
       fetch(`/teams/${teamID}/stats`)
       .then((res) => res.json())
       .then((data) => setData(data));
-  }, [props.teamID]);
+  }, [teamID]);
 
   if(!data) {
     return(
@@ -32,7 +32,7 @@ function FranchiseSeasons(props) {
       dataItem.push({'dataContent': season[5], 'link': null});
       dataItem.push({'dataContent': season[6], 'link': null});
       dataItem.push({'dataContent': season[7], 'link': null});
-      dataItem.push({'dataContent': season[8] != '0' ? season[8] : 'N/A', 'link': null});
+      dataItem.push({'dataContent': season[8] !== '0' ? season[8] : 'N/A', 'link': null});
       tableData.push(dataItem);
     })
     return(

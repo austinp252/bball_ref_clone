@@ -18,7 +18,7 @@ function PlayerSplitsCareer(props) {
     fetch(`/players/${lastInitial}/${playerID}/${perMode}/splits`)
     .then((res) => res.json())
     .then((data) => setData(data));
-}, [props.playerID]);
+}, [lastInitial, perMode, playerID]);
 
     if(!data) {
       return(
@@ -96,7 +96,7 @@ function PlayerSplitsCareer(props) {
           <div className="dataShow">
             <div className="regular-season show">
               {
-                showData == 'Regular Season' ?
+                showData === 'Regular Season' ?
                 <SortableTable headers = {headers} tableData = {tableData1} defaultIndex={0}/>
                 :
                 <SortableTable headers = {headers} tableData = {tableData2} defaultIndex={0}/>

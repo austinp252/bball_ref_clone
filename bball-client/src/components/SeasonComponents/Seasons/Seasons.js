@@ -1,20 +1,20 @@
 import React, {useState, useEffect} from 'react';
-import teamRouter from '../../../utils/teamRouter';
+// import teamRouter from '../../../utils/teamRouter';
 
 import Dropdown from '../../Dropdown/Dropdown';
 
-import SortableTable from '../../SortableTable/SortableTable';
+// import SortableTable from '../../SortableTable/SortableTable';
 import SeasonStandings from '../SeasonStandings/SeasonStandings';
 import SeasonLeaders from '../SeasonLeaders/SeasonLeaders';
 import SeasonTeamData from '../SeasonTeamData/SeasonTeamData';
 import SeasonTeamDataAdvanced from '../SeasonTeamData/SeasonTeamDataAdvanced';
 
-import {Link, useParams} from 'react-router-dom';
+// import {Link, useParams} from 'react-router-dom';
 
 import './Seasons.css';
 
 function Seasons() {
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
   const [season, setSeason] = useState('2019-20');
 
   const seasonOptions = [{"label": "2014-15", "value": "2014-15"}, {"label": "2015-16", "value": "2015-16"}, {"label": "2016-17", "value": "2016-17"}, {"label": "2017-18", "value": "2017-18"}, {"label": "2018-19", "value": "2018-19"}, {"label": "2019-20", "value": "2019-20"}, {"label": "2020-21", "value": "2020-21"}]

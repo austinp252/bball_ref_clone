@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import teamRouter from '../../../utils/teamRouter';
+// import teamRouter from '../../../utils/teamRouter';
 
 import SortableTable from '../../SortableTable/SortableTable';
 
-import {Link, useParams} from 'react-router-dom';
+// import {Link, useParams} from 'react-router-dom';
 
 function SeasonTeamData(props) {
   const [data, setData] = useState(null);
@@ -21,7 +21,7 @@ function SeasonTeamData(props) {
     };
 
     fetchJSON();
-}, [props.season]);
+}, [mode, season]);
 
   if(!data) {
     return(

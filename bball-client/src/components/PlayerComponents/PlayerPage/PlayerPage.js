@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import teamRouter from '../../../utils/teamRouter';
+import React, {useEffect} from 'react';
+// import teamRouter from '../../../utils/teamRouter';
 
 import PlayerBasicInfo from '../PlayerBasicInfo/PlayerBasicInfo';
 import PlayerSplitsCareer from '../PlayerSplits/PlayerSplitsCareer';
@@ -8,10 +8,10 @@ import PlayerGeneralSplits from '../PlayerGeneralSplits/PlayerGeneralSplits';
 import PlayerShootingSplits from '../PlayerShootingSplits/PlayerShootingSplits';
 import PlayerPageFooter from '../PlayerPageFooter/PlayerPageFooter';
 
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 function PlayerPage() {
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
   const params = useParams();
   const lastInitial = params.letter;
   const playerID = params.id;
@@ -57,18 +57,3 @@ function PlayerPage() {
 }
 
 export default PlayerPage;
-
-//pergame
-//totals
-//per36
-
-//per100 poss (not available for entire career, can only be called by season)
-//advanced
-//shooting
-
-//adjusted shooting
-//play by play
-//game highs
-//playoff series
-//allstar
-//college

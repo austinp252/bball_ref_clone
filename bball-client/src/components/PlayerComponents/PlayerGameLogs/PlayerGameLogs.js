@@ -1,9 +1,9 @@
-import React, {useState, useEffect, Fragment} from 'react';
+import React, {useState, useEffect} from 'react';
 import './PlayerGameLogs.css';
 import teamRouter from '../../../utils/teamRouter';
 import SortableTable from '../../SortableTable/SortableTable';
 
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 function PlayerStatsSeason() {
   const [data, setData] = useState(null);
