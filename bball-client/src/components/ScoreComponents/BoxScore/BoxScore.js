@@ -1,10 +1,10 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import './BoxScore.css';
 
-import teamRouter from '../../widgets/Helpers/teamRouter';
+import teamRouter from '../../../utils/teamRouter';
 
 import {Link, useParams} from 'react-router-dom';
-import getInitial from '../../widgets/Helpers/getInitial';
+import getInitial from '../../../utils/getInitial';
 
 function BoxScore() {
     const [data, setData] = useState(null);

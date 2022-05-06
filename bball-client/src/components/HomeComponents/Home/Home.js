@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 import './Home.css';
-import SortableTable from '../../widgets/SortableTable/SortableTable';
+import '../../SortableTable/SortableTable'
 
 function Home() {
   const [data, setData] = useState(null);

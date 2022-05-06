@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import teamRouter from '../../widgets/Helpers/teamRouter';
+import teamRouter from '../../../utils/teamRouter';
 
 import PlayerBasicInfo from '../PlayerBasicInfo/PlayerBasicInfo';
 import PlayerSplitsCareer from '../PlayerSplits/PlayerSplitsCareer';

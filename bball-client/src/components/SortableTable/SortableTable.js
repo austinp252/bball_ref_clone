@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useRef, Fragment} from 'react';
 import {Link, useParams} from 'react-router-dom';
 
-import sortTable from '../../../helper_functions/sortTable';
-import sortTableLastname from '../../../helper_functions/sortTableLastname';
-import sortTableDate from '../../../helper_functions/sortTableDate';
+import sortTable from '../../utils/sortTable';
+import sortTableLastname from '../../utils/sortTableLastname';
+import sortTableDate from '../../utils/sortTableDate';
 
 function SortableTable(props) {
 

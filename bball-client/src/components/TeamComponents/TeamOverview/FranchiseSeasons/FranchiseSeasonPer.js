@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './FranchiseSeasons.css';
 
-import SortableTable from '../../../widgets/SortableTable/SortableTable';
+import SortableTable from '../../../SortableTable/SortableTable';
 
 function FranchiseSeasonPer(props) {
   const [data, setData] = useState(null);

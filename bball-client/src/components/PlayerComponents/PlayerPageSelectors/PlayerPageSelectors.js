@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 import './PlayerPageSelectors.css';
-import getInitial from '../../widgets/Helpers/getInitial';
+import getInitial from '../../../utils/getInitial';
 
 function PlayerPageSelectors(props) {
   const lastInitial = props.lastInitial;

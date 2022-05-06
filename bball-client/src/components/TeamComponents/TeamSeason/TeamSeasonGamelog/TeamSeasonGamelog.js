@@ -1,11 +1,10 @@
-import React, {useState, useEffect, Fragment} from 'react';
-import teamRouter from '../../../widgets/Helpers/teamRouter';
+import React, {useState, useEffect} from 'react';
+import teamRouter from '../../../../utils/teamRouter';
 import './TeamSeasonGamelog.css';
 
-import Dropdown from '../../../widgets/Dropdown/Dropdown';
 import TeamSeasonBasicInfo from '../TeamSeasonBasicInfo/TeamSeasonBasicInfo';
-import SortableTable from '../../../widgets/SortableTable/SortableTable';
-import {Link, useParams} from 'react-router-dom';
+import SortableTable from '../../../SortableTable/SortableTable';
+import {useParams} from 'react-router-dom';
 
 function TeamSeasonGamelog() {
     const [data, setData] = useState(null);
@@ -34,7 +33,7 @@ function TeamSeasonGamelog() {
             dataItem.push({'dataContent': game[2], 'link': `/scores/${game[1]}/boxscore`});
             dataItem.push({'dataContent': 'Box-Score', 'link': `/scores/${game[1]}/boxscore`});
             dataItem.push({'dataContent': teams[0], 'link': null});
-            dataItem.push({'dataContent': teams[1] == '@' ? '@' : '', 'link': null});
+            dataItem.push({'dataContent': teams[1] === '@' ? '@' : '', 'link': null});
             dataItem.push({'dataContent': teams[2], 'link': `/teams/${teamRouter(teams[2])}/${params.season}`});
             dataItem.push({'dataContent': game[4], 'link': null});
             dataItem.push({'dataContent': game[26], 'link': null});
@@ -51,7 +50,7 @@ function TeamSeasonGamelog() {
             dataItem.push({'dataContent': game[2], 'link': `/scores/${game[1]}/boxscore`});
             dataItem.push({'dataContent': 'Box-Score', 'link': `/scores/${game[1]}/boxscore`});
             dataItem.push({'dataContent': teams[0], 'link': null});
-            dataItem.push({'dataContent': teams[1] == '@' ? '@' : '', 'link': null});
+            dataItem.push({'dataContent': teams[1] === '@' ? '@' : '', 'link': null});
             dataItem.push({'dataContent': teams[2], 'link': `/teams/${teamRouter(teams[2])}/${params.season}`});
             dataItem.push({'dataContent': game[4], 'link': null});
             dataItem.push({'dataContent': game[26], 'link': null});

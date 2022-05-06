@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './Scores.css';
 
-import Dropdown from '../../widgets/Dropdown/Dropdown';
+import Dropdown from '../../Dropdown/Dropdown';
 
 import {Link} from 'react-router-dom';
 

@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import teamRouter from '../../widgets/Helpers/teamRouter';
+import teamRouter from '../../../utils/teamRouter';
 
-import Dropdown from '../../widgets/Dropdown/Dropdown';
+import Dropdown from '../../Dropdown/Dropdown';
 
-import SortableTable from '../../widgets/SortableTable/SortableTable';
+import SortableTable from '../../SortableTable/SortableTable';
 import AllTimeLeaders from '../AllTimeLeaders/AllTimeLeaders';
 import CurrentSeasonLeaders from '../CurrentSeasonLeaders/CurrentSeasonLeaders';
 

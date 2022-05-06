@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import teamRouter from '../../widgets/Helpers/teamRouter';
+import teamRouter from '../../../utils/teamRouter';
 
 import {Link, useParams} from 'react-router-dom';
 
-import getInitial from '../../widgets/Helpers/getInitial';
+import getInitial from '../../../utils/getInitial';
 
 import './SeasonLeaders.css'
 

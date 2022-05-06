@@ -1,10 +1,10 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import teamRouter from '../../widgets/Helpers/teamRouter';
+import teamRouter from '../../../utils/teamRouter';
 
-import Dropdown from '../../widgets/Dropdown/Dropdown';
+import Dropdown from '../../Dropdown/Dropdown';
 
-import SortableTable from '../../widgets/SortableTable/SortableTable';
-import getInitial from '../../widgets/Helpers/getInitial';
+import SortableTable from '../../SortableTable/SortableTable'
+import getInitial from '../../../utils/getInitial';
 
 import './AllTimeLeadersCategory.css'
 

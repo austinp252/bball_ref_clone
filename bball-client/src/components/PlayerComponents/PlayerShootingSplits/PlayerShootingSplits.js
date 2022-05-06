@@ -2,7 +2,7 @@ import React, {useState, useEffect, Fragment} from 'react';
 
 import {Link, useParams} from 'react-router-dom';
 
-import getInitial from '../../widgets/Helpers/getInitial';
+import getInitial from '../../../utils/getInitial';
 
 import '../PlayerGeneralSplits/PlayerGeneralSplits.css'
 

@@ -3,10 +3,10 @@ import './TeamSeasonRoster.css';
 
 import TeamSeasonBasicInfo from '../TeamSeasonBasicInfo/TeamSeasonBasicInfo';
 
-import SortableTable from '../../../widgets/SortableTable/SortableTable';
-import getInitial from '../../../widgets/Helpers/getInitial';
+import SortableTable from '../../../SortableTable/SortableTable';
+import getInitial from '../../../../utils/getInitial';
 
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 function TeamSeasonRoster() {
     const [data, setData] = useState(null);
@@ -16,7 +16,7 @@ function TeamSeasonRoster() {
         fetch(`/teams/${params.id}/${params.season}/stats`)
         .then((res) => res.json())
         .then((data) => setData(data));
-    }, []);
+    }, [params.id, params.season]);
 
     if(!data) {
         console.log('loading...');

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import teamRouter from '../../widgets/Helpers/teamRouter';
+import teamRouter from '../../../utils/teamRouter';
 
-import SortableTable from '../../widgets/SortableTable/SortableTable';
+import SortableTable from '../../SortableTable/SortableTable';
 
 import './PlayerSplitsCareer.css'
 
